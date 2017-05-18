@@ -2843,6 +2843,40 @@ The product prices here might be different to the productOptions in the product 
 Respax Documentation: https://docs.respax.com/confluence/display/RONR/RON+XML+API+Reference#RONXMLAPIReference-readTourPricesreadTourPrices
 </aside>
 
+          <h1 id="definitions">Definitions</h1>
+
+<h2 id="payment-methods">Payment Methods</h2>
+
+<p>Many reservation systems provide a payment method between the agent and the operator. We have summarised these and provide the following payment options.</p>
+
+<table><thead>
+<tr>
+<th>Payment Option</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>FULL_AGENT</td>
+<td>Agent takes full payment for product, including any levies</td>
+</tr>
+<tr>
+<td>DOWNPAYMENT_LEVY</td>
+<td>Agent takes full payment for product, minus any levies. Customer will pay levy to operator on day of travel.</td>
+</tr>
+<tr>
+<td>DOWNPAYMENT_BALANCE</td>
+<td>Agent takes a deposit for the product, this is generally the agents commission. Customer will pay remainder to operator on day of travel.</td>
+</tr>
+<tr>
+<td>FULL_SUPPLIER</td>
+<td>Customer will pay total balance to operator on day of travel. Commission will need to be arranged with Operator outside of this API.</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+For Rezdy products we do not support the &ldquo;PAYOUTS&rdquo; method. This is Rezdy&rsquo;s automated payment. For Rezdy products you need to negotiate with the operator on a rate and payment method.
+</aside>
+
           <h1 id="errors">Errors</h1>
 
 <aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
