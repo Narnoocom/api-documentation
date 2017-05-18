@@ -1,5 +1,5 @@
 ---
-title: Narnoo Live Booking And Reservations API Guide
+title: Narnoo Live Booking And Reservations API Guide V2
 
 language_tabs:
   - JavaScript Jquery
@@ -8,7 +8,7 @@ language_tabs:
   - Swift
 
 toc_footers:
-  - <a href='https://www.narnoo.com'>Sign Up for a Developer Key</a>
+  - <a href='https://www.narnoo.com/'>Sign Up for a Developer Key</a>
 
 includes:
   - errors
