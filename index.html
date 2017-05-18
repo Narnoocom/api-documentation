@@ -373,6 +373,381 @@ Authentication details are coming asap.
 </tr>
 </tbody></table>
 
+          <h1 id="product">Product</h1>
+
+<h2 id="get-product-details">Get Product Details</h2>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://connect.narnoo.com/v1/product/details/91/491"</span><span class="p">,</span>
+  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"api-key"</span><span class="p">:</span> <span class="s2">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"api-secret-key"</span><span class="p">:</span> <span class="s2">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"authorization"</span><span class="p">:</span> <span class="s2">"xxxxxxxxxxxxxxxxxx"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://connect.narnoo.com/v1/product/details/91/491"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="nx">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="nx">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="nx">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="nx">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="nx">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">"api-key: xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"api-secret-key: xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"authorization: xxxxxxxxxxxxxxxxxx"</span>
+  <span class="p">),</span>
+<span class="p">));</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="o">.</span> <span class="nv">$err</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"connect.narnoo.com"</span><span class="p">)</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'api-key'</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s">'api-secret-key'</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s">'authorization'</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/v1/product/details/91/491"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre><pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Foundation</span>
+
+<span class="k">let</span> <span class="nv">headers</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s">"api-key"</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+  <span class="s">"api-secret-key"</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+  <span class="s">"authorization"</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span>
+<span class="p">]</span>
+
+<span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">NSMutableURLRequest</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">NSURL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://connect.narnoo.com/v1/product/details/91/491"</span><span class="p">)</span><span class="o">!</span> <span class="k">as</span> <span class="kt">URL</span><span class="p">,</span>
+                                        <span class="nv">cachePolicy</span><span class="p">:</span> <span class="o">.</span><span class="n">useProtocolCachePolicy</span><span class="p">,</span>
+                                    <span class="nv">timeoutInterval</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">httpMethod</span> <span class="o">=</span> <span class="s">"GET"</span>
+<span class="n">request</span><span class="o">.</span><span class="n">allHTTPHeaderFields</span> <span class="o">=</span> <span class="n">headers</span>
+
+<span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span>
+<span class="k">let</span> <span class="nv">dataTask</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="nf">dataTask</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">request</span> <span class="k">as</span> <span class="kt">URLRequest</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">httpResponse</span> <span class="o">=</span> <span class="n">response</span> <span class="k">as?</span> <span class="kt">HTTPURLResponse</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"productInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"491"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"118576286"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ocean Spirit Cruises"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-30 09:32:32"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dateModified"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"businessUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.oceanspirit.com.au/"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"businessEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paul@quicksilvergroup.com.au"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"businessState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QLD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"businessCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reef Fleet Terminal 1 Spence Street, Cairns QLD 4870, Australia"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.9218184032553"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145.780138097931"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"productSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30-03-2017 09:32"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please check-in at the Ocean Spirit/Great Adventures reservations counter inside the Cairns Reef Fleet Terminal on 1 Spence St between 7:30 and 8:00am. Ocean Spirit departs the marina at 8:30am. \n\nOur staff will issue you with your boarding pass and direct you to our vessel.\n\nPlease note:\nIf you have selected the \"Pay On Board\" option you must reconfirm your booking within 24 hours of travel by contacting our reservations team. If not, Quicksilver Connections reserves the right to cancel"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"logo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"logoId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"107"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/logo/crop_Ocean-Spirit-Cruises-VRx7xsylNrZPG63.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/logo/thumb_Ocean-Spirit-Cruises-VRx7xsylNrZPG63.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/logo/preview_Ocean-Spirit-Cruises-VRx7xsylNrZPG63.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/logo/large_Ocean-Spirit-Cruises-VRx7xsylNrZPG63.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/logo/200_Ocean-Spirit-Cruises-VRx7xsylNrZPG63.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/logo/400_Ocean-Spirit-Cruises-VRx7xsylNrZPG63.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/logo/800_Ocean-Spirit-Cruises-VRx7xsylNrZPG63.jpg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"productDiscription"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30-03-2017 09:32"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please check-in at the Ocean Spirit/Great Adventures reservations counter inside the Cairns Reef Fleet Terminal on 1 Spence St between 7:30 and 8:00am. Ocean Spirit departs the marina at 8:30am. \n\nOur staff will issue you with your boarding pass and direct you to our vessel.\n\nPlease note:\nIf you have selected the \"Pay On Board\" option you must reconfirm your booking within 24 hours of travel by contacting our reservations team. If not, Quicksilver Connections reserves the right to cancel your booking."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"productImages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3812"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-05 17:55:10"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xcrop/xcrop_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/crop/crop_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/thumb/thumb_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/preview/preview_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/large/large_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xlarge/xlarge_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xxlarge/xxlarge_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/200/200_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/400/400_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/800/800_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Introductory Scuba Diving at Michaelmas Cay"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3813"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-05 17:56:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xcrop/xcrop_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/crop/crop_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/thumb/thumb_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/preview/preview_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/large/large_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xlarge/xlarge_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xxlarge/xxlarge_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/200/200_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/400/400_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/800/800_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OCEAN SPIRIT Beach"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3814"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-05 17:57:33"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xcrop/xcrop_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/crop/crop_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/thumb/thumb_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/preview/preview_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/large/large_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xlarge/xlarge_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xxlarge/xxlarge_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/200/200_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/400/400_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/800/800_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michaelmas Cay, a vegetated sand cay"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3815"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-05 17:58:31"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xcrop/xcrop_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/crop/crop_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/thumb/thumb_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/preview/preview_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/large/large_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xlarge/xlarge_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xxlarge/xxlarge_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/200/200_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/400/400_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/800/800_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Snorkelling at Michaelmas Cay"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3816"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-05 17:59:40"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xcrop/xcrop_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/crop/crop_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/thumb/thumb_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/preview/preview_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/large/large_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xlarge/xlarge_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xxlarge/xxlarge_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/200/200_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/400/400_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/800/800_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aboard 32 metre sailing cat Ocean Spirit"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3817"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-05 18:00:30"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xcrop/xcrop_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/crop/crop_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/thumb/thumb_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/preview/preview_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/large/large_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xlarge/xlarge_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xxlarge/xxlarge_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/200/200_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/400/400_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/800/800_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Safe snorkelling from the protected shallow waters"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3818"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-05 18:01:11"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xcrop/xcrop_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/crop/crop_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/thumb/thumb_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/preview/preview_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/large/large_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xlarge/xlarge_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xxlarge/xxlarge_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/200/200_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/400/400_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/800/800_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Discover the island bird life"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4942"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-13 13:18:01"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xcrop/xcrop_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/crop/crop_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/thumb/thumb_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/preview/preview_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/large/large_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xlarge/xlarge_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xxlarge/xxlarge_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/200/200_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/400/400_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/800/800_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OCEAN SPIRIT Micahelmas Cay"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"productVideo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"productFeatures"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"bookingData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"bookingPlatform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Respax"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bookingPlatformNickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"respax"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bookingPlatformMapping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"operatorPreferred"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bookingCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP:751:2526"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard / 8:30 - 17:00 - Standard"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"productOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adult"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Infant"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Child"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Family Child"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"productTimes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">486</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:30:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"paymentMethods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FULL_SUPPLIER"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Full payment to supplier paid to supplier on day."</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"bookingCodesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"productOptionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"productTimesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"paymentMethodsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"cacheTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"queryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6668.29ms"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves the details for this operator&rsquo;s product.
+Basic product information is returned along with the important booking information.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://test-connect.narnoo.com/v1/product/details/&lt;id&gt;/&lt;productId&gt;</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>true</td>
+<td>We need to pass the operator&rsquo;s Narnoo ID</td>
+</tr>
+<tr>
+<td>productId</td>
+<td>true</td>
+<td>We need to pass the operator&rsquo;s Narnoo product ID</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<aside class="notice">
+The bookingData array in the response contains all the information needed to make further product calls down the pipeline.
+</aside>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bookingCodes</td>
+<td>Array</td>
+<td>These are the booking codes which need to be passed in future API calls. These identify the bookable product.</td>
+</tr>
+<tr>
+<td>productTimes</td>
+<td>Array</td>
+<td>If productTimes is not NULL then a productTimes &lsquo;id&rsquo; must be appended to the bookingCode &#39;id&rsquo; for future API calls. Reservation systems such as Respax and Website Travel require times when checking availability and pricing.</td>
+</tr>
+<tr>
+<td>paymentMethods</td>
+<td>Array</td>
+<td>This is your agents payment method options. See Payment Methods for detailed descriptions of these.</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+If productTimes exists in the response then future bookingsCode ID need to be in the format bookingCode['id&rsquo;]:productTimes['id&rsquo;]
+</aside>
+
           <h1 id="errors">Errors</h1>
 
 <aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
