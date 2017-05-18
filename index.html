@@ -2454,7 +2454,7 @@ If productTimes exists in the response then future bookingsCode ID need to be in
 <h3 id="query-parameters">Query Parameters</h3>
 
 <aside class="warning">
-If productTimes exists in the response then future bookingsCode ID need to be in the format bookingCode[&lsquo;id&rsquo;]:productTimes['id&rsquo;]. See [product details call](#get-product-details)
+If productTimes exists in the response then future bookingsCode ID need to be in the format bookingCode[&lsquo;id&rsquo;]:productTimes['id&rsquo;]. See the product details call
 </aside>
 
 <table><thead>
@@ -2500,11 +2500,6 @@ The bookingData array in the response contains all the information needed to mak
 <td>Returns the prices of each of the product types. If a levy exists this will be displayed here.</td>
 </tr>
 <tr>
-<td>productTimes</td>
-<td>Array</td>
-<td>If productTimes is not NULL then a productTimes &#39;id&rsquo; must be appended to the bookingCode &#39;id&rsquo; for future API calls. Reservation systems such as Respax and Website Travel require times when checking availability and pricing.</td>
-</tr>
-<tr>
 <td>productExtras</td>
 <td>Array</td>
 <td>Any additional extras that can be included in the booking.</td>
@@ -2527,8 +2522,271 @@ The bookingData array in the response contains all the information needed to mak
 </tbody></table>
 
 <aside class="notice">
-The product prices here might be different to the productOptions in the [product details call](#get-product-details). This is because some reservation systems request that options without prices not be displayed.
-[Respax Tour Prices Information](https://docs.respax.com/confluence/display/RONR/RON+XML+API+Reference#RONXMLAPIReference-readTourPricesreadTourPrices)
+The product prices here might be different to the productOptions in the product details call. This is because some reservation systems request that options without prices not be displayed.
+Respax Documentation: https://docs.respax.com/confluence/display/RONR/RON+XML+API+Reference#RONXMLAPIReference-readTourPricesreadTourPrices
+</aside>
+
+<h2 id="get-product-availability-and-pricing-details">Get Product Availability and Pricing Details</h2>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://connect.narnoo.com/v1/booking/availability/73/489?startDate=20-06-2017&amp;endDate=24-06-2017&amp;id=WT%3A330653%3A12"</span><span class="p">,</span>
+  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"api-key"</span><span class="p">:</span> <span class="s2">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"api-secret-key"</span><span class="p">:</span> <span class="s2">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"authorization"</span><span class="p">:</span> <span class="s2">"xxxxxxxxxxxxxxxxxx"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://connect.narnoo.com/v1/booking/availability/73/489?startDate=20-06-2017&amp;endDate=24-06-2017&amp;id=WT%3A330653%3A12"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="nx">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="nx">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="nx">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="nx">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="nx">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">"api-key: xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"api-secret-key: xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"authorization: xxxxxxxxxxxxxxxxxx"</span>
+  <span class="p">),</span>
+<span class="p">));</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="o">.</span> <span class="nv">$err</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"connect.narnoo.com"</span><span class="p">)</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'api-key'</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s">'api-secret-key'</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s">'authorization'</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span>
+    <span class="p">}</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/v1/booking/availability/73/489?startDate=20-06-2017&amp;endDate=24-06-2017&amp;id=WT</span><span class="si">%3</span><span class="s">A330653</span><span class="si">%3</span><span class="s">A12"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre><pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Foundation</span>
+
+<span class="k">let</span> <span class="nv">headers</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s">"api-key"</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+  <span class="s">"api-secret-key"</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+  <span class="s">"authorization"</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span>
+<span class="p">]</span>
+
+<span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">NSMutableURLRequest</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">NSURL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://connect.narnoo.com/v1/booking/availability/73/489?startDate=20-06-2017&amp;endDate=24-06-2017&amp;id=WT%3A330653%3A12"</span><span class="p">)</span><span class="o">!</span> <span class="k">as</span> <span class="kt">URL</span><span class="p">,</span>
+                                        <span class="nv">cachePolicy</span><span class="p">:</span> <span class="o">.</span><span class="n">useProtocolCachePolicy</span><span class="p">,</span>
+                                    <span class="nv">timeoutInterval</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">httpMethod</span> <span class="o">=</span> <span class="s">"GET"</span>
+<span class="n">request</span><span class="o">.</span><span class="n">allHTTPHeaderFields</span> <span class="o">=</span> <span class="n">headers</span>
+
+<span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span>
+<span class="k">let</span> <span class="nv">dataTask</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="nf">dataTask</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">request</span> <span class="k">as</span> <span class="kt">URLRequest</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">httpResponse</span> <span class="o">=</span> <span class="n">response</span> <span class="k">as?</span> <span class="kt">HTTPURLResponse</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="n">dataTask</span><span class="o">.</span><span class="nf">resume</span><span class="p">()</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"bookingPlatform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Website Travel"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"bookingPlatformNickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"websitetravel"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"bookingPlatformMapping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"distributorNominated"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"bookingData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"bookingCode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WT:330653:12"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"availabilityStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20-06-2017"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"availabilityEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24-06-2017"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"productAvailability"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20-06-2017"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"availability"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">330653</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 INTRODUCTORY DIVE"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">229</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21-06-2017"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"availability"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">330653</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 INTRODUCTORY DIVE"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">229</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22-06-2017"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"availability"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">330653</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 INTRODUCTORY DIVE"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">229</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23-06-2017"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"availability"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">330653</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 INTRODUCTORY DIVE"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">229</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24-06-2017"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"availability"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">330653</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 INTRODUCTORY DIVE"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">229</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"productAvailabilityCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"cacheTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"queryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"492.12ms"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This endpoint retrieves the availability and prices.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://test-connect.narnoo.com/v1/booking/availability/&lt;id&gt;/&lt;productId&gt;?startDate=&lt;d-m-Y&gt;&amp;endDate=&lt;d-m-Y&gt;&amp;id=&lt;bookingCode&gt;</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<aside class="warning">
+If productTimes exists in the response then future bookingsCode ID need to be in the format bookingCode['id&rsquo;]:productTimes['id&rsquo;]. See the product details call
+</aside>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>true</td>
+<td>We need to pass the operator&rsquo;s Narnoo ID</td>
+</tr>
+<tr>
+<td>productId</td>
+<td>true</td>
+<td>We need to pass the operator&rsquo;s Narnoo product ID</td>
+</tr>
+<tr>
+<td>bookingCode</td>
+<td>true</td>
+<td>Passed in the id parameter. This bookingCode is found in the <a href="#get-product-details">product details call</a> and is the combination of bookingCode and productTimes ( if productTimes exists )</td>
+</tr>
+<tr>
+<td>startDate</td>
+<td>true</td>
+<td>The first day we want to check availability for. Date formate ( d-M-Y )</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td>true</td>
+<td>The last day we want to check availability for. Date formate ( d-M-Y )</td>
+</tr>
+<tr>
+<td>pickUp</td>
+<td>false</td>
+<td>A pick up location ID</td>
+</tr>
+<tr>
+<td>dropOff</td>
+<td>false</td>
+<td>A drop off location ID</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>[productAvailability][availability]</td>
+<td>integer</td>
+<td>containing available seats.</td>
+</tr>
+<tr>
+<td>[productAvailability][price]</td>
+<td>float</td>
+<td>containing the price of the seat for each option.</td>
+</tr>
+<tr>
+<td>[productAvailability][transfer]</td>
+<td>float</td>
+<td>if a pickup or drop off id is passed across then we calculate the tranfer fees for you.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+The product prices here might be different to the productOptions in the product details call. This is because some reservation systems request that options without prices not be displayed.
+Respax Documentation: https://docs.respax.com/confluence/display/RONR/RON+XML+API+Reference#RONXMLAPIReference-readTourPricesreadTourPrices
 </aside>
 
           <h1 id="errors">Errors</h1>
