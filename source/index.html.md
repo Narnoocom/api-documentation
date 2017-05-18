@@ -13,6 +13,7 @@ toc_footers:
 includes:
   - authentication
   - operator
+  - product
   - errors
 
 
