@@ -109,7 +109,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
     "dateCreated": "2017-03-30 09:32:32",
     "dateModified": null,
     "businessUrl": "http://www.oceanspirit.com.au/",
-    "businessEmail": "paul@quicksilvergroup.com.au",
+    "businessEmail": "xxxxx@quicksilvergroup.com.au",
     "businessState": "QLD",
     "businessCountry": "Australia",
     "location": "Reef Fleet Terminal 1 Spence Street, Cairns QLD 4870, Australia",
@@ -329,7 +329,7 @@ Basic product information is returned along with the important booking informati
 
 ### HTTP Request
 
-`GET https://test-connect.narnoo.com/v1/product/details/<id>/<productId>`
+`GET https://connect.narnoo.com/v1/product/details/<id>/<productId>`
 
 ### Query Parameters
 

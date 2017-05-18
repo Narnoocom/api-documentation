@@ -14,6 +14,7 @@ includes:
   - authentication
   - operator
   - product
+  - booking
   - errors
 
 
