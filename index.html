@@ -91,7 +91,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;JavaScript Jquery&quot;,&quot;PHP cURL&quot;,&quot;Python 3&quot;,&quot;Swift&quot;]">
+  <body class="index" data-languages="[&quot;JavaScript&quot;,&quot;PHP&quot;,&quot;Python&quot;,&quot;Swift&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -101,9 +101,9 @@
     <div class="tocify-wrapper">
       <img src="images/logo.png" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="JavaScript Jquery">JavaScript Jquery</a>
-              <a href="#" data-language-name="PHP cURL">PHP cURL</a>
-              <a href="#" data-language-name="Python 3">Python 3</a>
+              <a href="#" data-language-name="JavaScript">JavaScript</a>
+              <a href="#" data-language-name="PHP">PHP</a>
+              <a href="#" data-language-name="Python">Python</a>
               <a href="#" data-language-name="Swift">Swift</a>
         </div>
         <div class="search">
@@ -130,29 +130,18 @@
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
+<pre class="highlight plaintext"><code>require 'kittn'
 
-<p>&ldquo;`JavaScript Jquery
-require &lsquo;kittn&rsquo;</p>
+api = Kittn::APIClient.authorize!('meowmeowmeow')
+</code></pre><pre class="highlight plaintext"><code>import kittn
 
-<p>api = Kittn::APIClient.authorize!(&#39;meowmeowmeow&rsquo;)
-&rdquo;`</p>
+api = kittn.authorize('meowmeowmeow')
+</code></pre><pre class="highlight plaintext"><code># With shell, you can just pass the correct header with each request
+curl "api_endpoint_here"
+  -H "Authorization: meowmeowmeow"
+</code></pre><pre class="highlight plaintext"><code>const kittn = require('kittn');
 
-<p>&ldquo;`Python 3
-import kittn</p>
-
-<p>api = kittn.authorize(&#39;meowmeowmeow&rsquo;)
-&rdquo;`</p>
-
-<p>&ldquo;`PHP cUR</p>
-
-<h1 id="with-shell-you-can-just-pass-the-correct-header-with-each-request">With shell, you can just pass the correct header with each request</h1>
-
-<p>curl &quot;api_endpoint_here&rdquo;
-  -H &ldquo;Authorization: meowmeowmeow&rdquo;
-&ldquo;`</p>
-<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+let api = kittn.authorize('meowmeowmeow');
 </code></pre>
 <blockquote>
 <p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
@@ -347,9 +336,9 @@ Remember — a happy kitten is an authenticated kitten!
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="JavaScript Jquery">JavaScript Jquery</a>
-                <a href="#" data-language-name="PHP cURL">PHP cURL</a>
-                <a href="#" data-language-name="Python 3">Python 3</a>
+                <a href="#" data-language-name="JavaScript">JavaScript</a>
+                <a href="#" data-language-name="PHP">PHP</a>
+                <a href="#" data-language-name="Python">Python</a>
                 <a href="#" data-language-name="Swift">Swift</a>
           </div>
       </div>
