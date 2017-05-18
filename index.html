@@ -121,9 +121,63 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Narnoo live reservations API! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla placerat metus ac tortor tempus interdum. Aliquam nec odio non dolor luctus accumsan vel ac ante. Fusce a massa dui..</p>
+<p>Welcome to the Narnoo live reservations API!</p>
 
-<p>We have language bindings in JavaScript Jquery, PHP cURL, Python and Swift! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>Narnoo now lets you check for product availability, pricing and create reservations for tourism products. Narnoo is not a booking platform, instead it acts as a gateway between major third party reservation systems. These systems include both operator direct reservation systems and tourism wholesalers.</p>
+
+<p>Narnoo requires the distributor to have their own relationships with these booking platforms. You are required to have your own authentication to each system, this way Narnoo makes calls based on your relationships. Narnoo just acts as the gateway so you don&rsquo;t have to develop for each platform individually.</p>
+
+<p>We have language bindings in JavaScript jQuery, PHP cURL, Python and Swift! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+
+<p>If you have any issues or problems with our API or connecting with a reservations system then please contact us and we will do our best to help.</p>
+
+<h2 id="testing-environment">Testing Environment</h2>
+
+<p>We have set up a testing environment which uses all the reservation systems&rsquo; testing API calls. This means you can test the API without making real time bookings.</p>
+
+<blockquote>
+<p>Testing endpoint: https://test-connect.narnoo.com/v1/</p>
+</blockquote>
+
+<aside class="notice">
+Some reservations systems require you to have set up a testing API key. This will need to be entered into your Narnoo account until you are ready to go live.
+</aside>
+
+<p>Once you&rsquo;re happy with testing you can change the endpoint URL and start making live calls.</p>
+
+<aside class="notice">
+Some reservations systems require you to notify them when you are ready to start making real time calls. They have to update your authentication keys to work with their live API.
+</aside>
+
+<h2 id="current-reservation-systems">Current Reservation Systems</h2>
+
+<table><thead>
+<tr>
+<th>Reservation System</th>
+<th>Testing API Keys</th>
+<th>Live API Approval</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Respax</td>
+<td>No</td>
+<td>Yes</td>
+<td>Reservations</td>
+</tr>
+<tr>
+<td>Rezdy</td>
+<td>Yes</td>
+<td>No</td>
+<td>Reservations</td>
+</tr>
+<tr>
+<td>Website Travel</td>
+<td>No</td>
+<td>Yes</td>
+<td>Wholesaler</td>
+</tr>
+</tbody></table>
 
           <h1 id="authentication">Authentication</h1>
 
