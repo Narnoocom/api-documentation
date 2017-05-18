@@ -1,5 +1,5 @@
 ---
-title: Narnoo Live Reservation API Reference
+title: Narnoo Live Booking And Reservations API Guide
 
 language_tabs:
   - JavaScript Jquery
