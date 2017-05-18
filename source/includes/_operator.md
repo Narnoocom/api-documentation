@@ -1,5 +1,231 @@
 # Operator
 
+The operator endpoint provides information regarding Narnoo operator accounts.
+
+Generally you call this API to return your operator list and then any of the operator's products.
+
+## Get Connected Operators
+
+```javascript
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://connect.narnoo.com/v1/operator/connected",
+  "method": "GET",
+  "headers": {
+    "api-key": "xxxxxxxxxxxxxxxxxx",
+    "api-secret-key": "xxxxxxxxxxxxxxxxxx",
+    "authorization": "xxxxxxxxxxxxxxxxxx"
+  }
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+```
+```php
+<?php
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => "https://connect.narnoo.com/v1/operator/connected",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "GET",
+  CURLOPT_HTTPHEADER => array(
+    "api-key: xxxxxxxxxxxxxxxxxx",
+    "api-secret-key: xxxxxxxxxxxxxxxxxx",
+    "authorization: xxxxxxxxxxxxxxxxxx"
+  ),
+));
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}
+?>
+```
+```python
+import http.client
+
+conn = http.client.HTTPSConnection("connect.narnoo.com")
+
+headers = {
+    'api-key': "xxxxxxxxxxxxxxxxxx",
+    'api-secret-key': "xxxxxxxxxxxxxxxxxx",
+    'authorization': "xxxxxxxxxxxxxxxxxx"
+    }
+
+conn.request("GET", "/v1/operator/connected", headers=headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
+```
+```swift
+import Foundation
+
+let headers = [
+  "api-key": "xxxxxxxxxxxxxxxxxx",
+  "api-secret-key": "xxxxxxxxxxxxxxxxxx",
+  "authorization": "xxxxxxxxxxxxxxxxxx"
+]
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://connect.narnoo.com/v1/operator/connected")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "GET"
+request.allHTTPHeaderFields = headers
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+  "count": 10,
+  "totalPages": 1,
+  "operator": [
+    {
+      "id": "88",
+      "name": "Big Cat Green Island Reef Cruises",
+      "state": "QLD",
+      "suburb": "CAIRNS",
+      "postcode": "4870",
+      "country": "Australia",
+      "category": "Attraction",
+      "subCategory": "Reef"
+    },
+    {
+      "id": "189",
+      "name": "Cairns Zoom",
+      "state": "QLD",
+      "suburb": "Cairns Region",
+      "postcode": "4870",
+      "country": "Australia",
+      "category": "Attraction",
+      "subCategory": "Adventure"
+    },
+    {
+      "id": "99",
+      "name": "Hot Air Ballooning",
+      "state": "QLD",
+      "suburb": "CAIRNS",
+      "postcode": "4870",
+      "country": "Australia",
+      "category": "Attraction",
+      "subCategory": "Hot Air Ballooning"
+    },
+    {
+      "id": "98",
+      "name": "Jungle Surfing Canopy Tours",
+      "state": "QLD",
+      "suburb": "Cape Tribulation",
+      "postcode": "4873",
+      "country": "Australia",
+      "category": "Attraction",
+      "subCategory": "Rainforest"
+    },
+    {
+      "id": "39",
+      "name": "Narnoo Demo",
+      "state": "QLD",
+      "suburb": "Smithfield",
+      "postcode": "4878",
+      "country": "Australia",
+      "category": "Service",
+      "subCategory": "Online Services"
+    },
+    {
+      "id": "148",
+      "name": "On The Wallaby",
+      "state": "QLD",
+      "suburb": "YUNGABURRA",
+      "postcode": "4884",
+      "country": "Australia",
+      "category": "Accommodation",
+      "subCategory": "Backpackers"
+    },
+    {
+      "id": "73",
+      "name": "Passions Of Paradise",
+      "state": "QLD",
+      "suburb": "CAIRNS",
+      "postcode": "4870",
+      "country": "Australia",
+      "category": "Attraction",
+      "subCategory": "Reef"
+    },
+    {
+      "id": "79",
+      "name": "Poseidon Outer Reef Cruises",
+      "state": "QLD",
+      "suburb": "PORT DOUGLAS",
+      "postcode": "4877",
+      "country": "Australia",
+      "category": "Attraction",
+      "subCategory": "Reef"
+    },
+    {
+      "id": "78",
+      "name": "Pullman Reef Hotel Casino",
+      "state": "QLD",
+      "suburb": "Cairns City",
+      "postcode": "4870",
+      "country": "Australia",
+      "category": "Accommodation",
+      "subCategory": "Hotel"
+    },
+    {
+      "id": "144",
+      "name": "Skyrail Rainforest Cableway",
+      "state": "QLD",
+      "suburb": "Smithfield",
+      "postcode": "4878",
+      "country": "Australia",
+      "category": "Attraction",
+      "subCategory": "Cable Cart"
+    }
+  ],
+  "success": true,
+  "queryTime": "8.53ms"
+}
+
+```
+This endpoint retrieves a list of all your connected operator accounts. It's a requirement within Narnoo that distributors first connect with operator accounts. This allows for complete transparency with relationships between distributor and operators.
+
+In same cases Narnoo subscribers are billed based on the number of operators they have connected with. Any distributor with this payment option will be advised.
+
+### HTTP Request
+
+`GET https://connect.narnoo.com/v1/operator/connected`
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | ------- |  -----------
+page | false | Narnoo provides pageing of results.
+size | false | The default response size for this list is 50 items. You can modify this by passing over a size parameter
+
 ## Get All Operator Products
 
 ```javascript

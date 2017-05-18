@@ -1,5 +1,9 @@
 # Product
 
+The product endpoint provides further information on an operator's products.
+
+Once you know the ID of a product you can drill down further for more detailed information on that product.
+
 ## Get Product Details
 
 ```javascript
