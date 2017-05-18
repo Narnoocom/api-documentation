@@ -1718,7 +1718,7 @@ This endpoint retrieves the basic product information and also important booking
 ### Query Parameters
 
 <aside class="warning">
-If productTimes exists in the response then future bookingsCode ID need to be in the format bookingCode['id']:productTimes['id']. See [product details call](#get-product-details)
+If productTimes exists in the response then future bookingsCode ID need to be in the format bookingCode['id']:productTimes['id']. See the product details call
 </aside>
 
 Parameter | Required | Description
@@ -1736,13 +1736,237 @@ The bookingData array in the response contains all the information needed to mak
 Parameter |  Type |  Description
 --------- | ------- | -------
 productPrices | Array |  Returns the prices of each of the product types. If a levy exists this will be displayed here.
-productTimes | Array |  If productTimes is not NULL then a productTimes 'id' must be appended to the bookingCode 'id' for future API calls. Reservation systems such as Respax and Website Travel require times when checking availability and pricing.
 productExtras | Array | Any additional extras that can be included in the booking.
 productPickUps | Array | Any pickup locations. Can be used further down the pipline to request pricing based on transfers.
 bookingFields | Array | The resevation systems require specific form fields to be filled out. This array contains all the booking form information.
 paymentMethods | Array | This is your agents payment method options. See Payment Methods for detailed descriptions of these.
 
 <aside class="notice">
-The product prices here might be different to the productOptions in the [product details call](#get-product-details). This is because some reservation systems request that options without prices not be displayed.
-[Respax Tour Prices Information](https://docs.respax.com/confluence/display/RONR/RON+XML+API+Reference#RONXMLAPIReference-readTourPricesreadTourPrices)
+The product prices here might be different to the productOptions in the product details call. This is because some reservation systems request that options without prices not be displayed.
+Respax Documentation: https://docs.respax.com/confluence/display/RONR/RON+XML+API+Reference#RONXMLAPIReference-readTourPricesreadTourPrices
+</aside>
+
+## Get Product Availability and Pricing Details
+
+```javascript
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://connect.narnoo.com/v1/booking/availability/73/489?startDate=20-06-2017&endDate=24-06-2017&id=WT%3A330653%3A12",
+  "method": "GET",
+  "headers": {
+    "api-key": "xxxxxxxxxxxxxxxxxx",
+    "api-secret-key": "xxxxxxxxxxxxxxxxxx",
+    "authorization": "xxxxxxxxxxxxxxxxxx"
+  }
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+```
+
+```php
+<?php
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => "https://connect.narnoo.com/v1/booking/availability/73/489?startDate=20-06-2017&endDate=24-06-2017&id=WT%3A330653%3A12",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "GET",
+  CURLOPT_HTTPHEADER => array(
+    "api-key: xxxxxxxxxxxxxxxxxx",
+    "api-secret-key: xxxxxxxxxxxxxxxxxx",
+    "authorization: xxxxxxxxxxxxxxxxxx"
+  ),
+));
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}
+?>
+```
+
+```python
+import http.client
+
+conn = http.client.HTTPSConnection("connect.narnoo.com")
+
+headers = {
+    'api-key': "xxxxxxxxxxxxxxxxxx",
+    'api-secret-key': "xxxxxxxxxxxxxxxxxx",
+    'authorization': "xxxxxxxxxxxxxxxxxx"
+    }
+
+conn.request("GET", "/v1/booking/availability/73/489?startDate=20-06-2017&endDate=24-06-2017&id=WT%3A330653%3A12", headers=headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
+```
+
+```swift
+import Foundation
+
+let headers = [
+  "api-key": "xxxxxxxxxxxxxxxxxx",
+  "api-secret-key": "xxxxxxxxxxxxxxxxxx",
+  "authorization": "xxxxxxxxxxxxxxxxxx"
+]
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://connect.narnoo.com/v1/booking/availability/73/489?startDate=20-06-2017&endDate=24-06-2017&id=WT%3A330653%3A12")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "GET"
+request.allHTTPHeaderFields = headers
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "bookingPlatform": "Website Travel",
+  "bookingPlatformNickname": "websitetravel",
+  "bookingPlatformMapping": "distributorNominated",
+  "bookingData": {
+    "bookingCode": {
+      "id": "WT:330653:12"
+    }
+  },
+  "availabilityStartDate": "20-06-2017",
+  "availabilityEndDate": "24-06-2017",
+  "productAvailability": [
+    {
+      "date": "20-06-2017",
+      "availability": 12,
+      "price": [
+        {
+          "id": 330653,
+          "label": "1 INTRODUCTORY DIVE",
+          "price": 229,
+          "levy": 15,
+          "currency": "AUD"
+        }
+      ]
+    },
+    {
+      "date": "21-06-2017",
+      "availability": 12,
+      "price": [
+        {
+          "id": 330653,
+          "label": "1 INTRODUCTORY DIVE",
+          "price": 229,
+          "levy": 15,
+          "currency": "AUD"
+        }
+      ]
+    },
+    {
+      "date": "22-06-2017",
+      "availability": 12,
+      "price": [
+        {
+          "id": 330653,
+          "label": "1 INTRODUCTORY DIVE",
+          "price": 229,
+          "levy": 15,
+          "currency": "AUD"
+        }
+      ]
+    },
+    {
+      "date": "23-06-2017",
+      "availability": 12,
+      "price": [
+        {
+          "id": 330653,
+          "label": "1 INTRODUCTORY DIVE",
+          "price": 229,
+          "levy": 15,
+          "currency": "AUD"
+        }
+      ]
+    },
+    {
+      "date": "24-06-2017",
+      "availability": 12,
+      "price": [
+        {
+          "id": 330653,
+          "label": "1 INTRODUCTORY DIVE",
+          "price": 229,
+          "levy": 15,
+          "currency": "AUD"
+        }
+      ]
+    }
+  ],
+  "productAvailabilityCount": 5,
+  "cacheTime": "24",
+  "success": true,
+  "queryTime": "492.12ms"
+}
+
+```
+
+This endpoint retrieves the availability and prices.
+
+
+### HTTP Request
+
+`GET https://test-connect.narnoo.com/v1/booking/availability/<id>/<productId>?startDate=<d-m-Y>&endDate=<d-m-Y>&id=<bookingCode>`
+
+### Query Parameters
+
+<aside class="warning">
+If productTimes exists in the response then future bookingsCode ID need to be in the format bookingCode['id']:productTimes['id']. See the product details call
+</aside>
+
+Parameter | Required | Description
+--------- | ------- |  -----------
+id | true | We need to pass the operator's Narnoo ID
+productId | true | We need to pass the operator's Narnoo product ID
+bookingCode | true | Passed in the id parameter. This bookingCode is found in the [product details call](#get-product-details) and is the combination of bookingCode and productTimes ( if productTimes exists )
+startDate | true | The first day we want to check availability for. Date formate ( d-M-Y )
+endDate | true | The last day we want to check availability for. Date formate ( d-M-Y )
+pickUp | false | A pick up location ID
+dropOff | false | A drop off location ID
+
+### Response Parameters
+
+Parameter |  Type |  Description
+--------- | ------- | -------
+[productAvailability][availability] | integer |  containing available seats.
+[productAvailability][price] | float |  containing the price of the seat for each option.
+[productAvailability][transfer] | float |  if a pickup or drop off id is passed across then we calculate the tranfer fees for you.
+
+<aside class="notice">
+The product prices here might be different to the productOptions in the product details call. This is because some reservation systems request that options without prices not be displayed.
+Respax Documentation: https://docs.respax.com/confluence/display/RONR/RON+XML+API+Reference#RONXMLAPIReference-readTourPricesreadTourPrices
 </aside>
