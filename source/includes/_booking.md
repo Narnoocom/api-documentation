@@ -1940,7 +1940,7 @@ This endpoint retrieves the availability and prices.
 
 ### HTTP Request
 
-`GET https://test-connect.narnoo.com/v1/booking/availability/<id>/<productId>?startDate=<d-m-Y>&endDate=<d-m-Y>&id=<bookingCode>`
+`GET https://connect.narnoo.com/v1/booking/availability/<id>/<productId>?startDate=<d-m-Y>&endDate=<d-m-Y>&id=<bookingCode>`
 
 ### Query Parameters
 
