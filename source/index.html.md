@@ -1,8 +1,8 @@
 ---
-title: Narnoo Live Booking And Reservations API Guide V2
+title: Narnoo Live Booking And Reservations API Guide
 
 language_tabs:
-  - JavaScript Jquery
+  - JavaScript jQuery
   - PHP cURL
   - Python 3
   - Swift
