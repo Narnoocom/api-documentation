@@ -3609,6 +3609,102 @@ Respax Documentation: https://docs.respax.com/confluence/display/RONR/RON+XML+AP
 </tr>
 </tbody></table>
 
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>contact</td>
+<td>array</td>
+<td>Array containing the booking contact details</td>
+</tr>
+<tr>
+<td>contact.firstName</td>
+<td>string</td>
+<td>Contact&rsquo;s first name</td>
+</tr>
+<tr>
+<td>contact.lastName</td>
+<td>string</td>
+<td>Contact&rsquo;s last name</td>
+</tr>
+<tr>
+<td>contact.email</td>
+<td>string</td>
+<td>Contact&rsquo;s email address</td>
+</tr>
+<tr>
+<td>contact.phone</td>
+<td>string</td>
+<td>Contact&rsquo;s phone number</td>
+</tr>
+<tr>
+<td>contact.country</td>
+<td>string</td>
+<td>Contact&rsquo;s country</td>
+</tr>
+<tr>
+<td>booking</td>
+<td>array</td>
+<td>Array containing the booking reservation details</td>
+</tr>
+<tr>
+<td>booking.confirmed</td>
+<td>boolean</td>
+<td>Is the reservation confirmed with the respective booking platform</td>
+</tr>
+<tr>
+<td>booking.reservationCode</td>
+<td>string</td>
+<td>The booking code provided appon confirmation with respective booking platform</td>
+</tr>
+<tr>
+<td>booking.bookingDate</td>
+<td>string</td>
+<td>The booking date for this product</td>
+</tr>
+<tr>
+<td>booking.productBookingCode</td>
+<td>string</td>
+<td>The booking code used to identify this product</td>
+</tr>
+<tr>
+<td>booking.productId</td>
+<td>integer</td>
+<td>The Narnoo product ID</td>
+</tr>
+<tr>
+<td>booking.reservationProductName</td>
+<td>string</td>
+<td>The product title as identified by the respective booking platform</td>
+</tr>
+<tr>
+<td>booking.reservationPaymentOption</td>
+<td>string</td>
+<td>The payment option used to book this product</td>
+</tr>
+<tr>
+<td>booking.reservationProvider</td>
+<td>string</td>
+<td>The reservation platform used to book this product</td>
+</tr>
+<tr>
+<td>booking.error</td>
+<td>boolean</td>
+<td>Has there been an error booking this product</td>
+</tr>
+<tr>
+<td>booking.errorMessage</td>
+<td>string</td>
+<td>If there is an error booking this product, then what is it exactly</td>
+</tr>
+</tbody></table>
+
           <h1 id="definitions">Definitions</h1>
 
 <h2 id="payment-methods">Payment Methods</h2>
