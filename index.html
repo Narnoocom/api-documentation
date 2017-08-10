@@ -3437,6 +3437,72 @@ Reservation API details are coming asap.
 
 <p><code class="prettyprint">POST https://connect.narnoo.com/v1/reservation/confirm</code></p>
 
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>contact</td>
+<td>array</td>
+<td>true</td>
+<td>Array containing the booking contact details</td>
+</tr>
+<tr>
+<td>contact.firstName</td>
+<td>string</td>
+<td>true</td>
+<td>Contact&rsquo;s first name</td>
+</tr>
+<tr>
+<td>contact.lastName</td>
+<td>string</td>
+<td>true</td>
+<td>Contact&rsquo;s last name</td>
+</tr>
+<tr>
+<td>contact.email</td>
+<td>string</td>
+<td>true</td>
+<td>Contact&rsquo;s email address</td>
+</tr>
+<tr>
+<td>contact.phone</td>
+<td>string</td>
+<td>null</td>
+<td>Contact&rsquo;s phone number</td>
+</tr>
+<tr>
+<td>contact.country</td>
+<td>string</td>
+<td>true</td>
+<td>Contact&rsquo;s country</td>
+</tr>
+<tr>
+<td>payment</td>
+<td>array</td>
+<td>true</td>
+<td>Array containing the payment method options for booking</td>
+</tr>
+<tr>
+<td>payment.type</td>
+<td>string</td>
+<td>true</td>
+<td>Payment types [see payment types for more details]</td>
+</tr>
+<tr>
+<td>payment.currency</td>
+<td>string</td>
+<td>true</td>
+<td>3 character currency code - ISO 4217</td>
+</tr>
+</tbody></table>
+
           <h1 id="definitions">Definitions</h1>
 
 <h2 id="payment-methods">Payment Methods</h2>
