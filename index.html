@@ -1079,9 +1079,8 @@ If productTimes exists in the response then future bookingsCode ID need to be in
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 <span class="p">});</span>
-</code></pre><pre class="highlight php"><code><span class="cp">&lt;?php</span>
-
-<span class="o">&lt;?</span><span class="nx">php</span>
+</code></pre><pre class="highlight php"><code>
+<span class="cp">&lt;?php</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
@@ -1164,111 +1163,110 @@ If productTimes exists in the response then future bookingsCode ID need to be in
 <span class="n">dataTask</span><span class="o">.</span><span class="nf">resume</span><span class="p">()</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:
-<code class="prettyprint">json
-{
-    &quot;bookingPlatform&quot;: &quot;Rezdy&quot;,
-    &quot;bookingPlatformNickname&quot;: &quot;rezdy&quot;,
-    &quot;bookingPlatformMapping&quot;: &quot;operatorPreferred&quot;,
-    &quot;product&quot;: [
-        {
-            &quot;bookingData&quot;: {
-                &quot;productId&quot;: 481,
-                &quot;bookingCodes&quot;: [
-                    {
-                        &quot;id&quot;: &quot;RZ:481&quot;,
-                        &quot;label&quot;: &quot;1 Day Cooktown 4WD Adventure&quot;,
-                        &quot;time&quot;: null,
-                        &quot;duration&quot;: &quot;840&quot;
-                    }
-                ],
-                &quot;productOptions&quot;: [
-                    {
-                        &quot;id&quot;: 536758,
-                        &quot;label&quot;: &quot;Adult&quot;,
-                        &quot;price&quot;: 289,
-                        &quot;commission&quot;: &quot;10&quot;,
-                        &quot;levy&quot;: null,
-                        &quot;currency&quot;: &quot;AUD&quot;
-                    },
-                    {
-                        &quot;id&quot;: 536759,
-                        &quot;label&quot;: &quot;Child 4-14 yrs&quot;,
-                        &quot;price&quot;: 229,
-                        &quot;commission&quot;: &quot;10&quot;,
-                        &quot;levy&quot;: null,
-                        &quot;currency&quot;: &quot;AUD&quot;
-                    }
-                ],
-                &quot;productTimes&quot;: null,
-                &quot;paymentMethods&quot;: {
-                    &quot;id&quot;: &quot;PAYOUTS&quot;,
-                    &quot;detail&quot;: &quot;Full payment is required at time of booking via 3rd party payment portal - Stripe.&quot;,
-                    &quot;bookableIssue&quot;: &quot;Please contact the operator via Rezdy&#39;s marketplace. Our API does not support PAYOUTS method. You will not be able to book this product though our API.&quot;
-                },
-                &quot;bookingCodesCount&quot;: 0,
-                &quot;productOptionsCount&quot;: 0,
-                &quot;productTimesCount&quot;: 0,
-                &quot;paymentMethodsCount&quot;: 0
-            }
-        },
-        {
-            &quot;bookingData&quot;: {
-                &quot;productId&quot;: 4,
-                &quot;bookingCodes&quot;: [
-                    {
-                        &quot;id&quot;: &quot;RZ:4&quot;,
-                        &quot;label&quot;: &quot;Daintree Dreaming Day Tour&quot;,
-                        &quot;time&quot;: null,
-                        &quot;duration&quot;: &quot;660&quot;
-                    }
-                ],
-                &quot;productOptions&quot;: [
-                    {
-                        &quot;id&quot;: 624355,
-                        &quot;label&quot;: &quot;Adult&quot;,
-                        &quot;price&quot;: 235,
-                        &quot;commission&quot;: &quot;10&quot;,
-                        &quot;levy&quot;: null,
-                        &quot;currency&quot;: &quot;AUD&quot;
-                    },
-                    {
-                        &quot;id&quot;: 624356,
-                        &quot;label&quot;: &quot;Child 4-14yrs&quot;,
-                        &quot;price&quot;: 205,
-                        &quot;commission&quot;: &quot;10&quot;,
-                        &quot;levy&quot;: null,
-                        &quot;currency&quot;: &quot;AUD&quot;
-                    },
-                    {
-                        &quot;id&quot;: 631863,
-                        &quot;label&quot;: &quot;2 Adults + 2 Children&quot;,
-                        &quot;price&quot;: 869,
-                        &quot;commission&quot;: &quot;10&quot;,
-                        &quot;levy&quot;: null,
-                        &quot;currency&quot;: &quot;AUD&quot;
-                    }
-                ],
-                &quot;productTimes&quot;: null,
-                &quot;paymentMethods&quot;: {
-                    &quot;id&quot;: &quot;PAYOUTS&quot;,
-                    &quot;detail&quot;: &quot;Full payment is required at time of booking via 3rd party payment portal - Stripe.&quot;,
-                    &quot;bookableIssue&quot;: &quot;Please contact the operator via Rezdy&#39;s marketplace. Our API does not support PAYOUTS method. You will not be able to book this product though our API.&quot;
-                },
-                &quot;bookingCodesCount&quot;: 0,
-                &quot;productOptionsCount&quot;: 0,
-                &quot;productTimesCount&quot;: 0,
-                &quot;paymentMethodsCount&quot;: 0
-            }
-        }
-    ],
-    &quot;success&quot;: true,
-    &quot;cacheTime&quot;: &quot;24&quot;,
-    &quot;queryTime&quot;: &quot;2890.45ms&quot;
-}
-</code>
-This endpoint allows you to return multiple product information for an operator.</p>
+<p>The above command returns JSON structured like this:</p>
 </blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"bookingPlatform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rezdy"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bookingPlatformNickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rezdy"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bookingPlatformMapping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"operatorPreferred"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"bookingData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"productId"</span><span class="p">:</span><span class="w"> </span><span class="mi">481</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"bookingCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RZ:481"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 Day Cooktown 4WD Adventure"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"840"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nt">"productOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">536758</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adult"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">289</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"commission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">536759</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Child 4-14 yrs"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">229</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"commission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nt">"productTimes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"paymentMethods"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYOUTS"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Full payment is required at time of booking via 3rd party payment portal - Stripe."</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"bookableIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please contact the operator via Rezdy's marketplace. Our API does not support PAYOUTS method. You will not be able to book this product though our API."</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nt">"bookingCodesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"productOptionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"productTimesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"paymentMethodsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"bookingData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"productId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"bookingCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RZ:4"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Daintree Dreaming Day Tour"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"660"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nt">"productOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">624355</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adult"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">235</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"commission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">624356</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Child 4-14yrs"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">205</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"commission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">631863</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2 Adults + 2 Children"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">869</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"commission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nt">"productTimes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"paymentMethods"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYOUTS"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Full payment is required at time of booking via 3rd party payment portal - Stripe."</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"bookableIssue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please contact the operator via Rezdy's marketplace. Our API does not support PAYOUTS method. You will not be able to book this product though our API."</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nt">"bookingCodesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"productOptionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"productTimesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"paymentMethodsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cacheTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"queryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2890.45ms"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows you to return multiple product information for an operator.</p>
 
 <h3 id="http-post-request">HTTP POST Request</h3>
 
@@ -1290,14 +1288,12 @@ This endpoint allows you to return multiple product information for an operator.
 </tr>
 </tbody></table>
 
-<p>A json structured element needs to be passed over in the body of this post request
-<code class="prettyprint">json
-[
-  productId_1,
-  productId_2
-]
-</code></p>
-
+<p>A json structured element needs to be passed over in the body of this post request</p>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="err">productId_</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="err">productId_</span><span class="mi">2</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
 <h3 id="response-parameters">Response Parameters</h3>
 
 <aside class="notice">
