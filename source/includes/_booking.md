@@ -161,7 +161,7 @@ Returns only products that have been mapped to a reservation system and therefor
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "https://apis-test.narnoo.com/api/v1/booking/product/614/578",
+  "url": "https://apis.narnoo.com/api/v1/booking/product/614/578",
   "method": "GET",
   "headers": {
     "Authorization": "bearer xxxxxxxxxxxxxxxxxxx",
@@ -181,7 +181,7 @@ $.ajax(settings).done(function (response) {
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://apis-test.narnoo.com/api/v1/booking/product/614/578",
+  CURLOPT_URL => "https://apis.narnoo.com/api/v1/booking/product/614/578",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -211,7 +211,7 @@ if ($err) {
 ```python
 import requests
 
-url = "https://apis-test.narnoo.com/api/v1/booking/product/614/578"
+url = "https://apis.narnoo.com/api/v1/booking/product/614/578"
 
 headers = {
     'Authorization': "bearer xxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -231,7 +231,7 @@ let headers = [
   "Cache-Control": "no-cache"
 ]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://apis-test.narnoo.com/api/v1/booking/product/614/578")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://apis.narnoo.com/api/v1/booking/product/614/578")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"
@@ -366,7 +366,7 @@ Respax Documentation: https://docs.respax.com/confluence/display/RONR/RON+XML+AP
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "https://apis-test.narnoo.com/api/v1/booking/details/614/578?id=RZ:578",
+  "url": "https://apis.narnoo.com/api/v1/booking/details/614/578?id=RZ:578",
   "method": "GET",
   "headers": {
     "Authorization": "bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -386,7 +386,7 @@ $.ajax(settings).done(function (response) {
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://apis-test.narnoo.com/api/v1/booking/details/614/578?id=RZ:578",
+  CURLOPT_URL => "https://apis.narnoo.com/api/v1/booking/details/614/578?id=RZ:578",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -437,7 +437,7 @@ let headers = [
   "Cache-Control": "no-cache"
 ]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://apis-test.narnoo.com/api/v1/booking/details/614/578?id=RZ:578")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://apis.narnoo.com/api/v1/booking/details/614/578?id=RZ:578")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"
