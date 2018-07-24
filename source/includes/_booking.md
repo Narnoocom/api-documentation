@@ -794,7 +794,6 @@ dataTask.resume()
 
 ```json
 {
-    {
     "success": true,
     "data": {
         "bookingPlatform": "Rezdy",
@@ -1536,7 +1535,7 @@ endDate | true | The last day we want to check availability for. Date formate ( 
 Parameter |  Type |  Description
 --------- | ------- | -------
 [productAvailability][availability] | integer |  containing available seats.
-[productAvailability][availability][bookingDate]  | date time |  This needs to be sent over to the reservation write when creating a booking
+[productAvailability][bookingDate]  | date time |  This needs to be sent over to the reservation write when creating a booking
 [productAvailability][price] | float |  containing the price of the seat for each option.
 
 <aside class="notice">
