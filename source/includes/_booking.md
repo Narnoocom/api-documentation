@@ -2,7 +2,7 @@
 
 The booking endpoint provides information regarding the product's bookable option.
 
-These calls are often made live to a third party reservation/wholesaler's system. These endpoints require a booking code id to be passed so that Narnoo can request exact information for this product via the respective third party systems. These booking codes can be found bu calling [get product details](#get-product-details)
+These calls are often made live to a third party reservation/wholesaler's system. These endpoints require a booking code id to be passed so that Narnoo can request exact information for this product via the respective third party systems. These booking codes can be found by calling [get product details](#get-product-details)
 
 ## Get Product Booking Details
 

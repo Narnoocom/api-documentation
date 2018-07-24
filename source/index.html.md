@@ -12,6 +12,7 @@ toc_footers:
 
 includes:
   - authentication
+  - connect
   - operator
   - product
   - booking
@@ -38,7 +39,7 @@ If you have any issues or problems with our API or connecting with a reservation
 
 We have set up a testing environment which uses all the reservation systems' testing API calls. This means you can test the API without making real time bookings.
 
-> Testing endpoint: https://test-connect.narnoo.com/v1/
+> Testing endpoint: https://apis-test.narnoo.com/v1/
 
 <aside class="notice">
 Some reservations systems require you to have set up a testing API key. This will need to be entered into your Narnoo account until you are ready to go live.
@@ -52,8 +53,8 @@ Some reservations systems require you to notify them when you are ready to start
 
 ## Current Reservation Systems
 
-Reservation System | Testing API Keys | Live API Approval | Type
---------- | ------- |  ----------- |  -----------
-Respax | No | Yes | Reservations
-Rezdy | Yes | No  | Reservations
-Website Travel | No | Yes | Wholesaler
+Reservation System | Testing API Keys | Live API Approval | Test Operator Products | Type
+--------- | ------- |  ----------- |  ----------- |  -----------
+Respax | No | Yes | No | Reservations
+Rezdy | Yes | No | Rezdy Demo | Reservations
+Website Travel | No | Yes | Website Travel Demo | Wholesaler
