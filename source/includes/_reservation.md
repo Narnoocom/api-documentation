@@ -5,9 +5,9 @@ The reservation endpoint performs all the live reservation tasks. This endpoint 
 ## Create Reservation
 
 <aside class="notice">
-Reservation API details are coming asap.
+Reservation API details are being updated.
 </aside>
 
 ### HTTP Request
 
-`POST https://connect.narnoo.com/v1/reservation/confirm`
+`POST https://apis.narnoo.com/api/v1/booking/create`
