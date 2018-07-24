@@ -331,34 +331,29 @@ This endpoint retrieves the basic booking information for the product.
 
 ### HTTP Request
 
-`GET https://apis-test.narnoo.com/api/v1/booking/product/{operator_id}/{product_id}`
+`GET https://apis.narnoo.com/api/v1/booking/product/{operator_id}/{product_id}`
 
 ### Query Parameters
 
 <aside class="warning">
 {product_id} is not the productId in the product list response. It is the id found in this response
 </aside>
-<aside class="warning">
-If productTimes exists in the response then future bookingsCode ID need to be in the format bookingCode['id']:productTimes['id']. See the product details call
-</aside>
+
 
 Parameter | Required | Description
 --------- | ------- |  -----------
-id | true | We need to pass the operator's Narnoo ID
-productId | true | We need to pass the operator's Narnoo product ID
-bookingCode | true | Passed in the id parameter. This bookingCode is found in the [product details call](#get-product-details) and is the combination of bookingCode and productTimes ( if productTimes exists )
-startDate | true | The first day we want to check availability for. Date formate ( d-M-Y )
-endDate | true | The last day we want to check availability for. Date formate ( d-M-Y )
-pickUp | false | A pick up location ID
-dropOff | false | A drop off location ID
+operator_id | true | We need to pass the operator's Narnoo ID
+product_id | true | We need to pass the operator's Narnoo product ID
 
 ### Response Parameters
 
-Parameter |  Type |  Description
---------- | ------- | -------
-[productAvailability][availability] | integer |  containing available seats.
-[productAvailability][price] | float |  containing the price of the seat for each option.
-[productAvailability][transfer] | float |  if a pickup or drop off id is passed across then we calculate the tranfer fees for you.
+<aside class="notice">
+The bookingData array in the response contains all the information needed to make further product calls down the pipeline.
+</aside>
+
+<aside class="warning">
+If productTimes exists in the response then future bookingsCode ID need to be in the format bookingCode['id']:productTimes['id']. See the product details call
+</aside>
 
 <aside class="notice">
 The product prices here might be different to the productOptions in the product details call. This is because some reservation systems request that options without prices not be displayed.
