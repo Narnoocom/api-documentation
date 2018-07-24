@@ -759,7 +759,7 @@ dataTask.resume()
 ```json
 {
     "success": true,
-    "data": The business is now connected,
+    "data": "The business is now connected",
     "queryTime": "76.45ms"
 }
 
@@ -896,7 +896,7 @@ dataTask.resume()
 ```json
 {
     "success": true,
-    "data": The business has been unfollowed,
+    "data": "The business has been unfollowed",
     "queryTime": "76.45ms"
 }
 

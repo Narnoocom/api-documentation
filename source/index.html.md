@@ -13,7 +13,6 @@ toc_footers:
 includes:
   - authentication
   - connect
-  - operator
   - product
   - booking
   - reservation
