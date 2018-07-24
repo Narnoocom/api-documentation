@@ -933,7 +933,7 @@ The number of businesses that you following determine the Narnoo subscription pl
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">business</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">now</span><span class="w"> </span><span class="err">connected</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The business is now connected"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"queryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"76.45ms"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -1069,7 +1069,7 @@ The number of businesses that you following determine the Narnoo subscription pl
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">business</span><span class="w"> </span><span class="err">has</span><span class="w"> </span><span class="err">been</span><span class="w"> </span><span class="err">unfollowed</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The business has been unfollowed"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"queryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"76.45ms"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -1103,23 +1103,28 @@ The number of businesses that you following determine the Narnoo subscription pl
 </tr>
 </tbody></table>
 
-          <h1 id="operator">Operator</h1>
+          <h1 id="product">Product</h1>
 
-<p>The operator endpoint provides information regarding Narnoo operator accounts.</p>
+<p>The product endpoint provides further information on an operator&rsquo;s products.</p>
 
-<p>Generally you call this API to return your operator list and then any of the operator&rsquo;s products.</p>
+<p>Once you know the ID of a product you can drill down further for more detailed information on that product.</p>
 
-<h2 id="get-connected-operators">Get Connected Operators</h2>
-<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+<h2 id="get-product-list">Get Product List</h2>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FormData</span><span class="p">();</span>
+
+<span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://connect.narnoo.com/v1/operator/connected"</span><span class="p">,</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://apis.narnoo.com/api/v1/product/list/614"</span><span class="p">,</span>
   <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
   <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">"api-key"</span><span class="p">:</span> <span class="s2">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s2">"api-secret-key"</span><span class="p">:</span> <span class="s2">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s2">"authorization"</span><span class="p">:</span> <span class="s2">"xxxxxxxxxxxxxxxxxx"</span>
-  <span class="p">}</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"Cache-Control"</span><span class="p">:</span> <span class="s2">"no-cache"</span>
+  <span class="p">},</span>
+  <span class="s2">"processData"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="s2">"contentType"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="s2">"mimeType"</span><span class="p">:</span> <span class="s2">"multipart/form-data"</span><span class="p">,</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="nx">form</span>
 <span class="p">}</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
@@ -1130,17 +1135,17 @@ The number of businesses that you following determine the Narnoo subscription pl
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
-  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://connect.narnoo.com/v1/operator/connected"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://apis.narnoo.com/api/v1/product/list/614"</span><span class="p">,</span>
   <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
   <span class="nx">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
   <span class="nx">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
   <span class="nx">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
   <span class="nx">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="nx">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
   <span class="nx">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
   <span class="nx">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s2">"api-key: xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s2">"api-secret-key: xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s2">"authorization: xxxxxxxxxxxxxxxxxx"</span>
+    <span class="s2">"Authorization: bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"Cache-Control: no-cache"</span>
   <span class="p">),</span>
 <span class="p">));</span>
 
@@ -1155,31 +1160,27 @@ The number of businesses that you following determine the Narnoo subscription pl
   <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span>
-</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"connect.narnoo.com"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://apis.narnoo.com/api/v1/product/list/614"</span>
 
+<span class="n">payload</span> <span class="o">=</span> <span class="s">""</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'api-key'</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s">'api-secret-key'</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s">'authorization'</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span>
+    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">"bearer xxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s">'Cache-Control'</span><span class="p">:</span> <span class="s">"no-cache"</span>
     <span class="p">}</span>
 
-<span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/v1/operator/connected"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
-<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre><pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Foundation</span>
 
 <span class="k">let</span> <span class="nv">headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s">"api-key"</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-  <span class="s">"api-secret-key"</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-  <span class="s">"authorization"</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span>
+  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"bearer xxxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+  <span class="s">"Cache-Control"</span><span class="p">:</span> <span class="s">"no-cache"</span>
 <span class="p">]</span>
 
-<span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">NSMutableURLRequest</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">NSURL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://connect.narnoo.com/v1/operator/connected"</span><span class="p">)</span><span class="o">!</span> <span class="k">as</span> <span class="kt">URL</span><span class="p">,</span>
+<span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">NSMutableURLRequest</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">NSURL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://apis.narnoo.com/api/v1/product/list/614"</span><span class="p">)</span><span class="o">!</span> <span class="k">as</span> <span class="kt">URL</span><span class="p">,</span>
                                         <span class="nv">cachePolicy</span><span class="p">:</span> <span class="o">.</span><span class="n">useProtocolCachePolicy</span><span class="p">,</span>
                                     <span class="nv">timeoutInterval</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">)</span>
 <span class="n">request</span><span class="o">.</span><span class="n">httpMethod</span> <span class="o">=</span> <span class="s">"GET"</span>
@@ -1194,127 +1195,61 @@ The number of businesses that you following determine the Narnoo subscription pl
     <span class="nf">print</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">})</span>
+
+<span class="n">dataTask</span><span class="o">.</span><span class="nf">resume</span><span class="p">()</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"operator"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"88"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Big Cat Green Island Reef Cruises"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QLD"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"suburb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAIRNS"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4870"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Attraction"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reef"</span><span class="w">
+    </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"responseLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"578"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"225234852"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rezdy Day Tour"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7623"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"uploadedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-11 14:46:48"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"cropImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/crop/crop_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"xcropImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/xcrop/xcrop_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"thumbImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/thumb/thumb_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"previewImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/preview/preview_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"largeImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/large/large_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"xlargeImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/xlarge/xlarge_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"xxlargeImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/xxlarge/xxlarge_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"image200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/200/200_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"image400"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/400/400_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"image800"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/800/800_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"imageSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"997.69"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"imageWidth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"imageHeight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2696"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"landscape"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"privilege"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"featureImage"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"markets"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"189"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cairns Zoom"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QLD"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"suburb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cairns Region"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4870"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Attraction"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adventure"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hot Air Ballooning"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QLD"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"suburb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAIRNS"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4870"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Attraction"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hot Air Ballooning"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jungle Surfing Canopy Tours"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QLD"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"suburb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cape Tribulation"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4873"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Attraction"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rainforest"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Narnoo Demo"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QLD"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"suburb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smithfield"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4878"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Service"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Online Services"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"148"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"On The Wallaby"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QLD"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"suburb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YUNGABURRA"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4884"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accommodation"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Backpackers"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"73"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Passions Of Paradise"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QLD"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"suburb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAIRNS"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4870"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Attraction"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reef"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"79"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Poseidon Outer Reef Cruises"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QLD"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"suburb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PORT DOUGLAS"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4877"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Attraction"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reef"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"78"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pullman Reef Hotel Casino"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QLD"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"suburb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cairns City"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4870"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accommodation"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hotel"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"144"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Skyrail Rainforest Cableway"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QLD"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"suburb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smithfield"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4878"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Attraction"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cable Cart"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"queryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.53ms"</span><span class="w">
+    </span><span class="nt">"queryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.96ms"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
-<p>This endpoint retrieves a list of all your connected operator accounts. It&rsquo;s a requirement within Narnoo that distributors first connect with operator accounts. This allows for complete transparency with relationships between distributor and operators.</p>
-
-<p>In same cases Narnoo subscribers are billed based on the number of operators they have connected with. Any distributor with this payment option will be advised.</p>
+<p>This endpoint retrieves the list of operator products.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://connect.narnoo.com/v1/operator/connected</code></p>
+<p><code class="prettyprint">GET https://apis.narnoo.com/api/v1/product/list/{operator_id}</code></p>
+
+<aside class="notice">
+If the operator_id is left off the endpoint then the response will return the token owner&rsquo;s products.
+</aside>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1327,272 +1262,25 @@ The number of businesses that you following determine the Narnoo subscription pl
 </thead><tbody>
 <tr>
 <td>page</td>
-<td>false</td>
-<td>Narnoo provides pageing of results.</td>
+<td>False</td>
+<td>For paging results</td>
 </tr>
 <tr>
-<td>size</td>
-<td>false</td>
-<td>The default response size for this list is 50 items. You can modify this by passing over a size parameter</td>
+<td>total</td>
+<td>False</td>
+<td>To control response numbers</td>
 </tr>
 </tbody></table>
-
-<h2 id="get-all-operator-products">Get All Operator Products</h2>
-<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://connect.narnoo.com/v1/operator/products/85/"</span><span class="p">,</span>
-  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
-  <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">"api-key"</span><span class="p">:</span> <span class="s2">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s2">"api-secret-key"</span><span class="p">:</span> <span class="s2">"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s2">"authorization"</span><span class="p">:</span> <span class="s2">"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre><pre class="highlight php"><code><span class="cp">&lt;?php</span>
-<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
-
-<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
-  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://connect.narnoo.com/v1/operator/products/85/"</span><span class="p">,</span>
-  <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nx">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
-  <span class="nx">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
-  <span class="nx">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
-  <span class="nx">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="nx">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
-  <span class="nx">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"GET"</span><span class="p">,</span>
-  <span class="nx">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s2">"api-key: xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s2">"api-secret-key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s2">"authorization: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</span>
-  <span class="p">),</span>
-<span class="p">));</span>
-
-<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
-<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
-
-<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="o">.</span> <span class="nv">$err</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span>
-</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">http.client</span>
-
-<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"connect.narnoo.com"</span><span class="p">)</span>
-
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'api-key'</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s">'api-secret-key'</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s">'authorization'</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span>
-    <span class="p">}</span>
-
-<span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/v1/operator/products/85/"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
-<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
-</code></pre><pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Foundation</span>
-
-<span class="k">let</span> <span class="nv">headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s">"api-key"</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-  <span class="s">"api-secret-key"</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-  <span class="s">"authorization"</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span>
-<span class="p">]</span>
-
-<span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">NSMutableURLRequest</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">NSURL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://connect.narnoo.com/v1/operator/products/85/"</span><span class="p">)</span><span class="o">!</span> <span class="k">as</span> <span class="kt">URL</span><span class="p">,</span>
-                                        <span class="nv">cachePolicy</span><span class="p">:</span> <span class="o">.</span><span class="n">useProtocolCachePolicy</span><span class="p">,</span>
-                                    <span class="nv">timeoutInterval</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">)</span>
-<span class="n">request</span><span class="o">.</span><span class="n">httpMethod</span> <span class="o">=</span> <span class="s">"GET"</span>
-<span class="n">request</span><span class="o">.</span><span class="n">allHTTPHeaderFields</span> <span class="o">=</span> <span class="n">headers</span>
-
-<span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span>
-<span class="k">let</span> <span class="nv">dataTask</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="nf">dataTask</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">request</span> <span class="k">as</span> <span class="kt">URLRequest</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="nv">httpResponse</span> <span class="o">=</span> <span class="n">response</span> <span class="k">as?</span> <span class="kt">HTTPURLResponse</span>
-    <span class="nf">print</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">})</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"operatorPlatform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rezdy"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"operatorPlatformNickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rezdy"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26698291"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Daintree Dreaming Day Tour"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-15 11:17:48"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"dateModified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-10 18:02:25"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"businessUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.adventurenorthaustralia.com/"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"businessEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info@adventurenorthaustralia.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"businessState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QLD"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"businessCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36 Aplin St, Cairns City QLD 4870, Australia"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.92203651966663"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145.77207805984153"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"productSummary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"logo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"logoId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"216"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_85/logo/crop_Adventure-North-Australia-Fu4WgGEddXoYC32.JPG"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_85/logo/thumb_Adventure-North-Australia-Fu4WgGEddXoYC32.JPG"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_85/logo/preview_Adventure-North-Australia-Fu4WgGEddXoYC32.JPG"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_85/logo/large_Adventure-North-Australia-Fu4WgGEddXoYC32.JPG"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_85/logo/200_Adventure-North-Australia-Fu4WgGEddXoYC32.JPG"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_85/logo/400_Adventure-North-Australia-Fu4WgGEddXoYC32.JPG"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_85/logo/800_Adventure-North-Australia-Fu4WgGEddXoYC32.JPG"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5688"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28-07-2016 12:08"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/crop/crop_Adventure-North-Australia-E7gh7HMqbLRU4po.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/xcrop/xcrop_Adventure-North-Australia-E7gh7HMqbLRU4po.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/thumb/thumb_Adventure-North-Australia-E7gh7HMqbLRU4po.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/preview/preview_Adventure-North-Australia-E7gh7HMqbLRU4po.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/large/large_Adventure-North-Australia-E7gh7HMqbLRU4po.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/xlarge/xlarge_Adventure-North-Australia-E7gh7HMqbLRU4po.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/xxlarge/xxlarge_Adventure-North-Australia-E7gh7HMqbLRU4po.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/200/200_Adventure-North-Australia-E7gh7HMqbLRU4po.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/400/400_Adventure-North-Australia-E7gh7HMqbLRU4po.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/800/800_Adventure-North-Australia-E7gh7HMqbLRU4po.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Daintree Dreaming - Kuku Yalanji Coastal Walk "</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"availablePlatforms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rezdy"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"nickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rezdy"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"serviceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reservations"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"481"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"338692428"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 Day Cooktown 4wd Adventure"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-02 09:46:07"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"dateModified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-21 00:00:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"businessUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.adventurenorthaustralia.com/"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"businessEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info@adventurenorthaustralia.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"businessState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QLD"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"businessCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36 Aplin St, Cairns City QLD 4870, Australia"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.92203651966663"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145.77207805984153"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"productSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10-02-2017 17:44"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;A9R21B5.tmp&lt;/p&gt;\n&lt;p&gt;Travel by 4WD along the scenic coastl drive to Cooktown. You will cross the mighy Daintree River by cable ferry and travel through the World Heritage Daintree Rainforest and traverse the 4wd only Bloomfield Track. Cross rivers and mountain ranges, visit the quirkly Lion's Den bush pub.  Enjoy spectacular panoramic views from Grassy Hill of Cooktown, Endeavour River and Coral Sea. Free time in Cooktown before returning to Cairns along the Inland road, the Outback of Far North Queensland.&lt;/p&gt;\n&lt;p&gt; &lt;/p&gt;"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"logo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"logoId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_85/logo/crop_Adventure-North-Australia-XJ8WOqRScc6FSOL.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_85/logo/thumb_Adventure-North-Australia-XJ8WOqRScc6FSOL.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_85/logo/preview_Adventure-North-Australia-XJ8WOqRScc6FSOL.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_85/logo/large_Adventure-North-Australia-XJ8WOqRScc6FSOL.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_85/logo/200_Adventure-North-Australia-XJ8WOqRScc6FSOL.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_85/logo/400_Adventure-North-Australia-XJ8WOqRScc6FSOL.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_85/logo/800_Adventure-North-Australia-XJ8WOqRScc6FSOL.jpg"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5721"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29-07-2016 22:36"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/crop/crop_Adventure-North-Australia-PZnGVGneLTsSaYb.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/xcrop/xcrop_Adventure-North-Australia-PZnGVGneLTsSaYb.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/thumb/thumb_Adventure-North-Australia-PZnGVGneLTsSaYb.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/preview/preview_Adventure-North-Australia-PZnGVGneLTsSaYb.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/large/large_Adventure-North-Australia-PZnGVGneLTsSaYb.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/xlarge/xlarge_Adventure-North-Australia-PZnGVGneLTsSaYb.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/xxlarge/xxlarge_Adventure-North-Australia-PZnGVGneLTsSaYb.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/200/200_Adventure-North-Australia-PZnGVGneLTsSaYb.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/400/400_Adventure-North-Australia-PZnGVGneLTsSaYb.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_8/800/800_Adventure-North-Australia-PZnGVGneLTsSaYb.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cooktown 4wd Adventures (Day and Overnight)"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"availablePlatforms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rezdy"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"nickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rezdy"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"serviceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reservations"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cacheTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"productCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"queryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"472.49ms"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all products for the operator.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://connect.narnoo.com/v1/operator/products/&lt;id&gt;/{service}</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>true</td>
-<td>We need to pass the operator&rsquo;s Narnoo ID</td>
-</tr>
-<tr>
-<td>service</td>
-<td>false</td>
-<td>Some online directors have been mapped to our products. For example you can pass an ATDW id and then add &lsquo;atdw&rsquo; as the service</td>
-</tr>
-</tbody></table>
-
-<h3 id="response-parameters">Response Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>availablePlatforms</td>
-<td>Array</td>
-<td>Displays the reservation system that this operator uses.</td>
-</tr>
-</tbody></table>
-
-          <h1 id="product">Product</h1>
-
-<p>The product endpoint provides further information on an operator&rsquo;s products.</p>
-
-<p>Once you know the ID of a product you can drill down further for more detailed information on that product.</p>
 
 <h2 id="get-product-details">Get Product Details</h2>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://connect.narnoo.com/v1/product/details/91/491"</span><span class="p">,</span>
-  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://apis.narnoo.com/api/v1/product/details/225234852/614"</span><span class="p">,</span>
+  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
   <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">"api-key"</span><span class="p">:</span> <span class="s2">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s2">"api-secret-key"</span><span class="p">:</span> <span class="s2">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s2">"authorization"</span><span class="p">:</span> <span class="s2">"xxxxxxxxxxxxxxxxxx"</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"bearer xxxxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"Cache-Control"</span><span class="p">:</span> <span class="s2">"no-cache"</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
@@ -1604,17 +1292,16 @@ The number of businesses that you following determine the Narnoo subscription pl
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
-  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://connect.narnoo.com/v1/product/details/91/491"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://apis.narnoo.com/api/v1/product/details/225234852/614"</span><span class="p">,</span>
   <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
   <span class="nx">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
   <span class="nx">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
   <span class="nx">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
   <span class="nx">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="nx">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
-  <span class="nx">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"POST"</span><span class="p">,</span>
   <span class="nx">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s2">"api-key: xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s2">"api-secret-key: xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s2">"authorization: xxxxxxxxxxxxxxxxxx"</span>
+    <span class="s2">"Authorization: bearer xxxxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"Cache-Control: no-cache"</span>
   <span class="p">),</span>
 <span class="p">));</span>
 
@@ -1629,34 +1316,29 @@ The number of businesses that you following determine the Narnoo subscription pl
   <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span>
-</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"connect.narnoo.com"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://apis.narnoo.com/api/v1/product/details/225234852/614"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'api-key'</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s">'api-secret-key'</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-    <span class="s">'authorization'</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span>
+    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">"bearer xxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s">'Cache-Control'</span><span class="p">:</span> <span class="s">"no-cache"</span>
     <span class="p">}</span>
 
-<span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/v1/product/details/91/491"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
-<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre><pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Foundation</span>
 
 <span class="k">let</span> <span class="nv">headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s">"api-key"</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-  <span class="s">"api-secret-key"</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
-  <span class="s">"authorization"</span><span class="p">:</span> <span class="s">"xxxxxxxxxxxxxxxxxx"</span>
+  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"bearer xxxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+  <span class="s">"Cache-Control"</span><span class="p">:</span> <span class="s">"no-cache"</span>
 <span class="p">]</span>
 
-<span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">NSMutableURLRequest</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">NSURL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://connect.narnoo.com/v1/product/details/91/491"</span><span class="p">)</span><span class="o">!</span> <span class="k">as</span> <span class="kt">URL</span><span class="p">,</span>
+<span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">NSMutableURLRequest</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">NSURL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://apis.narnoo.com/api/v1/product/details/225234852/614"</span><span class="p">)</span><span class="o">!</span> <span class="k">as</span> <span class="kt">URL</span><span class="p">,</span>
                                         <span class="nv">cachePolicy</span><span class="p">:</span> <span class="o">.</span><span class="n">useProtocolCachePolicy</span><span class="p">,</span>
                                     <span class="nv">timeoutInterval</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">)</span>
-<span class="n">request</span><span class="o">.</span><span class="n">httpMethod</span> <span class="o">=</span> <span class="s">"GET"</span>
+<span class="n">request</span><span class="o">.</span><span class="n">httpMethod</span> <span class="o">=</span> <span class="s">"POST"</span>
 <span class="n">request</span><span class="o">.</span><span class="n">allHTTPHeaderFields</span> <span class="o">=</span> <span class="n">headers</span>
 
 <span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span>
@@ -1668,292 +1350,125 @@ The number of businesses that you following determine the Narnoo subscription pl
     <span class="nf">print</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">})</span>
+
+<span class="n">dataTask</span><span class="o">.</span><span class="nf">resume</span><span class="p">()</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"productInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"491"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"118576286"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ocean Spirit Cruises"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-30 09:32:32"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"dateModified"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"businessUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.oceanspirit.com.au/"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"businessEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxx@quicksilvergroup.com.au"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"businessState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QLD"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"businessCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reef Fleet Terminal 1 Spence Street, Cairns QLD 4870, Australia"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-16.9218184032553"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145.780138097931"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"productSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30-03-2017 09:32"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please check-in at the Ocean Spirit/Great Adventures reservations counter inside the Cairns Reef Fleet Terminal on 1 Spence St between 7:30 and 8:00am. Ocean Spirit departs the marina at 8:30am. \n\nOur staff will issue you with your boarding pass and direct you to our vessel.\n\nPlease note:\nIf you have selected the \"Pay On Board\" option you must reconfirm your booking within 24 hours of travel by contacting our reservations team. If not, Quicksilver Connections reserves the right to cancel"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
+    </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"225234852"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-11 13:42:12"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"dateModified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-11 16:15:49"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rezdy Day Tour"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"bookingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"578"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.00"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"avgPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.00"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.00"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"directBooking"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"bookable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"featureImage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7623"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"uploadedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-11 14:46:48"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"cropImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/crop/crop_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"xcropImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/xcrop/xcrop_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"thumbImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/thumb/thumb_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"previewImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/preview/preview_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"largeImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/large/large_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"xlargeImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/xlarge/xlarge_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"xxlargeImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/xxlarge/xxlarge_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"image200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/200/200_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"image400"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/400/400_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"image800"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/800/800_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"imageSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"997.69"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"imageWidth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"imageHeight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2696"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"landscape"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"privilege"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"featureImage"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"markets"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"featureLogo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"featureVideo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"featurePrint"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"english"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"entry_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-11 13:42:28"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"modified_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p &gt;&lt;span &gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra aliquam nisl eget fermentum. Mauris venenatis consequat pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris consequat turpis eu ante fermentum, nec congue mauris posuere. Vivamus risus tellus, suscipit non ex in, tincidunt vulputate sapien.&lt;/span&gt;&lt;/p&gt;"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"english"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"entry_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-11 13:42:39"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"modified_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p &gt;&lt;span &gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra aliquam nisl eget fermentum. Mauris venenatis consequat pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris consequat turpis eu ante fermentum, nec congue mauris posuere. Vivamus risus tellus, suscipit non ex in, tincidunt vulputate sapien. Donec quis nisl erat. Etiam nibh ligula, imperdiet vel massa id, ultrices tincidunt justo. Proin efficitur nisi sed odio porttitor euismod. Ut lacinia purus vulputate molestie sollicitudin. Pellentesque dictum, dolor in accumsan suscipit, ante diam iaculis arcu, tincidunt dapibus nisi nibh ac orci. Proin porttitor maximus elit vel pretium.&lt;/span&gt;&lt;/p&gt;"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"gallery"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7623"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"uploadedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-11 14:46:48"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"cropImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/crop/crop_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"xcropImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/xcrop/xcrop_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"thumbImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/thumb/thumb_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"previewImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/preview/preview_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"largeImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/large/large_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"xlargeImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/xlarge/xlarge_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"xxlargeImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/xxlarge/xxlarge_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"image200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/200/200_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"image400"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/400/400_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"image800"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/800/800_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"imageSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"997.69"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"imageWidth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"imageHeight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2696"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"landscape"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"privilege"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"featureImage"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"features"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"additionalInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"operatingHours"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12:30:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17:30:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"transfer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"purchases"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"fitness"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"packing"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"child"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"additional"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"terms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"logo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"logoId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"107"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/logo/crop_Ocean-Spirit-Cruises-VRx7xsylNrZPG63.jpg"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/logo/thumb_Ocean-Spirit-Cruises-VRx7xsylNrZPG63.jpg"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/logo/preview_Ocean-Spirit-Cruises-VRx7xsylNrZPG63.jpg"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/logo/large_Ocean-Spirit-Cruises-VRx7xsylNrZPG63.jpg"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/logo/200_Ocean-Spirit-Cruises-VRx7xsylNrZPG63.jpg"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/logo/400_Ocean-Spirit-Cruises-VRx7xsylNrZPG63.jpg"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/logo/800_Ocean-Spirit-Cruises-VRx7xsylNrZPG63.jpg"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"productDiscription"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30-03-2017 09:32"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please check-in at the Ocean Spirit/Great Adventures reservations counter inside the Cairns Reef Fleet Terminal on 1 Spence St between 7:30 and 8:00am. Ocean Spirit departs the marina at 8:30am. \n\nOur staff will issue you with your boarding pass and direct you to our vessel.\n\nPlease note:\nIf you have selected the \"Pay On Board\" option you must reconfirm your booking within 24 hours of travel by contacting our reservations team. If not, Quicksilver Connections reserves the right to cancel your booking."</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"english"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"productImages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3812"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-05 17:55:10"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xcrop/xcrop_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/crop/crop_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/thumb/thumb_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/preview/preview_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/large/large_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xlarge/xlarge_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xxlarge/xxlarge_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/200/200_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/400/400_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/800/800_Ocean-Spirit-Cruises-EWOvK436xZqMc64.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Introductory Scuba Diving at Michaelmas Cay"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3813"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-05 17:56:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xcrop/xcrop_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/crop/crop_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/thumb/thumb_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/preview/preview_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/large/large_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xlarge/xlarge_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xxlarge/xxlarge_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/200/200_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/400/400_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/800/800_Ocean-Spirit-Cruises-FIUfQIKN9Yz1qaE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OCEAN SPIRIT Beach"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3814"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-05 17:57:33"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xcrop/xcrop_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/crop/crop_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/thumb/thumb_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/preview/preview_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/large/large_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xlarge/xlarge_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xxlarge/xxlarge_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/200/200_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/400/400_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/800/800_Ocean-Spirit-Cruises-mvuyOeI2sHc35OY.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michaelmas Cay, a vegetated sand cay"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3815"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-05 17:58:31"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xcrop/xcrop_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/crop/crop_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/thumb/thumb_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/preview/preview_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/large/large_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xlarge/xlarge_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xxlarge/xxlarge_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/200/200_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/400/400_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/800/800_Ocean-Spirit-Cruises-3zAx5Vb4InT9xIs.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Snorkelling at Michaelmas Cay"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3816"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-05 17:59:40"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xcrop/xcrop_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/crop/crop_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/thumb/thumb_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/preview/preview_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/large/large_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xlarge/xlarge_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xxlarge/xxlarge_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/200/200_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/400/400_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/800/800_Ocean-Spirit-Cruises-1eCmqexSdBqj90k.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aboard 32 metre sailing cat Ocean Spirit"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3817"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-05 18:00:30"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xcrop/xcrop_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/crop/crop_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/thumb/thumb_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/preview/preview_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/large/large_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xlarge/xlarge_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xxlarge/xxlarge_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/200/200_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/400/400_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/800/800_Ocean-Spirit-Cruises-Nl4zms0tTNn971j.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Safe snorkelling from the protected shallow waters"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3818"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-05 18:01:11"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xcrop/xcrop_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/crop/crop_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/thumb/thumb_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/preview/preview_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/large/large_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xlarge/xlarge_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xxlarge/xxlarge_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/200/200_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/400/400_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/800/800_Ocean-Spirit-Cruises-s977ccQXi4D5xbE.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Discover the island bird life"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"imageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4942"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"entryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-13 13:18:01"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xcropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xcrop/xcrop_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"cropImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/crop/crop_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"thumbImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/thumb/thumb_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"previewImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/preview/preview_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"largeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/large/large_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xlarge/xlarge_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"xxlargeImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/xxlarge/xxlarge_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image200Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/200/200_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image400Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/400/400_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image800Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_91/800/800_Ocean-Spirit-Cruises-2yJfmEUXx7xX1Zf.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"imageCaption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OCEAN SPIRIT Micahelmas Cay"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"productVideo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"productFeatures"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"bookingData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"bookingPlatform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Respax"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"bookingPlatformNickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"respax"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"bookingPlatformMapping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"operatorPreferred"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"bookingCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP:751:2526"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard / 8:30 - 17:00 - Standard"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"productOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adult"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Infant"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Child"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Family Child"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"productTimes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">486</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:30:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"paymentMethods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FULL_SUPPLIER"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Full payment to supplier paid to supplier on day."</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"bookingCodesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"productOptionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"productTimesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"paymentMethodsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cacheTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"queryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6668.29ms"</span><span class="w">
+    </span><span class="nt">"queryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.08ms"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves the details for this operator&rsquo;s product.
-Basic product information is returned along with the important booking information.</p>
+<p>This endpoint retrieves the details list for the operator product.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://connect.narnoo.com/v1/product/details/&lt;id&gt;/&lt;productId&gt;</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>true</td>
-<td>We need to pass the operator&rsquo;s Narnoo ID</td>
-</tr>
-<tr>
-<td>productId</td>
-<td>true</td>
-<td>We need to pass the operator&rsquo;s Narnoo product ID</td>
-</tr>
-</tbody></table>
-
-<h3 id="response-parameters">Response Parameters</h3>
+<p><code class="prettyprint">GET https://apis.narnoo.com/api/v1/product/details/{productId}/{operator_id}</code></p>
 
 <aside class="notice">
-The bookingData array in the response contains all the information needed to make further product calls down the pipeline.
-</aside>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>bookingCodes</td>
-<td>Array</td>
-<td>These are the booking codes which need to be passed in future API calls. These identify the bookable product.</td>
-</tr>
-<tr>
-<td>productTimes</td>
-<td>Array</td>
-<td>If productTimes is not NULL then a productTimes &lsquo;id&rsquo; must be appended to the bookingCode &#39;id&rsquo; for future API calls. Reservation systems such as Respax and Website Travel require times when checking availability and pricing.</td>
-</tr>
-<tr>
-<td>paymentMethods</td>
-<td>Array</td>
-<td>This is your agents payment method options. See Payment Methods for detailed descriptions of these.</td>
-</tr>
-</tbody></table>
-
-<aside class="warning">
-If productTimes exists in the response then future bookingsCode ID need to be in the format bookingCode['id&rsquo;]:productTimes['id&rsquo;]
+If the operator_id is left off the endpoint then the response will return the token owner&rsquo;s product if stored by that productId.
 </aside>
 
           <h1 id="booking">Booking</h1>
