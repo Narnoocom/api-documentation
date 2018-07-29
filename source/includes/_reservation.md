@@ -148,7 +148,9 @@ This is an example response - we will update information on each for more detail
 </aside>
 
 
-A JSON PAYLOAD
+Sample JSON PAYLOAD
+
+```json
 
 {
   "contact": {
@@ -222,6 +224,36 @@ A JSON PAYLOAD
     }
   ]
 }
+```
 
+### Sample Response
 
+<aside class="notice">
+This is an example response - we will update information on each for more detail.
+</aside>
 
+```json
+{
+    "success": true,
+    "uniqueId": "G4rccI1MWdQkx1F",
+    "data": {
+        "request": {
+            "booking": [
+                {
+                    "confirmed": true,
+                    "bookingDate": "2018-07-30T07:30:00+1000",
+                    "productBookingCode": "82848811-1e2d-4e5d-8e3f-dd50a662551f",
+                    "productId": 580,
+                    "reservationProductName": null,
+                    "reservationPaymentOption": "CREDITCARD",
+                    "reservationProvider": "Fareharbor"
+                }
+            ],
+            "success": true,
+            "bookingCount": 1,
+            "queryTime": "5686.69ms"
+        }
+    },
+    "queryTime": "6083.44ms"
+}
+```
