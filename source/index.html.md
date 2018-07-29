@@ -56,4 +56,6 @@ Reservation System | Testing API Keys | Live API Approval | Test Operator Produc
 --------- | ------- |  ----------- |  ----------- |  -----------
 Respax | No | Yes | No | Reservations
 Rezdy | Yes | No | Rezdy Demo | Reservations
-Website Travel | No | Yes | Website Travel Demo | Wholesaler
+Website Travel | Yes | Yes | Website Travel Demo | Wholesaler
+Fareharbor | Yes | Yes | Fareharbor Demo | Reservations
+Booking Boss | Yes | Yes | "Comming Soon" | Reservations
