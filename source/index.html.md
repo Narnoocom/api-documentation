@@ -24,6 +24,10 @@ search: true
 
 # Introduction
 
+<aside class="notice">
+Latest documentation update: 30-07-2018.
+</aside>
+
 Welcome to the Narnoo live reservations API!
 
 Narnoo now lets you check for product availability, pricing and create reservations for tourism products. Narnoo is not a booking platform, instead it acts as a gateway between major third party reservation systems. These systems include both operator direct reservation systems and tourism wholesalers.

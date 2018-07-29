@@ -176,10 +176,24 @@ Some reservations systems require you to notify them when you are ready to start
 </tr>
 <tr>
 <td>Website Travel</td>
-<td>No</td>
+<td>Yes</td>
 <td>Yes</td>
 <td>Website Travel Demo</td>
 <td>Wholesaler</td>
+</tr>
+<tr>
+<td>Fareharbor</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Fareharbor Demo</td>
+<td>Reservations</td>
+</tr>
+<tr>
+<td>Booking Boss</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>&ldquo;Comming Soon&rdquo;</td>
+<td>Reservations</td>
 </tr>
 </tbody></table>
 
@@ -3299,81 +3313,110 @@ Reservation API details are being updated.
 This is an example response - we will update information on each for more detail.
 </aside>
 
-<p>A JSON PAYLOAD</p>
+<p>Sample JSON PAYLOAD</p>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jon"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jon.doe@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITCARD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"productId"</span><span class="p">:</span><span class="w"> </span><span class="mi">578</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"bookingCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RZ:578"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"bookingDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-25 09:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"paymentMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FULL_AGENT"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"option"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11801"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bronze Ticket"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"pickUp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"To Be Advised"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"participants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First Name"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jon"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last Name"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Country"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First Name"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last Name"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Country"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"bookingForm"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Special Requirements"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobile"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="sample-response">Sample Response</h3>
 
-<p>{
-  &ldquo;contact&rdquo;: {
-    &ldquo;firstName&rdquo;: &ldquo;Jon&rdquo;,
-    &ldquo;lastName&rdquo;: &ldquo;Doe&rdquo;,
-    &ldquo;email&rdquo;: &ldquo;jon.doe@gmail.com&rdquo;,
-    &ldquo;phone&rdquo;: &ldquo;1234567890&rdquo;,
-    &ldquo;country&rdquo;: &ldquo;Australia&rdquo;
-  },
-  &ldquo;payment&rdquo;: {
-    &ldquo;type&rdquo;: &ldquo;CREDITCARD&rdquo;,
-    &ldquo;currency&rdquo;: &ldquo;AUD&rdquo;
-  },
-  &ldquo;products&rdquo;: [
-    {
-      &ldquo;productId&rdquo;: 578,
-      &ldquo;bookingCode&rdquo;: &ldquo;RZ:578&rdquo;,
-      &ldquo;bookingDate&rdquo;: &ldquo;2018-07-25 09:00:00&rdquo;,
-      &ldquo;paymentMethod&rdquo;: &ldquo;FULL_AGENT&rdquo;,
-      &ldquo;option&rdquo;: [
-        {
-          &ldquo;id&rdquo;: &ldquo;11801&rdquo;,
-          &ldquo;label&rdquo;: &ldquo;Bronze Ticket&rdquo;,
-          &ldquo;quantity&rdquo;: 2,
-          &ldquo;price&rdquo;: 20
-        }
-      ],
-      &ldquo;pickUp&rdquo;: {
-        &ldquo;id&rdquo;: &ldquo;To Be Advised&rdquo;
-      },
-      &ldquo;participants&rdquo;: [
-        [
-          {
-            &ldquo;label&rdquo;: &ldquo;First Name&rdquo;,
-            &ldquo;value&rdquo;: &ldquo;Jon&rdquo;
-          },
-          {
-            &ldquo;label&rdquo;: &ldquo;Last Name&rdquo;,
-            &ldquo;value&rdquo;: &ldquo;Doe&rdquo;
-          },
-          {
-            &ldquo;label&rdquo;: &ldquo;Country&rdquo;,
-            &ldquo;value&rdquo;: &ldquo;Australia&rdquo;
-          }
-        ],
-        [
-          {
-            &ldquo;label&rdquo;: &ldquo;First Name&rdquo;,
-            &ldquo;value&rdquo;: &ldquo;Jane&rdquo;
-          },
-          {
-            &ldquo;label&rdquo;: &ldquo;Last Name&rdquo;,
-            &ldquo;value&rdquo;: &ldquo;Doe&rdquo;
-          },
-          {
-            &ldquo;label&rdquo;: &ldquo;Country&rdquo;,
-            &ldquo;value&rdquo;: &ldquo;Australia&rdquo;
-          }
-        ]
-      ],
-      &ldquo;bookingForm&rdquo;: [
-        {
-          &ldquo;label&rdquo;: &ldquo;Special Requirements&rdquo;,
-          &ldquo;value&rdquo;: &ldquo;None&rdquo;
-        },
-        {
-          &ldquo;label&rdquo;: &ldquo;Mobile&rdquo;,
-          &ldquo;value&rdquo;: &ldquo;1234567890&rdquo;
-        }
-      ]
-    }
-  ]
-}</p>
-
+<aside class="notice">
+This is an example response - we will update information on each for more detail.
+</aside>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G4rccI1MWdQkx1F"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"request"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"booking"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"bookingDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-30T07:30:00+1000"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"productBookingCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"82848811-1e2d-4e5d-8e3f-dd50a662551f"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"productId"</span><span class="p">:</span><span class="w"> </span><span class="mi">580</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"reservationProductName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"reservationPaymentOption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITCARD"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"reservationProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fareharbor"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"bookingCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"queryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5686.69ms"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"queryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6083.44ms"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
           <h1 id="definitions">Definitions</h1>
 
 <h2 id="payment-methods">Payment Methods</h2>
