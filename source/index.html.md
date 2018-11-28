@@ -8,7 +8,7 @@ language_tabs:
   - swift
 
 toc_footers:
-  - <a href='https://www.narnoo.com'>Sign Up for a Developer Key</a>
+  - <a href='https://app.narnoo.com'>Sign up to Narnoo</a>
 
 includes:
   - authentication
@@ -25,7 +25,7 @@ search: true
 # Introduction
 
 <aside class="notice">
-Latest documentation update: 30-07-2018.
+Latest documentation update: 28-11-2018.
 </aside>
 
 Welcome to the Narnoo live reservations API!
