@@ -2464,7 +2464,7 @@ The product fare data might be different to the productOptions in the product de
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://apis.narnoo.com/api/v1/booking/details/{operator_id}/{product_id}?id=&lt;bookingCode&gt;</code></p>
+<p><code class="prettyprint">GET https://apis.narnoo.com/api/v1/booking/details/{operator_id}/{booking_id}?id=&lt;bookingCode&gt;</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -2485,9 +2485,9 @@ If productTimes exists in the response then future bookingsCode ID need to be in
 <td>We need to pass the operator&rsquo;s Narnoo ID</td>
 </tr>
 <tr>
-<td>{product_id}</td>
+<td>{booking_id}</td>
 <td>true</td>
-<td>We need to pass the operator&rsquo;s Narnoo product ID</td>
+<td>We need to pass the operator&rsquo;s Narnoo booking ID</td>
 </tr>
 <tr>
 <td>bookingCode</td>
@@ -2783,7 +2783,7 @@ The product fare data might be different to the productOptions in the product de
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://apis.narnoo.com/api/v1/booking/availability/{operator_id}/{product_id}?id={bookingCode}&amp;startDate=&lt;d-m-Y&gt;&amp;endDate=&lt;d-m-Y&gt;</code></p>
+<p><code class="prettyprint">GET https://apis.narnoo.com/api/v1/booking/availability/{operator_id}/{booking_id}?id={bookingCode}&amp;startDate=&lt;d-m-Y&gt;&amp;endDate=&lt;d-m-Y&gt;</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -2800,9 +2800,9 @@ The product fare data might be different to the productOptions in the product de
 <td>We need to pass the operator&rsquo;s Narnoo ID</td>
 </tr>
 <tr>
-<td>{product_id}</td>
+<td>{booking_id}</td>
 <td>true</td>
-<td>We need to pass the operator&rsquo;s Narnoo product ID</td>
+<td>We need to pass the operator&rsquo;s Narnoo booking ID</td>
 </tr>
 <tr>
 <td>bookingCode</td>
