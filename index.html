@@ -2676,7 +2676,13 @@ The product fare data might be different to the productOptions in the product de
     </span><span class="nt">"queryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1455.97ms"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves the basic product information and also any important booking information. All this information must be sent to the write reservation endpoint.</p>
+<p>This endpoint retrieves the basic product information and also any important information required to book the product. This information includes things such as:
+1. Supplier contact form information.
+2. Supplier participant form information.
+3. Supplier pick up information.
+4. Supplier extra information - coming soon.</p>
+
+<p>All information found in this call must be sent when creating a booking.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2706,9 +2712,9 @@ If productTimes exists in the response then future bookingsCode ID need to be in
 <td>We need to pass the operator&rsquo;s Narnoo booking ID</td>
 </tr>
 <tr>
-<td>bookingCode</td>
+<td>id = bookingCode</td>
 <td>true</td>
-<td>Passed in the id parameter. This bookingCode is found in the <a href="#get-product-booking-information">product details call</a> and is the combination of bookingCode and productTimes ( if productTimes exists )</td>
+<td>Passed in the id parameter. This bookingCode is found in earlier calls and is the combination of bookingCode and productTimes ( if productTimes exists ).</td>
 </tr>
 </tbody></table>
 
@@ -2726,29 +2732,209 @@ The bookingData array in the response contains all the information needed to mak
 </tr>
 </thead><tbody>
 <tr>
-<td>productPrices</td>
-<td>Array</td>
-<td>Returns the prices of each of the product types. If a levy exists this will be displayed here.</td>
+<td>[success]</td>
+<td>boolean</td>
+<td>Was the call successful.</td>
 </tr>
 <tr>
-<td>productExtras</td>
-<td>Array</td>
-<td>Any additional extras that can be included in the booking.</td>
+<td>[data]</td>
+<td>array</td>
+<td>The information returned.</td>
 </tr>
 <tr>
-<td>productPickUps</td>
-<td>Array</td>
-<td>Any pickup locations. Can be used further down the pipline to request pricing based on transfers.</td>
+<td>[data][&#39;bookingData&rsquo;][&#39;bookingPlatform&rsquo;]</td>
+<td>string</td>
+<td>The name of the booking platform used for this product.</td>
 </tr>
 <tr>
-<td>bookingFields</td>
-<td>Array</td>
-<td>The resevation systems require specific form fields to be filled out. This array contains all the booking form information.</td>
+<td>[data][&#39;bookingData&rsquo;][&#39;bookingPlatformNickname&rsquo;]</td>
+<td>string</td>
+<td>The nickname of the booking platform used for this product.</td>
 </tr>
 <tr>
-<td>paymentMethods</td>
-<td>Array</td>
-<td>This is your agents payment method options. See Payment Methods for detailed descriptions of these.</td>
+<td>[data][&#39;bookingData&rsquo;][&#39;bookingPlatformMapping&rsquo;]</td>
+<td>string</td>
+<td>Either operator perferred or distributor nominated.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;bookingData&rsquo;]</td>
+<td>array</td>
+<td>The basic booking data information.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;bookingData&rsquo;][bookingCode][id]</td>
+<td>string</td>
+<td>The string used to call the booking data.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;bookingData&rsquo;][bookingCode][id]</td>
+<td>string</td>
+<td>The string used to call the booking data.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productPrices&rsquo;]</td>
+<td>array</td>
+<td>Details of the product price options.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productPrices&rsquo;][n][&#39;id&rsquo;]</td>
+<td>integer</td>
+<td>Price ID.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productPrices&rsquo;][n][&#39;label&rsquo;]</td>
+<td>string</td>
+<td>Price option label.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productPrices&rsquo;][n][&#39;price&rsquo;]</td>
+<td>float</td>
+<td>Price option price.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productPrices&rsquo;][n][&#39;pax&rsquo;]</td>
+<td>integer</td>
+<td>Number of paxs the price represents.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productPrices&rsquo;][n][&#39;commission&rsquo;]</td>
+<td>float</td>
+<td>Commission on price - this is not a true representation of the commission for the product. You negiotated rates takes priority.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productPrices&rsquo;][n][&#39;levy&rsquo;]</td>
+<td>float</td>
+<td>Any additional levy - not a true reflection. Use internally.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productPrices&rsquo;][n][&#39;curreny&rsquo;]</td>
+<td>string</td>
+<td>The currency name used for payment.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productExtras&rsquo;]</td>
+<td>array</td>
+<td>Any product extras. - subject to change</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productExtras&rsquo;][n][&#39;id&rsquo;]</td>
+<td>interger</td>
+<td>The extra ID.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productExtras&rsquo;][n][&#39;label&rsquo;]</td>
+<td>string</td>
+<td>The extra label.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productExtras&rsquo;][n][&#39;pax&rsquo;]</td>
+<td>integer</td>
+<td>The pax quantity each extra represents.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productPickUps&rsquo;][n][&#39;price&rsquo;]</td>
+<td>float</td>
+<td>The extra price.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productPickUps&rsquo;]</td>
+<td>array</td>
+<td>Any product pick up information.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productPickUps&rsquo;][n][&#39;id&rsquo;]</td>
+<td>interger</td>
+<td>The pickup ID.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productPickUps&rsquo;][n][&#39;label&rsquo;]</td>
+<td>string</td>
+<td>The pickup label.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productPickUps&rsquo;][n][&#39;pax&rsquo;]</td>
+<td>integer</td>
+<td>The pax quantity each pick up represents.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productPickUps&rsquo;][n][&#39;price&rsquo;]</td>
+<td>float</td>
+<td>The pickup price.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;bookingFields&rsquo;]</td>
+<td>array</td>
+<td>Required supplier booking data.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;bookingFields&rsquo;][&#39;perBooking&rsquo;]</td>
+<td>array</td>
+<td>Required supplier booking data for entire booking.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;bookingFields&rsquo;][&#39;perBooking&rsquo;][n][&#39;label&rsquo;]</td>
+<td>string</td>
+<td>Input from label.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;bookingFields&rsquo;][&#39;perBooking&rsquo;][n][&#39;require&rsquo;]</td>
+<td>boolean</td>
+<td>Is it required.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;bookingFields&rsquo;][&#39;perBooking&rsquo;][n][&#39;type&rsquo;]</td>
+<td>string</td>
+<td>Input field type.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;bookingFields&rsquo;][&#39;perBooking&rsquo;][n][&#39;list&rsquo;]</td>
+<td>string</td>
+<td>Used if there is list data for the input select.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;bookingFields&rsquo;][&#39;perParticipant&rsquo;]</td>
+<td>array</td>
+<td>Required supplier booking data for each participant booking a ticket.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;bookingFields&rsquo;][&#39;perParticipant&rsquo;][n][&#39;label&rsquo;]</td>
+<td>string</td>
+<td>Input from label.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;bookingFields&rsquo;][&#39;perParticipant&rsquo;][n][&#39;require&rsquo;]</td>
+<td>boolean</td>
+<td>Is it required.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;bookingFields&rsquo;][&#39;perParticipant&rsquo;][n][&#39;type&rsquo;]</td>
+<td>string</td>
+<td>Input field type.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;bookingFields&rsquo;][&#39;perParticipant&rsquo;][n][&#39;list&rsquo;]</td>
+<td>string</td>
+<td>Used if there is list data for the input select.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;paymentMethods&rsquo;]</td>
+<td>array</td>
+<td>The payment method your agent account is set up with the supplier.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;paymentMethods&rsquo;][n][&#39;id&rsquo;]</td>
+<td>string</td>
+<td>The payment method ID which is represented via a string.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;paymentMethods&rsquo;][n][&#39;detail&rsquo;]</td>
+<td>string</td>
+<td>A description of the payment method.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;paymentMethods&rsquo;][n][&#39;default&rsquo;]</td>
+<td>boolean</td>
+<td>The payment method which the supplier has set as default for your agent&rsquo;s account.</td>
 </tr>
 </tbody></table>
 
