@@ -1967,6 +1967,203 @@ If the operator_id is left off the endpoint then the response will return the to
 
 <h3 id="query-parameters">Query Parameters</h3>
 
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>operator_id</td>
+<td>true</td>
+<td>integer</td>
+<td>The Narnoo operator Id.</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>[success]</td>
+<td>boolean</td>
+<td>Was the call successful.</td>
+</tr>
+<tr>
+<td>[data][total]</td>
+<td>integer</td>
+<td>Total number of bookable products.</td>
+</tr>
+<tr>
+<td>[data][responseTotal]</td>
+<td>integer</td>
+<td>Total number available to call.</td>
+</tr>
+<tr>
+<td>[data][totalPages]</td>
+<td>integer</td>
+<td>Total number of pages available.</td>
+</tr>
+<tr>
+<td>[data][currentPage]</td>
+<td>integer</td>
+<td>Current page or results.</td>
+</tr>
+<tr>
+<td>[data][nickName]</td>
+<td>string</td>
+<td>The nickname used for the reservation system.</td>
+</tr>
+<tr>
+<td>[data][bookingPlatform]</td>
+<td>string</td>
+<td>The booking platform name.</td>
+</tr>
+<tr>
+<td>[data][avatar]</td>
+<td>array</td>
+<td>The supplier avatar image.</td>
+</tr>
+<tr>
+<td>[data][products][n][&lsquo;productData&rsquo;]</td>
+<td>array</td>
+<td>The different product information available.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;productData&rsquo;][&#39;productId&rsquo;]</td>
+<td>interger</td>
+<td>The Narnoo product ID - used to return Narnoo based information.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;productData&rsquo;][&#39;dateCreated&rsquo;]</td>
+<td>datetime</td>
+<td>Date the product was set up in Narnoo.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;productData&rsquo;][&#39;dateModified&rsquo;]</td>
+<td>datetime</td>
+<td>Date the product inforamtion was last modified in Narnoo.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;productData&rsquo;][&#39;title&rsquo;]</td>
+<td>string</td>
+<td>Title of the product.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;productData&rsquo;][&#39;bookingId&rsquo;]</td>
+<td>integer</td>
+<td>The booking Id used for calls to reservation systems.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;productData&rsquo;][&#39;featureImage&rsquo;]</td>
+<td>array</td>
+<td>A hero image for the product.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;productData&rsquo;][&#39;description&rsquo;]</td>
+<td>array</td>
+<td>Verious text copy for the products in multiple languages.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;]</td>
+<td>array</td>
+<td>The product bookable data. This is used by the third party reservation systems.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][&#39;id&rsquo;]</td>
+<td>string</td>
+<td>Product booking code - used for all bookable data calls.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][&#39;label&rsquo;]</td>
+<td>string</td>
+<td>Product booking option label - sent via the third party reservation system.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][&#39;duration&rsquo;]</td>
+<td>interger</td>
+<td>The product duration in minutes.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice]</td>
+<td>array</td>
+<td>The different fare options for the product.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice][n][&#39;id&rsquo;]</td>
+<td>integer</td>
+<td>The fare option id.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice][n][&#39;label&rsquo;]</td>
+<td>string</td>
+<td>The fare option label.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice][n][&#39;price&rsquo;]</td>
+<td>float</td>
+<td>The fare option price.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice][n][&#39;pax&rsquo;]</td>
+<td>integer</td>
+<td>The quantity of paxs the price represents. Example: a family option could have 4 here.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice][n][&#39;commission&rsquo;]</td>
+<td>float</td>
+<td>Not all reservation systems output commission here. This currently does not represent commissions for all products, via all reservation systems.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice][n][&#39;levy&rsquo;]</td>
+<td>float</td>
+<td>Not all reservation systems output levy&rsquo;s here. It&rsquo;s common to not charge for any levy and the customer can pay on the day. This information should be made visible to the customer on the booking form.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice][n][&#39;levy&rsquo;]</td>
+<td>string</td>
+<td>Currency name.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][productTimes]</td>
+<td>array</td>
+<td>Any product time information - Can be NULL. If it exists it needs to be added to the [data][products][n][&#39;bookingCodes&rsquo;][&#39;id&rsquo;]:[data][products][n][&#39;bookingCodes&rsquo;][productTimes][n][&#39;id&rsquo;].</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][productTimes][n][&#39;id&rsquo;]</td>
+<td>integer</td>
+<td>Product time ID.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][productTimes][n][&#39;time&rsquo;]</td>
+<td>time</td>
+<td>Product time label.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][productTimes][n][&#39;default&rsquo;]</td>
+<td>boolean</td>
+<td>The default time.</td>
+</tr>
+<tr>
+<td>[data][products][&#39;paymentMethods&rsquo;]</td>
+<td>array</td>
+<td>The payment method your agent account is set up with the</td>
+</tr>
+</tbody></table>
+
+<p>supplier.
+[data][products][&#39;paymentMethods&rsquo;][n][&#39;id&rsquo;] | string | The payment method ID which is represented via a string.
+[data][products][&#39;paymentMethods&rsquo;][n][&#39;detail&rsquo;] | string | A description of the payment method.
+[data][products][&#39;paymentMethods&rsquo;][n][&#39;default&rsquo;] | boolean | The payment method which the supplier has set as default for your agent&rsquo;s account.</p>
+
 <aside class="warning">
 Returns only products that have been mapped to a reservation system and therefore, are bookable via the API. You are still required to makes sure your account is set up for &ldquo;FULL_PAYMENT&rdquo; with the supplier.
 </aside>
@@ -2262,7 +2459,7 @@ The bookingData array in the response contains all the information needed to mak
 </aside>
 
 <aside class="warning">
-If productTimes exists in the response then future bookingsCode ID need to be in the format bookingCode[&lsquo;id&rsquo;]:productTimes['id&rsquo;]. See the product details call
+If productTimes exists in the response then future bookingsCode ID need to be in the format bookingCode['id&rsquo;]:productTimes['id&rsquo;]. See the product details call
 </aside>
 
 <aside class="notice">
