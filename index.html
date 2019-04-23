@@ -2155,14 +2155,24 @@ If the operator_id is left off the endpoint then the response will return the to
 <tr>
 <td>[data][products][&#39;paymentMethods&rsquo;]</td>
 <td>array</td>
-<td>The payment method your agent account is set up with the</td>
+<td>The payment method your agent account is set up with the supplier.</td>
+</tr>
+<tr>
+<td>[data][products][&#39;paymentMethods&rsquo;][n][&#39;id&rsquo;]</td>
+<td>string</td>
+<td>The payment method ID which is represented via a string.</td>
+</tr>
+<tr>
+<td>[data][products][&#39;paymentMethods&rsquo;][n][&#39;detail&rsquo;]</td>
+<td>string</td>
+<td>A description of the payment method.</td>
+</tr>
+<tr>
+<td>[data][products][&#39;paymentMethods&rsquo;][n][&#39;default&rsquo;]</td>
+<td>boolean</td>
+<td>The payment method which the supplier has set as default for your agent&rsquo;s account.</td>
 </tr>
 </tbody></table>
-
-<p>supplier.
-[data][products][&#39;paymentMethods&rsquo;][n][&#39;id&rsquo;] | string | The payment method ID which is represented via a string.
-[data][products][&#39;paymentMethods&rsquo;][n][&#39;detail&rsquo;] | string | A description of the payment method.
-[data][products][&#39;paymentMethods&rsquo;][n][&#39;default&rsquo;] | boolean | The payment method which the supplier has set as default for your agent&rsquo;s account.</p>
 
 <aside class="warning">
 Returns only products that have been mapped to a reservation system and therefore, are bookable via the API. You are still required to makes sure your account is set up for &ldquo;FULL_PAYMENT&rdquo; with the supplier.
