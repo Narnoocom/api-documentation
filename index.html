@@ -3173,16 +3173,59 @@ For testing please use the https://apis-test.narnoo.com endpoint. All successful
 <p>The response returns the confirmation for each product booked and the booking code created by the reservation system. This is sometimes referred to as the voucher code.
 A unique ID is returned which you will be able to search for orders created via your Narnoo admin console.</p>
 
-<p>Parameter | Type | Description
-[success]  | Boolean | Was the call successful.
-[uniqueId]  | String | Unique ID generated via Narnoo.
-[data][&#39;request&rsquo;][&#39;booking&rsquo;][n][confirmed] | Boolean | Was the product successfull booked.
-[data][&#39;request&rsquo;][&#39;booking&rsquo;][n][bookingDate] | Date Time | Booking date for the product.
-[data][&#39;request&rsquo;][&#39;booking&rsquo;][n][productBookingCode] | string | The voucher number for the booking based on it&rsquo;s reservation system.
-[data][&#39;request&rsquo;][&#39;booking&rsquo;][n][productId] | Integer | The booking id used by Narnoo to call bookable data.
-[data][&#39;request&rsquo;][&#39;booking&rsquo;][n][reservationProductName] | String | Product name - can be sent via the reservation system if it exists.
-[data][&#39;request&rsquo;][&#39;booking&rsquo;][n][reservationPaymentOption] | String | Payment option - currently Credit Card is the only payment option.
-[data][&#39;request&rsquo;][&#39;booking&rsquo;][n][reservationProvider] | String | Which resevation provider was used to book this product.</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>[success]</td>
+<td>Boolean</td>
+<td>Was the call successful.</td>
+</tr>
+<tr>
+<td>[uniqueId]</td>
+<td>String</td>
+<td>Unique ID generated via Narnoo.</td>
+</tr>
+<tr>
+<td>[data][&#39;request&rsquo;][&#39;booking&rsquo;][n][confirmed]</td>
+<td>Boolean</td>
+<td>Was the product successfull booked.</td>
+</tr>
+<tr>
+<td>[data][&#39;request&rsquo;][&#39;booking&rsquo;][n][bookingDate]</td>
+<td>Date Time</td>
+<td>Booking date for the product.</td>
+</tr>
+<tr>
+<td>[data][&#39;request&rsquo;][&#39;booking&rsquo;][n][productBookingCode]</td>
+<td>string</td>
+<td>The voucher number for the booking based on it&rsquo;s reservation system.</td>
+</tr>
+<tr>
+<td>[data][&#39;request&rsquo;][&#39;booking&rsquo;][n][productId]</td>
+<td>Integer</td>
+<td>The booking id used by Narnoo to call bookable data.</td>
+</tr>
+<tr>
+<td>[data][&#39;request&rsquo;][&#39;booking&rsquo;][n][reservationProductName]</td>
+<td>String</td>
+<td>Product name - can be sent via the reservation system if it exists.</td>
+</tr>
+<tr>
+<td>[data][&#39;request&rsquo;][&#39;booking&rsquo;][n][reservationPaymentOption]</td>
+<td>String</td>
+<td>Payment option - currently Credit Card is the only payment option.</td>
+</tr>
+<tr>
+<td>[data][&#39;request&rsquo;][&#39;booking&rsquo;][n][reservationProvider]</td>
+<td>String</td>
+<td>Which resevation provider was used to book this product.</td>
+</tr>
+</tbody></table>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G4rccI1MWdQkx1F"</span><span class="p">,</span><span class="w">
