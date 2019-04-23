@@ -3102,6 +3102,26 @@ For testing please use the https://apis-test.narnoo.com endpoint. All successful
 <td>Pick up is not required however if it is included then all pick data is required.</td>
 </tr>
 <tr>
+<td>[products][n][&#39;extra&rsquo;]</td>
+<td>false</td>
+<td>Product extras - this information is being updated based on reservation system access.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;extra&rsquo;][n][&#39;id&rsquo;]</td>
+<td>true</td>
+<td>Product extra id - found from product bookable data.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;extra&rsquo;][n][&#39;quantity&rsquo;]</td>
+<td>true</td>
+<td>The extra quantity - charged per pack number or per booking - found from product bookable data.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;extra&rsquo;][n][&#39;price&rsquo;]</td>
+<td>true</td>
+<td>The extra price - price of extra which is a mulitplier of the quantity.</td>
+</tr>
+<tr>
 <td>[products][n][&#39;pickUp&rsquo;][&#39;id&rsquo;]</td>
 <td>true</td>
 <td>The pick up id - found from product bookable data.</td>
@@ -3109,7 +3129,7 @@ For testing please use the https://apis-test.narnoo.com endpoint. All successful
 <tr>
 <td>[products][n][&#39;pickUp&rsquo;][&#39;quantity&rsquo;]</td>
 <td>true</td>
-<td>The pick up quantity - charged per pack number or per booking - found from the product booking form data.</td>
+<td>The pick up quantity - charged per pack number or per booking - found from product bookable data.</td>
 </tr>
 <tr>
 <td>[products][n][&#39;pickUp&rsquo;][&#39;price&rsquo;]</td>
