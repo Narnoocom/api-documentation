@@ -3787,13 +3787,13 @@ For Rezdy products we do not support the &ldquo;PAYOUTS&rdquo; method. This is R
 
 <p>For more information refer to: <a href="#get-product-availability-and-pricing-details">get product availability</a></p>
 
-<p>[image goes here]</p>
+<p><img src="https://s3.amazonaws.com/staticdn.narnoo.com/assets/date-range.jpg" title="Narnoo Console Date Range" alt="alt text" /></p>
 
 <aside class="notice">
 Note: For our implementation we have set a rule that if there are more than 3 tour productTimes we show a select option. This reduces API calls and gives a user the choice to pick the time.
 </aside>
 
-<p>[image select goes here]</p>
+<p><img src="https://s3.amazonaws.com/staticdn.narnoo.com/assets/time-options.jpg" title="Narnoo Console Product Time Select" alt="alt text" /></p>
 
 <h2 id="show-results-based-on-availability-call">Show results based on availability call</h2>
 
@@ -3807,11 +3807,14 @@ Note: Narnoo gateway won’t cache reservation systems availability results. You
 
 <h2 id="show-product-booking-form-data">Show product booking form data</h2>
 
-<p>This page shows the information required via that product for booking. Items include:
-1. Participant names
-2. Booking form requirements
-3. Any Extras
-4. Pick up data</p>
+<p>This page shows the information required via that product for booking. Items include:</p>
+
+<ol>
+<li>Participant names</li>
+<li>Booking form requirements</li>
+<li>Any Extras</li>
+<li>Pick up data</li>
+</ol>
 
 <p>These can all have NULL results if nothing is available for that supplier in the relevant field.</p>
 
@@ -3821,19 +3824,25 @@ Note: Narnoo gateway won’t cache reservation systems availability results. You
 
 <p><img src="https://s3.amazonaws.com/staticdn.narnoo.com/assets/product-booking-form.jpg" title="Narnoo Console Product Bookable Form" alt="alt text" /></p>
 
-<p>In our application we update the total cost based on the following information.
-1. The selected option, multiplied by quantity.
-2. Where appliciable the pick up price multiplied by quantity added to total price.</p>
+<p>In our application we update the total cost based on the following information.</p>
+
+<ol>
+<li>The selected option, multiplied by quantity.</li>
+<li>Where appliciable the pick up price multiplied by quantity added to total price.</li>
+</ol>
 
 <h2 id="check-out-products">Check out products</h2>
 
-<p>This page shows the generic checkout form information. This information includes:
-1. Generic booking contact information
-2. Where possible we take the information stored in the shopping cart to populate this form. This reduces double entry.
-3. Product summary
-4. A summary of each product that has been placed in the cart.
-5. Ability to edit these products.
-6. Payment method - in our portal we currently use credit card transactions via Stripe.</p>
+<p>This page shows the generic checkout form information. This information includes:</p>
+
+<ol>
+<li>Generic booking contact information</li>
+<li>Where possible we take the information stored in the shopping cart to populate this form. This reduces double entry.</li>
+<li>Product summary</li>
+<li>A summary of each product that has been placed in the cart.</li>
+<li>Ability to edit these products.</li>
+<li>Payment method - in our portal we currently use credit card transactions via Stripe.</li>
+</ol>
 
 <p><img src="https://s3.amazonaws.com/staticdn.narnoo.com/assets/checkout-page.jpg" title="Narnoo Console Product Bookable Form" alt="alt text" /></p>
 
@@ -3848,6 +3857,10 @@ Note: Narnoo gateway won’t cache reservation systems availability results. You
 <p><img src="https://s3.amazonaws.com/staticdn.narnoo.com/assets/creditcard-capture.jpg" title="Narnoo Console Charge Credit Card" alt="alt text" /></p>
 
 <h2 id="show-booking-confirmation">Show booking confirmation</h2>
+
+<p>This page shows the information related to the booking. If all products are confirmed then we have a successful booking. If there are issues with a product then a warning will be displayed. If we have payment or other issues then the error will also be displayed.</p>
+
+<p>For our purposes the transaction data provided from Stripe is displayed for the agents records.</p>
 
 <p><img src="https://s3.amazonaws.com/staticdn.narnoo.com/assets/success-charge-write.jpg" title="Narnoo Console Succssful Order" alt="alt text" /></p>
 
