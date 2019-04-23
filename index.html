@@ -3102,17 +3102,49 @@ Reservation API details are being updated.
 <tr>
 <td>[products][n][&#39;pickUp&rsquo;][&#39;id&rsquo;]</td>
 <td>true</td>
-<td>The pick up id - found from the product booking form data.</td>
+<td>The pick up id - found from product bookable data.</td>
 </tr>
 <tr>
 <td>[products][n][&#39;pickUp&rsquo;][&#39;quantity&rsquo;]</td>
 <td>true</td>
-<td>The pick up quantity - charged per pack number or per booking - found from the product</td>
+<td>The pick up quantity - charged per pack number or per booking - found from the product booking form data.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;pickUp&rsquo;][&#39;price&rsquo;]</td>
+<td>true</td>
+<td>The pick up price - price of pick up which is a mulitplier of the quantity.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;participants&rsquo;]</td>
+<td>true</td>
+<td>Product booking participant details.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;pickUp&rsquo;][n][&#39;label&rsquo;]</td>
+<td>true</td>
+<td>Participant label - found from product bookable data.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;pickUp&rsquo;][n][&#39;value&rsquo;]</td>
+<td>true</td>
+<td>Participant value - The value for that entry.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;bookingForm&rsquo;]</td>
+<td>true</td>
+<td>Product booking data - this is information required by the supplier for a booking.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;bookingForm&rsquo;][n][&#39;label&rsquo;]</td>
+<td>true</td>
+<td>Booking form label - found from product bookable data.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;bookingForm&rsquo;][n][&#39;value&rsquo;]</td>
+<td>true</td>
+<td>Booking form value - The value for that entry.</td>
 </tr>
 </tbody></table>
-
-<p>booking form data.
-[products][n][&#39;pickUp&rsquo;][&#39;price&rsquo;] | true | The pick up price - price of pick up which is a mulitplier of the quantity.</p>
 
 <h3 id="sample-response">Sample Response</h3>
 
