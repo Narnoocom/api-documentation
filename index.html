@@ -3769,7 +3769,7 @@ For Rezdy products we do not support the &ldquo;PAYOUTS&rdquo; method. This is R
 
 <p>We have implemented direct bookings via a business&rsquo;s account on Narnoo.com. This implementation is the same process as how we are producing our mobile/desktop applications.</p>
 
-<h2 id="get-supplier-bookable-products">Get Supplier Bookable Products</h2>
+<h2 id="get-supplier-bookable-products-list">Get Supplier Bookable Products List</h2>
 
 <p>First we request all supplier products that are bookable via that agent’s account.</p>
 
@@ -3814,7 +3814,7 @@ Note: Narnoo gateway won’t cache reservation systems availability results. You
 
 <p>API call: GET https://apis.narnoo.com/api/v1/booking/details/{operator_id}/{product_booking_id}?id={bookingCode}</p>
 
-<p><img src="https://s3.amazonaws.com/staticdn.narnoo.com/assets/availability-results.jpg" title="Narnoo Console Product Bookable Form" alt="alt text" /></p>
+<p><img src="https://s3.amazonaws.com/staticdn.narnoo.com/assets/product-booking-form.jpg" title="Narnoo Console Product Bookable Form" alt="alt text" /></p>
 
 <p>In our application we update the total cost based on the following information.
 1. The selected option, multiplied by quantity.
@@ -3830,7 +3830,9 @@ Note: Narnoo gateway won’t cache reservation systems availability results. You
 5. Ability to edit these products.
 6. Payment method - in our portal we currently use credit card transactions via Stripe.</p>
 
-<p>[image goes here]</p>
+<p><img src="https://s3.amazonaws.com/staticdn.narnoo.com/assets/checkout-page.jpg" title="Narnoo Console Product Bookable Form" alt="alt text" /></p>
+
+<p>Our portal currently uses Stripe as the payment gateway.</p>
 
 <h2 id="charge-card-and-create-reservation">Charge card and create reservation</h2>
 
