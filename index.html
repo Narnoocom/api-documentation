@@ -3570,11 +3570,6 @@ For testing please use the https://apis-test.narnoo.com endpoint. All successful
 <td>The payment option price.</td>
 </tr>
 <tr>
-<td>[products][n][&#39;pickUp&rsquo;]</td>
-<td>false</td>
-<td>Pick up is not required however if it is included then all pick data is required.</td>
-</tr>
-<tr>
 <td>[products][n][&#39;extra&rsquo;]</td>
 <td>false</td>
 <td>Product extras - this information is being updated based on reservation system access.</td>
@@ -3593,6 +3588,11 @@ For testing please use the https://apis-test.narnoo.com endpoint. All successful
 <td>[products][n][&#39;extra&rsquo;][n][&#39;price&rsquo;]</td>
 <td>true</td>
 <td>The extra price - price of extra which is a mulitplier of the quantity.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;pickUp&rsquo;]</td>
+<td>false</td>
+<td>Pick up is not required however if it is included then all pick data is required.</td>
 </tr>
 <tr>
 <td>[products][n][&#39;pickUp&rsquo;][&#39;id&rsquo;]</td>
@@ -3615,12 +3615,12 @@ For testing please use the https://apis-test.narnoo.com endpoint. All successful
 <td>Product booking participant details.</td>
 </tr>
 <tr>
-<td>[products][n][&#39;pickUp&rsquo;][n][&#39;label&rsquo;]</td>
+<td>[products][n][&#39;participants&rsquo;][n][&#39;label&rsquo;]</td>
 <td>true</td>
 <td>Participant label - found from product bookable data.</td>
 </tr>
 <tr>
-<td>[products][n][&#39;pickUp&rsquo;][n][&#39;value&rsquo;]</td>
+<td>[products][n][&#39;participants&rsquo;][n][&#39;value&rsquo;]</td>
 <td>true</td>
 <td>Participant value - The value for that entry.</td>
 </tr>
