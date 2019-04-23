@@ -122,7 +122,7 @@
         <h1 id="introduction">Introduction</h1>
 
 <aside class="notice">
-Latest documentation update: **22-04-2019**.
+Latest documentation update: __23-04-2019__.
 </aside>
 
 <p>Welcome to the Narnoo live reservations API!</p>
@@ -2128,7 +2128,7 @@ If the operator_id is left off the endpoint then the response will return the to
 <td>Not all reservation systems output levy&rsquo;s here. It&rsquo;s common to not charge for any levy and the customer can pay on the day. This information should be made visible to the customer on the booking form.</td>
 </tr>
 <tr>
-<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice][n][&#39;levy&rsquo;]</td>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice][n][&#39;currency&rsquo;]</td>
 <td>string</td>
 <td>Currency name.</td>
 </tr>
@@ -2995,7 +2995,7 @@ The product fare data might be different to the productOptions in the product de
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>This endpoint retrieves the availability and prices.</p>
+<p>This endpoint retrieves the availability and prices for each of the dates.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -3021,19 +3021,19 @@ The product fare data might be different to the productOptions in the product de
 <td>We need to pass the operator&rsquo;s Narnoo booking ID</td>
 </tr>
 <tr>
-<td>bookingCode</td>
+<td>{bookingCode}</td>
 <td>true</td>
-<td>Passed in the id parameter. This bookingCode is found in the <a href="#get-product-booking-information">product details call</a> and is the combination of bookingCode and productTimes ( if productTimes exists )</td>
+<td>Passed in the id parameter. This bookingCode is found in earlier calls and is the combination of bookingCode and productTimes ( if productTimes exists ).</td>
 </tr>
 <tr>
 <td>startDate</td>
 <td>true</td>
-<td>The first day we want to check availability for. Date formate ( d-M-Y )</td>
+<td>The first day we want to check availability for - Date format ( d-M-Y )</td>
 </tr>
 <tr>
 <td>endDate</td>
 <td>true</td>
-<td>The last day we want to check availability for. Date formate ( d-M-Y )</td>
+<td>The last day we want to check availability for - Date format ( d-M-Y )</td>
 </tr>
 </tbody></table>
 
@@ -3047,24 +3047,104 @@ The product fare data might be different to the productOptions in the product de
 </tr>
 </thead><tbody>
 <tr>
-<td>[productAvailability][availability]</td>
-<td>integer</td>
-<td>containing available seats.</td>
+<td>[success]</td>
+<td>boolean</td>
+<td>Was the call successful.</td>
 </tr>
 <tr>
-<td>[productAvailability][bookingDateDisplay]</td>
+<td>[data]</td>
+<td>array</td>
+<td>The availability information.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingPlatform&rsquo;]</td>
+<td>string</td>
+<td>The name of the booking platform used for this product.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingPlatformNickname&rsquo;]</td>
+<td>string</td>
+<td>The nickname of the booking platform used for this product.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingPlatformMapping&rsquo;]</td>
+<td>string</td>
+<td>Either operator perferred or distributor nominated.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;]</td>
+<td>array</td>
+<td>The basic booking data information.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][bookingCode][id]</td>
+<td>string</td>
+<td>The string used to call the booking data.</td>
+</tr>
+<tr>
+<td>[data][&#39;availabilityStartDate&rsquo;]</td>
+<td>date time</td>
+<td>The date time used to start the date search.</td>
+</tr>
+<tr>
+<td>[data][&#39;availabilityEndDate&rsquo;]</td>
+<td>date time</td>
+<td>The date time used to end the date range search.</td>
+</tr>
+<tr>
+<td>[data][productAvailability]</td>
+<td>array</td>
+<td>The data for the product search.</td>
+</tr>
+<tr>
+<td>[data][productAvailability][n][bookingDateDisplay]</td>
 <td>date time</td>
 <td>This is a standardised date time which can be outputed to screen.</td>
 </tr>
 <tr>
-<td>[productAvailability][bookingDate]</td>
+<td>[data][productAvailability][n][bookingDate]</td>
 <td>mixed</td>
 <td>This needs to be sent over to the reservation write when creating a booking. It can contain a date time or integers. This follows guidelines of each reservation system.</td>
 </tr>
 <tr>
-<td>[productAvailability][price]</td>
+<td>[data][productAvailability][n][price]</td>
+<td>array</td>
+<td>Data containing the pricing for the dates.</td>
+</tr>
+<tr>
+<td>[data][productAvailability][n][price][n][&#39;id&rsquo;]</td>
+<td>integer</td>
+<td>Price ID.</td>
+</tr>
+<tr>
+<td>[data][productAvailability][n][price][n][&#39;label&rsquo;]</td>
+<td>string</td>
+<td>Price option label.</td>
+</tr>
+<tr>
+<td>[data][productAvailability][n][price][n][&#39;price&rsquo;]</td>
 <td>float</td>
-<td>containing the price of the seat for each option.</td>
+<td>Price option price.</td>
+</tr>
+<tr>
+<td>[data][productAvailability][n][price][n][&#39;pax&rsquo;]</td>
+<td>integer</td>
+<td>Number of paxs the price represents.</td>
+</tr>
+<tr>
+<td>[data][productAvailability][n][price][n][&#39;commission&rsquo;]</td>
+<td>float</td>
+<td>Commission on price - this is not a true representation of the commission for the product. You negiotated rates takes priority.</td>
+</tr>
+<tr>
+<td>[data][productAvailability][n][price][n][&#39;levy&rsquo;]</td>
+<td>float</td>
+<td>Any additional levy - not a true reflection. Use internally.</td>
+</tr>
+<tr>
+<td>[data][productAvailability][n][price][n][&#39;curreny&rsquo;]</td>
+<td>string</td>
+<td>The currency name used for payment.</td>
 </tr>
 </tbody></table>
 
