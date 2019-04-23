@@ -3765,9 +3765,78 @@ For Rezdy products we do not support the &ldquo;PAYOUTS&rdquo; method. This is R
 
           <h1 id="example">Example</h1>
 
-<h2 id="how-we-perform-a-booking-via-the-narnoo-portal">How we perform a booking via the Narnoo portal</h2>
+<h3 id="how-we-perform-a-booking-via-the-narnoo-portal">How we perform a booking via the Narnoo portal</h3>
 
 <p>We have implemented direct bookings via a business&rsquo;s account on Narnoo.com. This implementation is the same process as how we are producing our mobile/desktop applications.</p>
+
+<h2 id="get-supplier-bookable-products">Get Supplier Bookable Products</h2>
+
+<p>First we request all supplier products that are bookable via that agent’s account.</p>
+
+<p>API call: GET https://apis.narnoo.com/api/v1/booking/products/{operatorId}
+For more information please go to: <a href="#get-supplier-bookable-products">get bookable products</a></p>
+
+<p>[image goes here]</p>
+
+<h2 id="check-product-availability-based-on-the-product-booking-code">Check product availability based on the product booking code</h2>
+
+<p>Next we select the product we want to check availability for and perform an availability date range check.</p>
+
+<p>API call: GET https://apis.narnoo.com/api/v1/booking/products/{operatorId}/{productBookingId}?id={productBookingCode}&amp;startDate={d-m-Y}&amp;endDate={d-m-Y}</p>
+
+<p>[image goes here]</p>
+
+<aside class="notice">
+Note: For our implementation we have set a rule that if there are more than 3 tour productTimes we show a select option. This reduces API calls and gives a user the choice to pick the time.
+</aside>
+
+<p>[image select goes here]</p>
+
+<h2 id="show-results-based-on-availability-call">Show results based on availability call</h2>
+
+<p>[image goes here]</p>
+
+<p>When there is a + next to the number this means there are more spots available however the supplier has nominated only 10 in their results.</p>
+
+<aside class="notice">
+Note: Narnoo gateway won’t cache reservation systems availability results. Your system may do this, however we need to provide ‘live’ availability results.
+</aside>
+
+<h2 id="show-product-booking-form-data">Show product booking form data</h2>
+
+<p>This page shows the information required via that product for booking. Items include:
+1. Participant names
+2. Booking form requirements
+3. Any Extras
+4. Pick up data</p>
+
+<p>These can all have NULL results if nothing is available for that supplier in the relevant field.</p>
+
+<p>API call: GET https://apis.narnoo.com/api/v1/booking/details/{operator_id}/{product_booking_id}?id={bookingCode}</p>
+
+<p>[image goes here]</p>
+
+<h2 id="check-out-products">Check out products</h2>
+
+<p>This page shows the generic checkout form information. This information includes:
+1. Generic booking contact information
+2. Where possible we take the information stored in the shopping cart to populate this form. This reduces double entry.
+3. Product summary
+4. A summary of each product that has been placed in the cart.
+5. Ability to edit these products.
+6. Payment method - in our portal we currently use credit card transactions via Stripe.</p>
+
+<p>[image goes here]</p>
+
+<h2 id="charge-card-and-create-reservation">Charge card and create reservation</h2>
+
+<p>API Call POST: https://apis.narnoo.com/api/v1/booking/create</p>
+
+<p>[image goes here]</p>
+
+<h2 id="show-booking-confirmation">Show booking confirmation</h2>
+
+<p>[image goes here]</p>
 
       </div>
       <div class="dark-box">
