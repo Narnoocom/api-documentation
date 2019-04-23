@@ -2997,160 +2997,123 @@ Reservation API details are being updated.
 
 <h3 id="query-parameters">Query Parameters</h3>
 
-<aside class="notice">
-This is an example response - we will update information on each for more detail.
-</aside>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>[contact]</td>
+<td>true</td>
+<td>Booking contact information.</td>
+</tr>
+<tr>
+<td>[contact][&lsquo;firstName&rsquo;]</td>
+<td>true</td>
+<td>A booking contact first name.</td>
+</tr>
+<tr>
+<td>[contact][&#39;lastName&rsquo;]</td>
+<td>true</td>
+<td>A booking contact last name.</td>
+</tr>
+<tr>
+<td>[contact][&#39;email&rsquo;]</td>
+<td>true</td>
+<td>A booking contact email.</td>
+</tr>
+<tr>
+<td>[contact][&#39;phone&rsquo;]</td>
+<td>true</td>
+<td>A booking contact phone number.</td>
+</tr>
+<tr>
+<td>[contact][&#39;country&rsquo;]</td>
+<td>true</td>
+<td>A booking contact country name.</td>
+</tr>
+<tr>
+<td>[payment]</td>
+<td>true</td>
+<td>Booking payment type.</td>
+</tr>
+<tr>
+<td>[payment][&#39;type&rsquo;]</td>
+<td>true</td>
+<td>Payment method - at this stage creditCard is the only method used.</td>
+</tr>
+<tr>
+<td>[payment][&#39;currency&rsquo;]</td>
+<td>true</td>
+<td>Which currency was used to charge the credit card.</td>
+</tr>
+<tr>
+<td>[products]</td>
+<td>true</td>
+<td>Each bookable product information to be booked.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;productId&rsquo;]</td>
+<td>true</td>
+<td>The product booking id.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;bookingCode&rsquo;]</td>
+<td>true</td>
+<td>The product booking code used to return bookable data.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;bookingDate&rsquo;]</td>
+<td>true</td>
+<td>The booking date - found in the availability call.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;paymentMethod&rsquo;]</td>
+<td>true</td>
+<td>The product payment method - at this stage it is always &#39;FULL_AGENT&rsquo;. Meaning agent takes full payment for the product booking.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;option&rsquo;][n][&#39;id&rsquo;]</td>
+<td>true</td>
+<td>The payment option ID.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;option&rsquo;][n][&#39;label&rsquo;]</td>
+<td>true</td>
+<td>The payment option label.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;option&rsquo;][n][&#39;quantity&rsquo;]</td>
+<td>true</td>
+<td>The payment option quantity.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;option&rsquo;][n][&#39;price&rsquo;]</td>
+<td>true</td>
+<td>The payment option price.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;pickUp&rsquo;]</td>
+<td>false</td>
+<td>Pick up is not required however if it is included then all pick data is required.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;pickUp&rsquo;][&#39;id&rsquo;]</td>
+<td>true</td>
+<td>The pick up id - found from the product booking form data.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;pickUp&rsquo;][&#39;quantity&rsquo;]</td>
+<td>true</td>
+<td>The pick up quantity - charged per pack number or per booking - found from the product</td>
+</tr>
+</tbody></table>
 
-<p>Sample JSON PAYLOAD</p>
+<p>booking form data.
+[products][n][&#39;pickUp&rsquo;][&#39;price&rsquo;] | true | The pick up price - price of pick up which is a mulitplier of the quantity.</p>
 
-<p>{
- “//”: “This is a sample JSON PAYLOAD to create a reservation - REMORE THIS LINE”,
-  &ldquo;contact&rdquo;: {
-    &ldquo;firstName&rdquo;: &ldquo;Jon&rdquo;,
-    &ldquo;lastName&rdquo;: &ldquo;Doe&rdquo;,
-    &ldquo;email&rdquo;: &ldquo;jon.doe@gmail.com&rdquo;,
-    &ldquo;phone&rdquo;: &ldquo;1234567890&rdquo;,
-    &ldquo;country&rdquo;: &ldquo;Australia&rdquo;
-  },
-  &ldquo;payment&rdquo;: {
-    &ldquo;type&rdquo;: &ldquo;CREDITCARD&rdquo;,
-    &ldquo;currency&rdquo;: &ldquo;AUD&rdquo;
-  },
-  &ldquo;products&rdquo;: [
-    {
-      &ldquo;productId&rdquo;: 578,
-      &ldquo;bookingCode&rdquo;: &ldquo;RZ:578&rdquo;,
-      &ldquo;bookingDate&rdquo;: &ldquo;2018-07-25 09:00:00&rdquo;,
-      &ldquo;paymentMethod&rdquo;: &ldquo;FULL_AGENT&rdquo;,
-      &ldquo;option&rdquo;: [
-        {
-          &ldquo;id&rdquo;: &ldquo;11801&rdquo;,
-          &ldquo;label&rdquo;: &ldquo;Bronze Ticket&rdquo;,
-          &ldquo;quantity&rdquo;: 2,
-          &ldquo;price&rdquo;: 20
-        }
-      ],
-      &ldquo;pickUp&rdquo;: {
-        &ldquo;id&rdquo;: &ldquo;To Be Advised&rdquo;
-      },
-      &ldquo;participants&rdquo;: [
-        [
-          {
-            &ldquo;label&rdquo;: &ldquo;First Name&rdquo;,
-            &ldquo;value&rdquo;: &ldquo;Jon&rdquo;
-          },
-          {
-            &ldquo;label&rdquo;: &ldquo;Last Name&rdquo;,
-            &ldquo;value&rdquo;: &ldquo;Doe&rdquo;
-          },
-          {
-            &ldquo;label&rdquo;: &ldquo;Country&rdquo;,
-            &ldquo;value&rdquo;: &ldquo;Australia&rdquo;
-          }
-        ],
-        [
-          {
-            &ldquo;label&rdquo;: &ldquo;First Name&rdquo;,
-            &ldquo;value&rdquo;: &ldquo;Jane&rdquo;
-          },
-          {
-            &ldquo;label&rdquo;: &ldquo;Last Name&rdquo;,
-            &ldquo;value&rdquo;: &ldquo;Doe&rdquo;
-          },
-          {
-            &ldquo;label&rdquo;: &ldquo;Country&rdquo;,
-            &ldquo;value&rdquo;: &ldquo;Australia&rdquo;
-          }
-        ]
-      ],
-      &ldquo;bookingForm&rdquo;: [
-        {
-          &ldquo;label&rdquo;: &ldquo;Special Requirements&rdquo;,
-          &ldquo;value&rdquo;: &ldquo;None&rdquo;
-        },
-        {
-          &ldquo;label&rdquo;: &ldquo;Mobile&rdquo;,
-          &ldquo;value&rdquo;: &ldquo;1234567890&rdquo;
-        }
-      ]
-    }
-  ]
-}</p>
-<pre class="highlight json"><code><span class="w">
-</span><span class="p">{</span><span class="w">
- </span><span class="err">“//”:</span><span class="w"> </span><span class="err">“This</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">sample</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">PAYLOAD</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">create</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">reservation</span><span class="w"> </span><span class="err">-</span><span class="w"> </span><span class="err">REMORE</span><span class="w"> </span><span class="err">THIS</span><span class="w"> </span><span class="err">LINE”,</span><span class="w">
-  </span><span class="nt">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jon"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jon.doe@gmail.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITCARD"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"productId"</span><span class="p">:</span><span class="w"> </span><span class="mi">578</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"bookingCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RZ:578"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"bookingDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-25 09:00:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"paymentMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FULL_AGENT"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"option"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11801"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bronze Ticket"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"pickUp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"To Be Advised"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"participants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First Name"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jon"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last Name"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Country"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First Name"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last Name"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Country"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"bookingForm"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Special Requirements"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobile"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 <h3 id="sample-response">Sample Response</h3>
 
 <aside class="notice">
