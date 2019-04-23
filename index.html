@@ -2867,13 +2867,15 @@ The product fare data might be different to the productOptions in the product de
 
           <h1 id="reservation">Reservation</h1>
 
+<aside class="warning">
+For testing please use the https://apis-test.narnoo.com endpoint. All successful calls to the live endpoint will result in a booking creation. The commercial arrangement is the responsibility of the agent.
+</aside>
+
 <p>The reservation endpoint performs all the live reservation tasks. This endpoint submits reservation details to the nominated products reservation system.</p>
 
 <h2 id="create-reservation">Create Reservation</h2>
 
-<aside class="notice">
-Reservation API details are being updated.
-</aside>
+<p>This is the main endpoint to create a reservation for the nominated products.</p>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -3148,9 +3150,8 @@ Reservation API details are being updated.
 
 <h3 id="sample-response">Sample Response</h3>
 
-<aside class="notice">
-This is an example response - we will update information on each for more detail.
-</aside>
+<p>The response returns the confirmation for each product booked and the booking code created by the reservation system. This is sometimes referred to as the voucher code.
+A unique ID is returned which you will be able to search for orders created via your Narnoo admin console.</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G4rccI1MWdQkx1F"</span><span class="p">,</span><span class="w">
