@@ -331,7 +331,11 @@ Some reservations systems require you to notify them when you are ready to start
 
 <p>It&rsquo;s similar to a social network where you create lists of businesses that your business follows.</p>
 
-<h2 id="find-business-to-follow">Find business to follow</h2>
+<aside class="notice">
+The configuration of operators can be easily done via the web portal. As of the &ldquo;latest documentation update&rdquo; it is advisable to set up the web portal with products before moving to the API. 
+</aside>
+
+<h2 id="find-businesses-to-follow">Find businesses to follow</h2>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -778,7 +782,7 @@ Some reservations systems require you to notify them when you are ready to start
 </tr>
 </tbody></table>
 
-<h2 id="get-list-of-operators-business-is-following">Get list of operators business is following</h2>
+<h2 id="following-business-list">Following Business List</h2>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -874,7 +878,198 @@ Some reservations systems require you to notify them when you are ready to start
                 </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"support@websitetravel.com"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.websitetravel.com/"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"operator"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"products"</span><span class="w">
+                </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"products"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"bookable"</span><span class="p">:</span><span class="w"> </span><span class="err">TRUE</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7624"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"uploadedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-11 16:56:03"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"cropImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_615/crop/crop_Website-Travel-Demo-bEp1YkogxpnY31y.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"xcropImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_615/xcrop/xcrop_Website-Travel-Demo-bEp1YkogxpnY31y.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"thumbImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_615/thumb/thumb_Website-Travel-Demo-bEp1YkogxpnY31y.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"previewImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_615/preview/preview_Website-Travel-Demo-bEp1YkogxpnY31y.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"largeImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_615/large/large_Website-Travel-Demo-bEp1YkogxpnY31y.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"xlargeImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_615/xlarge/xlarge_Website-Travel-Demo-bEp1YkogxpnY31y.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"xxlargeImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_615/xxlarge/xxlarge_Website-Travel-Demo-bEp1YkogxpnY31y.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"image200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_615/200/200_Website-Travel-Demo-bEp1YkogxpnY31y.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"image400"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_615/400/400_Website-Travel-Demo-bEp1YkogxpnY31y.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"image800"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_615/800/800_Website-Travel-Demo-bEp1YkogxpnY31y.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"imageSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"992.45"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"imageWidth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1831"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"imageHeight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1255"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"landscape"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"privilege"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"featureImage"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"614"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"business"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rezdy Demo"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rezdy Demo"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+61 (02) 8244-3060"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stevie+noreply@rezdy.com"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.rezdy.com"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"operator"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"products"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"bookable"</span><span class="p">:</span><span class="w"> </span><span class="err">TRUE</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7623"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"uploadedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-11 14:46:48"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"cropImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/crop/crop_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"xcropImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/xcrop/xcrop_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"thumbImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/thumb/thumb_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"previewImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/preview/preview_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"largeImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/large/large_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"xlargeImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/xlarge/xlarge_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"xxlargeImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/xxlarge/xxlarge_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"image200"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/200/200_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"image400"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/400/400_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"image800"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//dmxhl5sgly8nk.cloudfront.net/op_614/800/800_Rezdy-Demo-s9hHFN4a9OiaLXZ.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"imageSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"997.69"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"imageWidth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"imageHeight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2696"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"landscape"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"privilege"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"featureImage"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"queryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11.74ms"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This endpoint retrieves any businesses that are being following.</p>
+
+<aside class="notice">
+The number of businesses that you following determine the Narnoo subscription plan you are on.
+</aside>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://apis.narnoo.com/api/v1/connect/following</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>false</td>
+<td>paging</td>
+</tr>
+<tr>
+<td>total</td>
+<td>false</td>
+<td>total number of responses request</td>
+</tr>
+</tbody></table>
+
+<h2 id="bookable-business-list">Bookable Business List</h2>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://apis.narnoo.com/api/v1/connect/bookable"</span><span class="p">,</span>
+  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"bearer xxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"Cache-Control"</span><span class="p">:</span> <span class="s2">"no-cache"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://apis.narnoo.com/api/v1/connect/bookable"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="nx">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="nx">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="nx">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="nx">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="nx">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">"Authorization: bearer xxxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"Cache-Control: no-cache"</span>
+  <span class="p">),</span>
+<span class="p">));</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="o">.</span> <span class="nv">$err</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://apis.narnoo.com/api/v1/connect/bookable"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">"bearer xxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s">'Cache-Control'</span><span class="p">:</span> <span class="s">"no-cache"</span>
+    <span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Foundation</span>
+
+<span class="k">let</span> <span class="nv">headers</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"bearer xxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+  <span class="s">"Cache-Control"</span><span class="p">:</span> <span class="s">"no-cache"</span>
+<span class="p">]</span>
+
+<span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">NSMutableURLRequest</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">NSURL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://apis.narnoo.com/api/v1/connect/bookable"</span><span class="p">)</span><span class="o">!</span> <span class="k">as</span> <span class="kt">URL</span><span class="p">,</span>
+                                        <span class="nv">cachePolicy</span><span class="p">:</span> <span class="o">.</span><span class="n">useProtocolCachePolicy</span><span class="p">,</span>
+                                    <span class="nv">timeoutInterval</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">httpMethod</span> <span class="o">=</span> <span class="s">"GET"</span>
+<span class="n">request</span><span class="o">.</span><span class="n">allHTTPHeaderFields</span> <span class="o">=</span> <span class="n">headers</span>
+
+<span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span>
+<span class="k">let</span> <span class="nv">dataTask</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="nf">dataTask</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">request</span> <span class="k">as</span> <span class="kt">URLRequest</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">httpResponse</span> <span class="o">=</span> <span class="n">response</span> <span class="k">as?</span> <span class="kt">HTTPURLResponse</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="n">dataTask</span><span class="o">.</span><span class="nf">resume</span><span class="p">()</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"615"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"business"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Website Travel Demo"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kenny Lee"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(61) 7369-8745"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"support@websitetravel.com"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.websitetravel.com/"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"operator"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"bookable"</span><span class="p">:</span><span class="w"> </span><span class="err">TRUE</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7624"</span><span class="p">,</span><span class="w">
@@ -936,15 +1131,11 @@ Some reservations systems require you to notify them when you are ready to start
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>This endpoint retrieves any businesses that you are following.</p>
-
-<aside class="notice">
-The number of businesses that you following determine the Narnoo subscription plan you are on.
-</aside>
+<p>This endpoint retrieves any businesses that has been configured for live bookings.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://apis.narnoo.com/api/v1/connect/following</code></p>
+<p><code class="prettyprint">GET https://apis.narnoo.com/api/v1/connect/bookable</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
