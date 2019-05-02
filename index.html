@@ -152,14 +152,16 @@ This is being standarded to: bookingId.
 
 <p>We have set up a testing environment which uses all the reservation systems&rsquo; testing API calls. This means you can test the API without making real time bookings.</p>
 
+<p>The only real endpoint to be concerned about is the <a href="#create-reservation">create product reservation</a> route. Use our testing API when developing this endpoint as it will not create a live reservation. If you use the live endpoint a live booking will be made and the agent will be responsible for the costs involved with booking the product.</p>
+
 <blockquote>
 <p>Testing endpoint: https://apis-test.narnoo.com/v1/</p>
 </blockquote>
 
 <p>Once you&rsquo;re happy with testing you can change the endpoint URL and start making live calls.</p>
 
-<aside class="notice">
-Some reservations systems require you to notify them when you are ready to start making real time calls. They have to update your authentication keys to work with their live API. You can always let support@narnoo.com know and we can follow up with the reservation system for you.
+<aside class="warning">
+Use the testing endpoint when developing the write reservation endpoint.
 </aside>
 
 <h2 id="current-reservation-systems">Current Reservation Systems</h2>
