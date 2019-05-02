@@ -3948,10 +3948,265 @@ A unique ID is returned which you will be able to search for orders created via 
           <h1 id="report">Report</h1>
 
 <aside class="notice">
-Reports endpoint will be published week ending 3rd May 2019.
+Reports endpoint still in beta format as we currently test through them.
 </aside>
 
-<p>This endpoint will allow you to see orders both in test and live modes. In test mode you can see the order raw data for testing and debugging purposes.</p>
+<p>These endpoints will allow you to see orders both in test and live modes. In test mode you can see the order raw data for testing and debugging purposes.</p>
+
+<h2 id="get-agent-39-s-booking-list">Get Agent&rsquo;s booking List</h2>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://apis.narnoo.com/api/v1/report/agent_booking_list/"</span><span class="p">,</span>
+  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"bearer xxxxxxxxxxxxx"</span>
+    <span class="s2">"Accept"</span><span class="p">:</span> <span class="s2">"*/*"</span><span class="p">,</span>
+    <span class="s2">"Cache-Control"</span><span class="p">:</span> <span class="s2">"no-cache"</span><span class="p">,</span>
+    <span class="s2">"Host"</span><span class="p">:</span> <span class="s2">"apis.narnoo.com"</span><span class="p">,</span>
+    <span class="s2">"accept-encoding"</span><span class="p">:</span> <span class="s2">"gzip, deflate"</span><span class="p">,</span>
+    <span class="s2">"Connection"</span><span class="p">:</span> <span class="s2">"keep-alive"</span><span class="p">,</span>
+    <span class="s2">"cache-control"</span><span class="p">:</span> <span class="s2">"no-cache"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://apis.narnoo.com/api/v1/report/agent_booking_list"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="nx">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="nx">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="nx">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="nx">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="nx">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="nx">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">"Accept: */*"</span><span class="p">,</span>
+    <span class="s2">"Authorization: bearer xxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"Cache-Control: no-cache"</span><span class="p">,</span>
+    <span class="s2">"Connection: keep-alive"</span><span class="p">,</span>
+    <span class="s2">"Host: apis.narnoo.com"</span><span class="p">,</span>
+    <span class="s2">"accept-encoding: gzip, deflate"</span><span class="p">,</span>
+    <span class="s2">"cache-control: no-cache"</span>
+  <span class="p">),</span>
+<span class="p">));</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="o">.</span> <span class="nv">$err</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://apis.narnoo.com/api/v1/report/agent_booking_list"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">""</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">"bearer xxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"*/*"</span><span class="p">,</span>
+    <span class="s">'Cache-Control'</span><span class="p">:</span> <span class="s">"no-cache"</span><span class="p">,</span>
+    <span class="s">'accept-encoding'</span><span class="p">:</span> <span class="s">"gzip, deflate"</span><span class="p">,</span>
+    <span class="s">'Connection'</span><span class="p">:</span> <span class="s">"keep-alive"</span><span class="p">,</span>
+    <span class="s">'cache-control'</span><span class="p">:</span> <span class="s">"no-cache"</span>
+    <span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Foundation</span>
+
+<span class="k">let</span> <span class="nv">headers</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"bearer xxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+  <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"*/*"</span><span class="p">,</span>
+  <span class="s">"Cache-Control"</span><span class="p">:</span> <span class="s">"no-cache"</span><span class="p">,</span>
+  <span class="s">"Host"</span><span class="p">:</span> <span class="s">"apis.narnoo.com"</span><span class="p">,</span>
+  <span class="s">"accept-encoding"</span><span class="p">:</span> <span class="s">"gzip, deflate"</span><span class="p">,</span>
+  <span class="s">"Connection"</span><span class="p">:</span> <span class="s">"keep-alive"</span><span class="p">,</span>
+  <span class="s">"cache-control"</span><span class="p">:</span> <span class="s">"no-cache"</span>
+<span class="p">]</span>
+
+<span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">NSMutableURLRequest</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">NSURL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://apis.narnoo.com/api/v1/report/agent_booking_list"</span><span class="p">)</span><span class="o">!</span> <span class="k">as</span> <span class="kt">URL</span><span class="p">,</span>
+                                        <span class="nv">cachePolicy</span><span class="p">:</span> <span class="o">.</span><span class="n">useProtocolCachePolicy</span><span class="p">,</span>
+                                    <span class="nv">timeoutInterval</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">httpMethod</span> <span class="o">=</span> <span class="s">"GET"</span>
+<span class="n">request</span><span class="o">.</span><span class="n">allHTTPHeaderFields</span> <span class="o">=</span> <span class="n">headers</span>
+
+<span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span>
+<span class="k">let</span> <span class="nv">dataTask</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="nf">dataTask</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">request</span> <span class="k">as</span> <span class="kt">URLRequest</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">httpResponse</span> <span class="o">=</span> <span class="n">response</span> <span class="k">as?</span> <span class="kt">HTTPURLResponse</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="n">dataTask</span><span class="o">.</span><span class="nf">resume</span><span class="p">()</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"responseLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-02 10:05:02"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"complete"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AzO70OzCWvV14UZ"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"orderTotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"135.00"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"orderDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-02 10:04:43"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"customerFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jon"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"customerLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"customerEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jon@gmail.com"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-01 16:26:02"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"complete"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B5xJp2aWYfnz9Jd"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"orderTotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"135.00"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"orderDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-01 16:25:50"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"customerFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"customerLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"customerEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@gmail.com"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"queryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"367.99ms"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves the list of orders for the agent.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://apis.narnoo.com/api/v1/report/agent_booking_list/{order_type}</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<p>{order_type} - is optional and can either be live or test. By defualt it will always return &lsquo;live&rsquo; bookings. But for your testing purposes you can pass &#39;test&rsquo; as the order_type and then return test bookings done via our testing endpoint.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>false</td>
+<td>paging</td>
+</tr>
+<tr>
+<td>total</td>
+<td>false</td>
+<td>total number of responses request</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>[success]</td>
+<td>boolean</td>
+<td>Was the call successful.</td>
+</tr>
+<tr>
+<td>[count]</td>
+<td>integer</td>
+<td>Total number of orders.</td>
+</tr>
+<tr>
+<td>[currentPage]</td>
+<td>integer</td>
+<td>The page of results.</td>
+</tr>
+<tr>
+<td>[totalPages]</td>
+<td>integer</td>
+<td>The total number of pages available.</td>
+</tr>
+<tr>
+<td>[responseLimit]</td>
+<td>integer</td>
+<td>The total number or results per call.</td>
+</tr>
+<tr>
+<td>[data]</td>
+<td>array</td>
+<td>order information.</td>
+</tr>
+<tr>
+<td>[data][n][&#39;dateCreated&rsquo;]</td>
+<td>datetime</td>
+<td>Date or record creation.</td>
+</tr>
+<tr>
+<td>[data][n][&#39;type&rsquo;]</td>
+<td>string</td>
+<td>Type of order - live or test.</td>
+</tr>
+<tr>
+<td>[data][n][&#39;status&rsquo;]</td>
+<td>string</td>
+<td>Status of the order.</td>
+</tr>
+<tr>
+<td>[data][n][&#39;orderId&rsquo;]</td>
+<td>string</td>
+<td>A unique ID for the order.</td>
+</tr>
+<tr>
+<td>[data][n][&#39;orderTotal&rsquo;]</td>
+<td>decimal</td>
+<td>Total cost of the order.</td>
+</tr>
+<tr>
+<td>[data][n][&#39;orderDate&rsquo;]</td>
+<td>datetime</td>
+<td>Date order was created.</td>
+</tr>
+<tr>
+<td>[data][n][&#39;customerFirstName&rsquo;]</td>
+<td>string</td>
+<td>Booking contact first name.</td>
+</tr>
+<tr>
+<td>[data][n][&#39;customerLastName&rsquo;]</td>
+<td>string</td>
+<td>Booking contact last name.</td>
+</tr>
+<tr>
+<td>[data][n][&#39;customerEmail&rsquo;]</td>
+<td>string</td>
+<td>Customer email address.</td>
+</tr>
+</tbody></table>
 
           <h1 id="definitions">Definitions</h1>
 
