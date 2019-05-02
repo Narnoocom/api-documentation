@@ -122,7 +122,7 @@
         <h1 id="introduction">Introduction</h1>
 
 <aside class="notice">
-Latest documentation update: __23-04-2019__.
+Latest documentation update: 02-05-2019
 </aside>
 
 <p>Welcome to the Narnoo live reservations API!</p>
@@ -142,7 +142,9 @@ This is being standarded to: bookingId.
 
 <h2 id="latest-endpoints">Latest Endpoints</h2>
 
-<p>Get a list of only operators configured for booking: <a href="#bookable-business-list">get bookable operators</a></p>
+<p>Get a list of only operators configured for booking: <a href="#bookable-business-list">get bookable operators</a>
+Get booking order list: <a href="#get-bookings-list">get orders</a>
+Get booking order details: <a href="#get-bookings-details">get orders</a></p>
 
 <h2 id="testing-environment">Testing Environment</h2>
 
@@ -163,7 +165,6 @@ Some reservations systems require you to notify them when you are ready to start
 <table><thead>
 <tr>
 <th>Reservation System</th>
-<th>Testing API Keys</th>
 <th>Live API Approval</th>
 <th>Type</th>
 </tr>
@@ -171,30 +172,30 @@ Some reservations systems require you to notify them when you are ready to start
 <tr>
 <td>Respax</td>
 <td>No</td>
-<td>Yes</td>
 <td>Reservations</td>
 </tr>
 <tr>
 <td>Rezdy</td>
 <td>Yes</td>
-<td>No</td>
 <td>Reservations</td>
 </tr>
 <tr>
 <td>Website Travel</td>
-<td>Yes</td>
 <td>Yes</td>
 <td>Wholesaler</td>
 </tr>
 <tr>
 <td>Fareharbor</td>
 <td>Yes</td>
-<td>Yes</td>
 <td>Reservations</td>
 </tr>
 <tr>
 <td>Booking Boss - &ldquo;coming soon&rdquo;</td>
 <td>Yes</td>
+<td>Reservations</td>
+</tr>
+<tr>
+<td>CustomLic - &ldquo;coming soon&rdquo;</td>
 <td>Yes</td>
 <td>Reservations</td>
 </tr>
@@ -3955,7 +3956,7 @@ Reports endpoint still in beta format as we currently test through them.
 
 <p>Order details are processed in the background once an order has been received. There can be a delay of up to a minute for the order to appear in the orders list</p>
 
-<h2 id="get-bookings-list">Get bookings List</h2>
+<h2 id="get-bookings-list">Get bookings list</h2>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -4210,7 +4211,7 @@ Reports endpoint still in beta format as we currently test through them.
 </tr>
 </tbody></table>
 
-<h2 id="get-bookings-details">Get bookings Details</h2>
+<h2 id="get-bookings-details">Get bookings details</h2>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
