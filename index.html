@@ -3953,7 +3953,9 @@ Reports endpoint still in beta format as we currently test through them.
 
 <p>These endpoints will allow you to see orders both in test and live modes. In test mode you can see the order raw data for testing and debugging purposes.</p>
 
-<h2 id="get-agent-39-s-booking-list">Get Agent&rsquo;s booking List</h2>
+<p>Order details are processed in the background once an order has been received. There can be a delay of up to a minute for the order to appear in the orders list</p>
+
+<h2 id="get-bookings-list">Get bookings List</h2>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
