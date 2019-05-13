@@ -142,6 +142,10 @@ This is being standarded to: bookingId.
 
 <h2 id="latest-endpoints">Latest Endpoints</h2>
 
+<aside class="warning">
+There has been an update to the bookingCode response in [get a suppliers&rsquo; bookable products](#get-supplier-bookable-products)
+</aside>
+
 <p>Added &lsquo;pickup label&rsquo; and &#39;extra label&rsquo; to the create reservation request.</p>
 
 <ol>
@@ -2241,31 +2245,33 @@ If the operator_id is left off the endpoint then the response will return the to
                         </span><span class="p">]</span><span class="w">
                     </span><span class="p">}</span><span class="w">
                 </span><span class="p">},</span><span class="w">
-                </span><span class="nt">"bookingCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP:1654:3775"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 Activity - Standard"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"optionPrice"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                        </span><span class="p">{</span><span class="w">
-                            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43451"</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adult"</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"pax"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"commission"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
-                        </span><span class="p">},</span><span class="w">
-                        </span><span class="p">{</span><span class="w">
-                            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43461"</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Child (Dome Entry 4-14 Yrs, Zoom Activities 6-14 Yrs)"</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">28.5</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"pax"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"commission"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
-                        </span><span class="p">}</span><span class="w">
+                </span><span class="nt">"bookingCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP:1654:3775"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 Activity - Standard"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"optionPrice"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                            </span><span class="p">{</span><span class="w">
+                                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43451"</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adult"</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"pax"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"commission"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
+                            </span><span class="p">},</span><span class="w">
+                            </span><span class="p">{</span><span class="w">
+                                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43461"</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Child (Dome Entry 4-14 Yrs, Zoom Activities 6-14 Yrs)"</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">28.5</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"pax"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"commission"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
+                            </span><span class="p">}</span><span class="w">
                     </span><span class="p">]</span><span class="w">
-                </span><span class="p">},</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
                 </span><span class="nt">"productTimes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="p">{</span><span class="w">
                         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1777</span><span class="p">,</span><span class="w">
@@ -2355,31 +2361,33 @@ If the operator_id is left off the endpoint then the response will return the to
                         </span><span class="p">]</span><span class="w">
                     </span><span class="p">}</span><span class="w">
                 </span><span class="p">},</span><span class="w">
-                </span><span class="nt">"bookingCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP:1751:3978"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard - Standard"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"optionPrice"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                        </span><span class="p">{</span><span class="w">
-                            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43451"</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adult"</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">21.6</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"pax"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"commission"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
-                        </span><span class="p">},</span><span class="w">
-                        </span><span class="p">{</span><span class="w">
-                            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43461"</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Child (Dome Entry 4-14 Yrs, Zoom Activities 6-14 Yrs)"</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.8</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"pax"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"commission"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
-                        </span><span class="p">}</span><span class="w">
-                    </span><span class="p">]</span><span class="w">
-                </span><span class="p">},</span><span class="w">
+                </span><span class="nt">"bookingCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RP:1751:3978"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard - Standard"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"optionPrice"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                            </span><span class="p">{</span><span class="w">
+                                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43451"</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adult"</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">21.6</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"pax"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"commission"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
+                            </span><span class="p">},</span><span class="w">
+                            </span><span class="p">{</span><span class="w">
+                                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43461"</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Child (Dome Entry 4-14 Yrs, Zoom Activities 6-14 Yrs)"</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.8</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"pax"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"commission"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"levy"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="w">
+                            </span><span class="p">}</span><span class="w">
+                        </span><span class="p">]</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
                 </span><span class="nt">"productTimes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="p">{</span><span class="w">
                         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1981</span><span class="p">,</span><span class="w">
@@ -2524,77 +2532,77 @@ If the operator_id is left off the endpoint then the response will return the to
 <td>The product bookable data. This is used by the third party reservation systems.</td>
 </tr>
 <tr>
-<td>[data][products][n][&#39;bookingCodes&rsquo;][&#39;id&rsquo;]</td>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][n][&#39;id&rsquo;]</td>
 <td>string</td>
 <td>Product booking code - used for all bookable data calls.</td>
 </tr>
 <tr>
-<td>[data][products][n][&#39;bookingCodes&rsquo;][&#39;label&rsquo;]</td>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][n][&#39;label&rsquo;]</td>
 <td>string</td>
 <td>Product booking option label - sent via the third party reservation system.</td>
 </tr>
 <tr>
-<td>[data][products][n][&#39;bookingCodes&rsquo;][&#39;duration&rsquo;]</td>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][n][&#39;duration&rsquo;]</td>
 <td>interger</td>
 <td>The product duration in minutes.</td>
 </tr>
 <tr>
-<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice]</td>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][n][optionPrice]</td>
 <td>array</td>
 <td>The different fare options for the product.</td>
 </tr>
 <tr>
-<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice][n][&#39;id&rsquo;]</td>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][n][optionPrice][n][&#39;id&rsquo;]</td>
 <td>integer</td>
 <td>The fare option id.</td>
 </tr>
 <tr>
-<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice][n][&#39;label&rsquo;]</td>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][n][optionPrice][n][&#39;label&rsquo;]</td>
 <td>string</td>
 <td>The fare option label.</td>
 </tr>
 <tr>
-<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice][n][&#39;price&rsquo;]</td>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][n][optionPrice][n][&#39;price&rsquo;]</td>
 <td>float</td>
 <td>The fare option price.</td>
 </tr>
 <tr>
-<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice][n][&#39;pax&rsquo;]</td>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][n][optionPrice][n][&#39;pax&rsquo;]</td>
 <td>integer</td>
 <td>The quantity of paxs the price represents. Example: a family option could have 4 here.</td>
 </tr>
 <tr>
-<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice][n][&#39;commission&rsquo;]</td>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][n][optionPrice][n][&#39;commission&rsquo;]</td>
 <td>float</td>
 <td>Not all reservation systems output commission here. This currently does not represent commissions for all products, via all reservation systems.</td>
 </tr>
 <tr>
-<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice][n][&#39;levy&rsquo;]</td>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][n][optionPrice][n][&#39;levy&rsquo;]</td>
 <td>float</td>
 <td>Not all reservation systems output levy&rsquo;s here. It&rsquo;s common to not charge for any levy and the customer can pay on the day. This information should be made visible to the customer on the booking form.</td>
 </tr>
 <tr>
-<td>[data][products][n][&#39;bookingCodes&rsquo;][optionPrice][n][&#39;currency&rsquo;]</td>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][n][optionPrice][n][&#39;currency&rsquo;]</td>
 <td>string</td>
 <td>Currency name.</td>
 </tr>
 <tr>
-<td>[data][products][n][&#39;bookingCodes&rsquo;][productTimes]</td>
+<td>[data][products][n][productTimes]</td>
 <td>array</td>
 <td>Any product time information - Can be NULL. If it exists it needs to be added to the [data][products][n][&#39;bookingCodes&rsquo;][&#39;id&rsquo;]:[data][products][n][&#39;bookingCodes&rsquo;][productTimes][n][&#39;id&rsquo;].</td>
 </tr>
 <tr>
-<td>[data][products][n][&#39;bookingCodes&rsquo;][productTimes][n][&#39;id&rsquo;]</td>
+<td>[data][products][n][productTimes][n][&#39;id&rsquo;]</td>
 <td>integer</td>
 <td>Product time ID.</td>
 </tr>
 <tr>
-<td>[data][products][n][&#39;bookingCodes&rsquo;][productTimes][n][&#39;time&rsquo;]</td>
+<td>[data][products][n][productTimes][n][&#39;time&rsquo;]</td>
 <td>time</td>
 <td>Product time label.</td>
 </tr>
 <tr>
-<td>[data][products][n][&#39;bookingCodes&rsquo;][productTimes][n][&#39;default&rsquo;]</td>
+<td>[data][products][n][productTimes][n][&#39;default&rsquo;]</td>
 <td>boolean</td>
 <td>The default time.</td>
 </tr>
