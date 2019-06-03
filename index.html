@@ -236,8 +236,6 @@ Use the testing endpoint when developing the write reservation endpoint.
 
 <p><img src="https://s3.amazonaws.com/staticdn.narnoo.com/assets/api-dev-screen.jpg" title="Narnoo API Screenshot" alt="alt text" /></p>
 
-<p>It&rsquo;s similar to a social network where you create lists of businesses that your business follows.</p>
-
 <h2 id="authentication">Authentication</h2>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -333,6 +331,10 @@ Use the testing endpoint when developing the write reservation endpoint.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a token which will be used for further authentication to our API.</p>
+
+<aside class="notice">
+This token is valid for a 6 month period. An invalid token error will be returned when the token has expired.
+</aside>
 
 <h3 id="http-request">HTTP Request</h3>
 
