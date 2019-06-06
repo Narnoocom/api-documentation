@@ -2900,7 +2900,7 @@ Returns only products that have been mapped to a reservation system and therefor
 <h3 id="query-parameters">Query Parameters</h3>
 
 <aside class="warning">
-{bookin_id} is not the productId in the product list response. It is the {bookingId}.
+{booking_id} is not the productId in the product list response. It is the {bookingId}.
 </aside>
 
 <table><thead>
@@ -3179,6 +3179,11 @@ If productTimes exists in the response then future bookingsCode ID need to be in
 <td>id = bookingCode</td>
 <td>true</td>
 <td>Passed in the id parameter. This bookingCode is found in earlier calls and is the combination of bookingCode and productTimes ( if productTimes exists ).</td>
+</tr>
+<tr>
+<td>date = bookingDate ( date of travel )</td>
+<td>false</td>
+<td>Can be passed to get an additional check on live pricing for a specific date.</td>
 </tr>
 </tbody></table>
 
