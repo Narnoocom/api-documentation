@@ -122,7 +122,7 @@
         <h1 id="introduction">Introduction</h1>
 
 <aside class="notice">
-Latest documentation update: 05-05-2019
+Latest documentation update: 07-06-2019
 </aside>
 
 <p>Welcome to the Narnoo live reservations API!</p>
@@ -146,7 +146,9 @@ This is being standarded to: bookingId.
 There has been an update to the bookingCode response in [get a suppliers&rsquo; bookable products](#get-supplier-bookable-products)
 </aside>
 
-<p>Added &lsquo;pickup label&rsquo; and &#39;extra label&rsquo; to the create reservation request.</p>
+<p>Updated information - If pickUp data is provided for a product then it is manditory to pass this to the create reservation endpoint.
+Updated information - Added date param to product booking data so there is an option to check pricing for a specific date. <a href="#get-product-booking-details">get bookable product data</a>
+Added &lsquo;pickup label&rsquo; and &#39;extra label&rsquo; to the create reservation request.</p>
 
 <ol>
 <li>Search operators configured for booking: <a href="#search-bookable-operators">search bookable operators</a></li>
@@ -4066,7 +4068,7 @@ For testing please use the https://apis-test.narnoo.com endpoint. All successful
 <tr>
 <td>[products][n][&#39;pickUp&rsquo;]</td>
 <td>false</td>
-<td>Pick up is not required however if it is included then all pick data is required.</td>
+<td>Pick up is required if the pickUp data in product booking data is not NULL. If pickUp data is included in the reservation call then all pickUp data is required.</td>
 </tr>
 <tr>
 <td>[products][n][&#39;pickUp&rsquo;][&#39;id&rsquo;]</td>
