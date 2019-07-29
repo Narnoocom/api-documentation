@@ -122,7 +122,7 @@
         <h1 id="introduction">Introduction</h1>
 
 <aside class="notice">
-Latest documentation update: 07-06-2019
+Latest documentation update: 29-07-2019
 </aside>
 
 <p>Welcome to the Narnoo live reservations API!</p>
@@ -142,20 +142,13 @@ This is being standarded to: bookingId.
 
 <h2 id="latest-endpoints">Latest Endpoints</h2>
 
-<aside class="warning">
-There has been an update to the bookingCode response in [get a suppliers&rsquo; bookable products](#get-supplier-bookable-products)
-</aside>
+<ol>
+<li>Narnoo Webhooks: <a href="#get-webhook-list">webhooks</a></li>
+</ol>
 
 <p>Updated information - If pickUp data is provided for a product then it is manditory to pass this to the create reservation endpoint.
 Updated information - Added date param to product booking data so there is an option to check pricing for a specific date. <a href="#get-product-booking-details">get bookable product data</a>
 Added &lsquo;pickup label&rsquo; and &#39;extra label&rsquo; to the create reservation request.</p>
-
-<ol>
-<li>Search operators configured for booking: <a href="#search-bookable-operators">search bookable operators</a></li>
-<li>Get a list of only operators configured for booking: <a href="#bookable-operators-list">get bookable operators</a></li>
-<li>Get booking order list: <a href="#get-bookings-list">get orders</a></li>
-<li>Get booking order details: <a href="#get-bookings-details">get order details</a></li>
-</ol>
 
 <h2 id="testing-environment">Testing Environment</h2>
 
@@ -5865,6 +5858,425 @@ Reports endpoint still in beta format as we currently test through them.
 <h3 id="query-parameters">Query Parameters</h3>
 
 <p>{category id} | Required</p>
+
+          <h1 id="webhooks">Webhooks</h1>
+
+<p>These endpoints will allow you manage webhooks within Narnoo.</p>
+
+<p>Narnoo webhooks allows our system to talk to your system via HTTP requests. This process allows you to automate some basic functions - such as being notified when a new product has been created or deleted.</p>
+
+<h2 id="get-webhook-list">Get webhook list</h2>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://apis.narnoo.com/api/v1/webhook/list"</span><span class="p">,</span>
+  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"bearer xxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"Accept"</span><span class="p">:</span> <span class="s2">"*/*"</span><span class="p">,</span>
+    <span class="s2">"Cache-Control"</span><span class="p">:</span> <span class="s2">"no-cache"</span><span class="p">,</span>
+    <span class="s2">"Host"</span><span class="p">:</span> <span class="s2">"apis.narnoo.com"</span><span class="p">,</span>
+    <span class="s2">"Connection"</span><span class="p">:</span> <span class="s2">"keep-alive"</span><span class="p">,</span>
+    <span class="s2">"cache-control"</span><span class="p">:</span> <span class="s2">"no-cache"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://apis.narnoo.com/api/v1/webhook/list"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="nx">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="nx">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="nx">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="nx">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="nx">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">"Accept: */*"</span><span class="p">,</span>
+    <span class="s2">"Authorization: bearer xxxxx"</span><span class="p">,</span>
+    <span class="s2">"Cache-Control: no-cache"</span><span class="p">,</span>
+    <span class="s2">"Connection: keep-alive"</span><span class="p">,</span>
+    <span class="s2">"Host: apis.narnoo.com"</span><span class="p">,</span>
+    <span class="s2">"cache-control: no-cache"</span>
+  <span class="p">),</span>
+<span class="p">));</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="o">.</span> <span class="nv">$err</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://apis.narnoo.com/api/v1/webhook/list"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">"bearer xxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"*/*"</span><span class="p">,</span>
+    <span class="s">'Cache-Control'</span><span class="p">:</span> <span class="s">"no-cache"</span><span class="p">,</span>
+    <span class="s">'Host'</span><span class="p">:</span> <span class="s">"apis.narnoo.com"</span><span class="p">,</span>
+    <span class="s">'Connection'</span><span class="p">:</span> <span class="s">"keep-alive"</span><span class="p">,</span>
+    <span class="s">'cache-control'</span><span class="p">:</span> <span class="s">"no-cache"</span>
+    <span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Foundation</span>
+
+<span class="k">let</span> <span class="nv">headers</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"bearer xxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+  <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"*/*"</span><span class="p">,</span>
+  <span class="s">"Cache-Control"</span><span class="p">:</span> <span class="s">"no-cache"</span><span class="p">,</span>
+  <span class="s">"Host"</span><span class="p">:</span> <span class="s">"apis.narnoo.com"</span><span class="p">,</span>
+  <span class="s">"Connection"</span><span class="p">:</span> <span class="s">"keep-alive"</span><span class="p">,</span>
+  <span class="s">"cache-control"</span><span class="p">:</span> <span class="s">"no-cache"</span>
+<span class="p">]</span>
+
+<span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">NSMutableURLRequest</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">NSURL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://apis.narnoo.com/api/v1/webhook/list"</span><span class="p">)</span><span class="o">!</span> <span class="k">as</span> <span class="kt">URL</span><span class="p">,</span>
+                                        <span class="nv">cachePolicy</span><span class="p">:</span> <span class="o">.</span><span class="n">useProtocolCachePolicy</span><span class="p">,</span>
+                                    <span class="nv">timeoutInterval</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">httpMethod</span> <span class="o">=</span> <span class="s">"GET"</span>
+<span class="n">request</span><span class="o">.</span><span class="n">allHTTPHeaderFields</span> <span class="o">=</span> <span class="n">headers</span>
+
+<span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span>
+<span class="k">let</span> <span class="nv">dataTask</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="nf">dataTask</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">request</span> <span class="k">as</span> <span class="kt">URLRequest</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">httpResponse</span> <span class="o">=</span> <span class="n">response</span> <span class="k">as?</span> <span class="kt">HTTPURLResponse</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="n">dataTask</span><span class="o">.</span><span class="nf">resume</span><span class="p">()</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-17 13:26:31"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.yourdomain.com/action/webhook"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"live"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"queryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"681.75ms"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves the list of created webhooks within Narnoo for the agent.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://apis.narnoo.com/api/v1/webhook/list</code></p>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>[success]</td>
+<td>boolean</td>
+<td>Was the call successful.</td>
+</tr>
+<tr>
+<td>[count]</td>
+<td>integer</td>
+<td>Total number of orders.</td>
+</tr>
+<tr>
+<td>[data]</td>
+<td>array</td>
+<td>webhook information.</td>
+</tr>
+<tr>
+<td>[data][n][&lsquo;id&rsquo;]</td>
+<td>integer</td>
+<td>Webhook ID.</td>
+</tr>
+<tr>
+<td>[data][n][&#39;dateCreated&rsquo;]</td>
+<td>datetime</td>
+<td>Date of record creation.</td>
+</tr>
+<tr>
+<td>[data][n][&#39;url&rsquo;]</td>
+<td>string</td>
+<td>Url of endpoint on your system.</td>
+</tr>
+<tr>
+<td>[data][n][&#39;status&rsquo;]</td>
+<td>string</td>
+<td>Status of the webhook - live - hold</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-webhook-details">Get webhook details</h2>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"async"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">"crossDomain"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://apis.narnoo.com/api/v1/webhook/details/15"</span><span class="p">,</span>
+  <span class="s2">"method"</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="s2">"headers"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"bearer xxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"Accept"</span><span class="p">:</span> <span class="s2">"*/*"</span><span class="p">,</span>
+    <span class="s2">"Cache-Control"</span><span class="p">:</span> <span class="s2">"no-cache"</span><span class="p">,</span>
+    <span class="s2">"Host"</span><span class="p">:</span> <span class="s2">"apis.narnoo.com"</span><span class="p">,</span>
+    <span class="s2">"Connection"</span><span class="p">:</span> <span class="s2">"keep-alive"</span><span class="p">,</span>
+    <span class="s2">"cache-control"</span><span class="p">:</span> <span class="s2">"no-cache"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"https://apis.narnoo.com/api/v1/webhook/details/15"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="nx">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="nx">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="nx">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="nx">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="nx">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">"Accept: */*"</span><span class="p">,</span>
+    <span class="s2">"Authorization: bearer xxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s2">"Cache-Control: no-cache"</span><span class="p">,</span>
+    <span class="s2">"Connection: keep-alive"</span><span class="p">,</span>
+    <span class="s2">"Host: apis.narnoo.com"</span><span class="p">,</span>
+    <span class="s2">"accept-encoding: gzip, deflate"</span><span class="p">,</span>
+    <span class="s2">"cache-control: no-cache"</span>
+  <span class="p">),</span>
+<span class="p">));</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="o">.</span> <span class="nv">$err</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://apis.narnoo.com/api/v1/webhook/details/15"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">"bearer xxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+    <span class="s">'Accept'</span><span class="p">:</span> <span class="s">"*/*"</span><span class="p">,</span>
+    <span class="s">'Cache-Control'</span><span class="p">:</span> <span class="s">"no-cache"</span><span class="p">,</span>
+    <span class="s">'Host'</span><span class="p">:</span> <span class="s">"apis.narnoo.com"</span><span class="p">,</span>
+    <span class="s">'accept-encoding'</span><span class="p">:</span> <span class="s">"gzip, deflate"</span><span class="p">,</span>
+    <span class="s">'Connection'</span><span class="p">:</span> <span class="s">"keep-alive"</span><span class="p">,</span>
+    <span class="s">'cache-control'</span><span class="p">:</span> <span class="s">"no-cache"</span>
+    <span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Foundation</span>
+
+<span class="k">let</span> <span class="nv">headers</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"bearer xxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span>
+  <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"*/*"</span><span class="p">,</span>
+  <span class="s">"Cache-Control"</span><span class="p">:</span> <span class="s">"no-cache"</span><span class="p">,</span>
+  <span class="s">"Host"</span><span class="p">:</span> <span class="s">"apis.narnoo.com"</span><span class="p">,</span>
+  <span class="s">"accept-encoding"</span><span class="p">:</span> <span class="s">"gzip, deflate"</span><span class="p">,</span>
+  <span class="s">"Connection"</span><span class="p">:</span> <span class="s">"keep-alive"</span><span class="p">,</span>
+  <span class="s">"cache-control"</span><span class="p">:</span> <span class="s">"no-cache"</span>
+<span class="p">]</span>
+
+<span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">NSMutableURLRequest</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">NSURL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://apis.narnoo.com/api/v1/webhook/details/15"</span><span class="p">)</span><span class="o">!</span> <span class="k">as</span> <span class="kt">URL</span><span class="p">,</span>
+                                        <span class="nv">cachePolicy</span><span class="p">:</span> <span class="o">.</span><span class="n">useProtocolCachePolicy</span><span class="p">,</span>
+                                    <span class="nv">timeoutInterval</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">httpMethod</span> <span class="o">=</span> <span class="s">"GET"</span>
+<span class="n">request</span><span class="o">.</span><span class="n">allHTTPHeaderFields</span> <span class="o">=</span> <span class="n">headers</span>
+
+<span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">URLSession</span><span class="o">.</span><span class="n">shared</span>
+<span class="k">let</span> <span class="nv">dataTask</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="nf">dataTask</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">request</span> <span class="k">as</span> <span class="kt">URLRequest</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">httpResponse</span> <span class="o">=</span> <span class="n">response</span> <span class="k">as?</span> <span class="kt">HTTPURLResponse</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="n">dataTask</span><span class="o">.</span><span class="nf">resume</span><span class="p">()</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-17 13:26:31"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.yourdomain.com/action/webhook"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noowhsec_g7Eslc6pgxgC"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"live"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"dateModified"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"create.product"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"update.product"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"delete.product"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"queryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"693.8ms"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves further details of the webhook.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://apis.narnoo.com/api/v1/webhook/details/{webhook_id}</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<p>{webhook_id} - required</p>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>[success]</td>
+<td>boolean</td>
+<td>Was the call successful.</td>
+</tr>
+<tr>
+<td>[data][&#39;id&rsquo;]</td>
+<td>integer</td>
+<td>Webhook ID.</td>
+</tr>
+<tr>
+<td>[data][&#39;dateCreated&rsquo;]</td>
+<td>datetime</td>
+<td>Date of record creation.</td>
+</tr>
+<tr>
+<td>[data][&#39;url&rsquo;]</td>
+<td>string</td>
+<td>Url of endpoint on your system.</td>
+</tr>
+<tr>
+<td>[data][&#39;key&rsquo;]</td>
+<td>string</td>
+<td>A security key to check webhook responses for authenticity - contained in the header.</td>
+</tr>
+<tr>
+<td>[data][&#39;status&rsquo;]</td>
+<td>string</td>
+<td>Status of the webhook - live - hold</td>
+</tr>
+<tr>
+<td>[data][&#39;dateModified&rsquo;]</td>
+<td>datetime</td>
+<td>Date of record creation.</td>
+</tr>
+<tr>
+<td>[data][&#39;action&rsquo;]</td>
+<td>array</td>
+<td>An array containing the actions set for this endpoint.</td>
+</tr>
+</tbody></table>
+
+<h2 id="webhook-payload">Webhook Payload</h2>
+
+<p>When a webhook has been set up within Narnoo, the following JSON paylay is sent to it via a POST request.</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create.product"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"businessId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"businessType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-29 03:05:03"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"On8bjEdEz5dp"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"138726791"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>[action]</td>
+<td>string</td>
+<td>The Narnoo action.</td>
+</tr>
+<tr>
+<td>[businessId]</td>
+<td>integer</td>
+<td>Narnoo business ID.</td>
+</tr>
+<tr>
+<td>[businessType]</td>
+<td>integer</td>
+<td>Narnoo business type - 1 = operator</td>
+</tr>
+<tr>
+<td>[timestamp]</td>
+<td>datetime</td>
+<td>Date time for when the action took place.</td>
+</tr>
+<tr>
+<td>[id]</td>
+<td>string</td>
+<td>The webhook action ID.</td>
+</tr>
+<tr>
+<td>[data]</td>
+<td>array</td>
+<td>Array of the ID&rsquo;s related to the action - in this case &ldquo;A new product was created for business ID 39 which has the product ID of 138726791&rdquo;</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+We provide an additional layer of security to authenticate the webhook.
+</aside>
+
+<p>Narnoo returns the security key created with the webhook into the request header. This is contained within the &ldquo;Narno-Signature&rdquo; header item. You can store this key locally and then check against it for future authentication.</p>
+
+<p>&ldquo;Narnoo-Signature&rdquo;:&ldquo;noowhsec_g7Eslc6pgxgC&rdquo;</p>
 
           <h1 id="definitions">Definitions</h1>
 
