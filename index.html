@@ -2590,6 +2590,21 @@ If the operator_id is left off the endpoint then the response will return the to
 <td>The quantity of paxs the price represents. Example: a family option could have 4 here.</td>
 </tr>
 <tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][n][optionPrice][n][&#39;minQuantity&rsquo;]</td>
+<td>integer</td>
+<td>The minumum quantity that can be booked. Default = 1</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][n][optionPrice][n][&#39;maxQuantity&rsquo;]</td>
+<td>integer</td>
+<td>The maximun quantity that can be booked. Default = NULL If Null then the max limit is the availability.</td>
+</tr>
+<tr>
+<td>[data][products][n][&#39;bookingCodes&rsquo;][n][optionPrice][n][&#39;group&rsquo;]</td>
+<td>boolean</td>
+<td>If the option is for a group this will be true. Option price represents the total for the product. Default = false.</td>
+</tr>
+<tr>
 <td>[data][products][n][&#39;bookingCodes&rsquo;][n][optionPrice][n][&#39;commission&rsquo;]</td>
 <td>float</td>
 <td>Not all reservation systems output commission here. This currently does not represent commissions for all products, via all reservation systems.</td>
@@ -3278,6 +3293,21 @@ The bookingData array in the response contains all the information needed to mak
 <td>Number of paxs the price represents.</td>
 </tr>
 <tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productPrices&rsquo;][n][&#39;minQuantity&rsquo;]</td>
+<td>integer</td>
+<td>The minumum quantity that can be booked. Default = 1</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productPrices&rsquo;][n][&#39;maxQuantity&rsquo;]</td>
+<td>integer</td>
+<td>The maximun quantity that can be booked. Default = NULL If Null then the max limit is the availability.</td>
+</tr>
+<tr>
+<td>[data][&#39;bookingData&rsquo;][&#39;productPrices&rsquo;][n][&#39;group&rsquo;]</td>
+<td>boolean</td>
+<td>If the option is for a group this will be true. Option price represents the total for the product. Default = false.</td>
+</tr>
+<tr>
 <td>[data][&#39;bookingData&rsquo;][&#39;productPrices&rsquo;][n][&#39;commission&rsquo;]</td>
 <td>float</td>
 <td>Commission on price - this is not a true representation of the commission for the product. You negiotated rates takes priority.</td>
@@ -3801,6 +3831,21 @@ The product fare data might be different to the productOptions in the product de
 <td>[data][productAvailability][n][price][n][&#39;pax&rsquo;]</td>
 <td>integer</td>
 <td>Number of paxs the price represents.</td>
+</tr>
+<tr>
+<td>[data][productAvailability][n][price][n][&#39;minQuantity&rsquo;]</td>
+<td>integer</td>
+<td>The minumum quantity that can be booked. Default = 1</td>
+</tr>
+<tr>
+<td>[data][productAvailability][n][price][n][&#39;maxQuantity&rsquo;]</td>
+<td>integer</td>
+<td>The maximun quantity that can be booked. Default = NULL If Null then the max limit is the availability.</td>
+</tr>
+<tr>
+<td>[data][productAvailability][n][price][n][&#39;group&rsquo;]</td>
+<td>boolean</td>
+<td>If the option is for a group this will be true. Option price represents the total for the product. Default = false.</td>
 </tr>
 <tr>
 <td>[data][productAvailability][n][price][n][&#39;commission&rsquo;]</td>
@@ -4543,6 +4588,11 @@ For testing please use the https://apis-test.narnoo.com endpoint. All successful
 <td>[products][n][&#39;option&rsquo;][n][&#39;price&rsquo;]</td>
 <td>true</td>
 <td>The payment option price.</td>
+</tr>
+<tr>
+<td>[products][n][&#39;option&rsquo;][n][&#39;group&rsquo;]</td>
+<td>false</td>
+<td>Is this option for a group.</td>
 </tr>
 <tr>
 <td>[products][n][&#39;extra&rsquo;]</td>
