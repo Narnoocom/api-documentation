@@ -122,7 +122,7 @@
         <h1 id="introduction">Introduction</h1>
 
 <aside class="notice">
-Latest documentation update: 31-10-2019
+Latest documentation update: 26-02-2020
 </aside>
 
 <p>Welcome to the Narnoo live reservations API!</p>
@@ -142,19 +142,17 @@ This is being standarded to: bookingId.
 
 <h2 id="latest-endpoints">Latest Endpoints</h2>
 
-<ol>
-<li>Narnoo Webhooks: <a href="#webhook-payload">webhooks</a></li>
-</ol>
-
-<p>Updated Information - We&rsquo;ve added a reference ID into our reservation payload so agents can send a voucher or reference number from their system to the suppliers reservation system.</p>
-
-<p>Updated information - If pickUp data is provided for a product then it is manditory to pass this to the create reservation endpoint.
+<p>Updated information - Extras details have been updated for reservations.
+Updated information - Product options have a type field added.
+Updated information - If pickUp data is provided for a product then it is manditory to pass this to the create reservation endpoint. Where a supplier requires a drop off we automatically add the pickup location as the drop off location.
 Updated information - Added date param to product booking data so there is an option to check pricing for a specific date. <a href="#get-product-booking-details">get bookable product data</a>
 Added &lsquo;pickup label&rsquo; and &#39;extra label&rsquo; to the create reservation request.</p>
 
 <h2 id="testing-environment">Testing Environment</h2>
 
 <p>We have set up a testing environment which uses all the reservation systems&rsquo; testing API calls. This means you can test the API without making real time bookings.</p>
+
+<p>We have a live testing product which you can use. Please email support@narnoo.com and our support staff will make sure this product is set up for you to test with.</p>
 
 <p>The only real endpoint to be concerned about is the <a href="#create-reservation">create product reservation</a> route. Use our testing API when developing this endpoint as it will not create a live reservation. If you use the live endpoint a live booking will be made and the agent will be responsible for the costs involved with booking the product.</p>
 
@@ -167,62 +165,6 @@ Added &lsquo;pickup label&rsquo; and &#39;extra label&rsquo; to the create reser
 <aside class="warning">
 Use the testing endpoint when developing the write reservation endpoint.
 </aside>
-
-<h2 id="current-reservation-systems">Current Reservation Systems</h2>
-
-<table><thead>
-<tr>
-<th>Reservation System</th>
-<th>Live API Approval</th>
-<th>Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Respax</td>
-<td>No</td>
-<td>Reservations</td>
-</tr>
-<tr>
-<td>Rezdy</td>
-<td>Yes</td>
-<td>Reservations</td>
-</tr>
-<tr>
-<td>Website Travel</td>
-<td>Yes</td>
-<td>Wholesaler</td>
-</tr>
-<tr>
-<td>Fareharbor</td>
-<td>Yes</td>
-<td>Reservations</td>
-</tr>
-<tr>
-<td>ProCharter -  In development</td>
-<td>Yes</td>
-<td>Reservations</td>
-</tr>
-<tr>
-<td>Booking Boss -  In development</td>
-<td>Yes</td>
-<td>Reservations</td>
-</tr>
-<tr>
-<td>CustomLic - &ldquo;coming soon&rdquo;</td>
-<td>Yes</td>
-<td>Reservations</td>
-</tr>
-<tr>
-<td>Rezgo - &ldquo;coming soon&rdquo;</td>
-<td>Yes</td>
-<td>Reservations</td>
-</tr>
-<tr>
-<td>Bookeo - &ldquo;coming soon&rdquo;</td>
-<td>Yes</td>
-<td>Reservations</td>
-</tr>
-</tbody></table>
 
 <h2 id="classic-use-case-scenario">Classic Use Case Scenario</h2>
 
@@ -4620,6 +4562,11 @@ For testing please use the https://apis-test.narnoo.com endpoint. All successful
 <td>The extra price - price of extra which is a mulitplier of the quantity.</td>
 </tr>
 <tr>
+<td>[products][n][&#39;extra&rsquo;][n][&#39;type&rsquo;]</td>
+<td>true</td>
+<td>The extra type - this determines the type and price of the extra - more details</td>
+</tr>
+<tr>
 <td>[products][n][&#39;pickUp&rsquo;]</td>
 <td>false</td>
 <td>Pick up is required if the pickUp data in product booking data is not NULL. If pickUp data is included in the reservation call then all pickUp data is required.</td>
@@ -4675,6 +4622,20 @@ For testing please use the https://apis-test.narnoo.com endpoint. All successful
 <td>Booking form value - The value for that entry.</td>
 </tr>
 </tbody></table>
+
+<aside class="info">
+**Detailed Product Extra Information:**
+There are three different extra types, with each effecting the total cart price differently.
+**totalPaxs**
+This extra is assigned to all the participants. A checkbox is the appropriate method for the UI. To calculate the price the formula is ( total.quantity * extra.price ).
+When sending to the API we require a quantity of 1 and the extra.type = totalPaxs.
+**perPax**
+This extra is selectable per participant. An select option is the appropriate method for this UI. To calculate the price the formula is ( extra.quantity * extra.price).
+ When sending to the API we require the quantity of the extra and the extra.type = perPax.
+ **perOrder**
+This extra is assigned once to the total product order. A checkbox is the appropriate method for the UI. To calculate the price the formula is ( 1 * extra.price).
+When sending to the API we require a quantity of 1 and the extra.type = perOrder.
+</aside>
 
 <h3 id="sample-response">Sample Response</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
