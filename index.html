@@ -142,8 +142,8 @@ This is being standarded to: bookingId.
 
 <h2 id="latest-endpoints">Latest Endpoints</h2>
 
-<p>Updated information - Extras details have been updated for reservations.
-Updated information - Product options have a type field added.
+<p><strong>Updated information</strong> - Extras details have been updated for reservations.
+<strong>Updated information</strong> - Product options have a type field added.
 Updated information - If pickUp data is provided for a product then it is manditory to pass this to the create reservation endpoint. Where a supplier requires a drop off we automatically add the pickup location as the drop off location.
 Updated information - Added date param to product booking data so there is an option to check pricing for a specific date. <a href="#get-product-booking-details">get bookable product data</a>
 Added &lsquo;pickup label&rsquo; and &#39;extra label&rsquo; to the create reservation request.</p>
@@ -4624,15 +4624,14 @@ For testing please use the https://apis-test.narnoo.com endpoint. All successful
 </tbody></table>
 
 <aside class="info">
-**Detailed Product Extra Information:**
+__Detailed Product Extra Information:__
 There are three different extra types, with each effecting the total cart price differently.
-**totalPaxs**
+__totalPaxs__
 This extra is assigned to all the participants. A checkbox is the appropriate method for the UI. To calculate the price the formula is ( total.quantity * extra.price ).
 When sending to the API we require a quantity of 1 and the extra.type = totalPaxs.
-**perPax**
-This extra is selectable per participant. An select option is the appropriate method for this UI. To calculate the price the formula is ( extra.quantity * extra.price).
- When sending to the API we require the quantity of the extra and the extra.type = perPax.
- **perOrder**
+__perPax__
+This extra is selectable per participant. An select option is the appropriate method for this UI. To calculate the price the formula is ( extra.quantity * extra.price). When sending to the API we require the quantity of the extra and the extra.type = perPax.
+__perOrder__
 This extra is assigned once to the total product order. A checkbox is the appropriate method for the UI. To calculate the price the formula is ( 1 * extra.price).
 When sending to the API we require a quantity of 1 and the extra.type = perOrder.
 </aside>
