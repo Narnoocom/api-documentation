@@ -15,6 +15,7 @@ includes:
   - connect
   - product
   - booking
+  - validation
   - reservation
   - definitions
 
@@ -25,7 +26,7 @@ search: true
 # Introduction
 
 <aside class="notice">
-Latest documentation update: 28-11-2018.
+Latest documentation update: 03-06-2021.
 </aside>
 
 Welcome to the Narnoo live reservations API!
@@ -62,4 +63,6 @@ Respax | No | Yes | No | Reservations
 Rezdy | Yes | No | Rezdy Demo | Reservations
 Website Travel | Yes | Yes | Website Travel Demo | Wholesaler
 Fareharbor | Yes | Yes | Fareharbor Demo | Reservations
+Procharter | Yes | Yes | Procharter Demo | Reservations
+CheckFront | Yes | Supplier | Narnoo Demo | Reservations
 Booking Boss | Yes | Yes | "Comming Soon" | Reservations
