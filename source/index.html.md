@@ -26,7 +26,7 @@ search: true
 # Introduction
 
 <aside class="notice">
-Latest documentation update: 03-06-2021.
+Latest documentation update: 25-07-2022.
 </aside>
 
 Welcome to the Narnoo live reservations API!
@@ -42,6 +42,8 @@ If you have any issues or problems with our API or connecting with a reservation
 ## Testing Environment
 
 We have set up a testing environment which uses all the reservation systems' testing API calls. This means you can test the API without making real time bookings.
+
+Please contact us at support@narnoo.com in relation to the testing endpoint. We have another form to test here.
 
 > Testing endpoint: https://apis-test.narnoo.com/v1/
 
